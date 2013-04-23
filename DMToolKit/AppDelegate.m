@@ -16,9 +16,34 @@
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
+    splitViewController.view.opaque = NO;
+    _imgView = [[UIImageView alloc] initWithImage:
+                [UIImage imageNamed:@"FullNavBar.png"]];
+    [_imgView setFrame:CGRectMake(0, 0, 1024, 768)];
+    [[splitViewController view] insertSubview:_imgView atIndex:0];
+    [[splitViewController view] setBackgroundColor:[UIColor clearColor]];
+    [self fixRoundedSplitViewCorner];
     return YES;
 }
-							
+
+-(void) fixRoundedSplitViewCorner {
+    [self explode:[[UIApplication sharedApplication] keyWindow] level:0];
+}
+-(void) explode:(id)aView level:(int)level
+{
+    
+    if ([aView isKindOfClass:[UIImageView class]]) {
+        UIImageView* roundedCornerImage = (UIImageView*)aView;
+        roundedCornerImage.hidden = YES;
+    }
+    if (level < 2) {
+        for (UIView *subview in [aView subviews]) {
+            [self explode:subview level:(level + 1)];
+        }
+    }
+    
+    _imgView.hidden = FALSE;
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

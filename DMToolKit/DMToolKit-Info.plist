@@ -53,5 +53,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ApexSans-MediumItalic.otf</string>
+		<string>ApexSans-Bold.otf</string>
+		<string>ApexSans-BoldItalic.otf</string>
+		<string>ApexSans-Book.otf</string>
+		<string>ApexSans-BookItalic.otf</string>
+		<string>ApexSans-Light.otf</string>
+		<string>ApexSans-LightItalic.otf</string>
+		<string>ApexSans-Medium.otf</string>
+	</array>
 </dict>
 </plist>
