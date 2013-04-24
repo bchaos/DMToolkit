@@ -38,15 +38,20 @@
 
 -(UITableViewCell *) confgureCell:(UITableViewCell *)cell{
  
-    
     CGRect frame = CGRectMake(0, 0, 320, 70);
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+    cell.textLabel.frame= frame;
+    cell.textLabel.backgroundColor=[UIColor clearColor];
+    cell.textLabel.numberOfLines=0;
+    cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     cell.textLabel.font=[fontsAndColourConstants ApexMedium:20];
     imageView.image = [UIImage imageNamed:@"bar.png"];
     cell.backgroundView.frame = frame;
     cell.backgroundView = imageView;
     cell.textLabel.textColor=[UIColor whiteColor];
+    
     return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface landingPageViewController : UIViewController
+#import "masterBaseViewController.h"
+@interface landingPageViewController : masterBaseViewController
 
 @end
