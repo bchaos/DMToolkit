@@ -41,7 +41,7 @@ static DuegonMasterSingleton * _sharedInstance =nil;
 	self = [super init];
 	if (self != nil) {
         character= [[CharacterObject alloc]init];
-        [character loadCharacters];
+        [character load];
 	}
     
 	return self;

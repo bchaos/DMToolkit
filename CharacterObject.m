@@ -7,10 +7,15 @@
 //
 
 #import "CharacterObject.h"
-
+static NSString * characterFileName= @"Characters.DMKit";
 @implementation CharacterObject
+-(void)load{
+    self.fileToLoad =characterFileName;
+    [super load];
+}
 
--(void)loadCharacters{
+-(void)getCharacterWithID{
+    
     
 }
 

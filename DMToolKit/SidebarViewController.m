@@ -80,45 +80,44 @@ static NSString * fuctionObject=@"functionObject";
 }
 #pragma mark- TableView Updating functions
 
--(void)showCharacterTableView{
-     self.sectionLabel.text= @"Characters";
+-(void)showCharacterTableView:(NSDictionary *)dic{
+    
     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Character" ,nameKey, @"addCharacter", functionKey, nil],nil ];
 }
 
--(void)showItemsTable{
-    self.sectionLabel.text= @"Items";
-    _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Item" ,nameKey, @"addItem", functionKey, nil],nil ];
+-(void)showItemsTable:(NSDictionary *)dic{
+     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Item" ,nameKey, @"addItem", functionKey, nil],nil ];
 }
 
 
--(void)showNPCSTableView{
-    self.sectionLabel.text= @"NPCs";
+-(void)showNPCSTableView:(NSDictionary *)dic{
     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New NPC" ,nameKey, @"addNPC", functionKey, nil],nil ];
 }
 
--(void)showMonstersTableView{
-    self.sectionLabel.text= @"NPCs";
+-(void)showMonstersTableView:(NSDictionary *)dic{
     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Monster" ,nameKey, @"addMonster", functionKey, nil],nil ];
 }
 
 
--(void)showEncountersTableView{
-    self.sectionLabel.text= @"Encounters";
+-(void)showEncountersTableView:(NSDictionary *)dic{
     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Encounter" ,nameKey, @"addEncounter", functionKey, nil],nil ];
 }
 
--(void)showCampaignTableView{
-    self.sectionLabel.text= @"Campaigns";
+-(void)showCampaignTableView:(NSDictionary *)dic{
     _SelectionFields = [NSArray arrayWithObjects:[NSDictionary dictionaryWithObjectsAndKeys:@"New Campaign" ,nameKey, @"addCampaign", functionKey, nil],nil ];
 }
 
 
+-(void)addCharacter{
+    
+}
+
 -(void)setStartingContnet{
     self.sectionLabel.text= @"Main Menu";
     _SelectionFields = [NSArray arrayWithObjects:
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Characters" ,nameKey, @"showCharacterTableView", functionKey, nil],  [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable", functionKey, nil] , [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView", functionKey, nil] ,
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView", functionKey, nil] ,  [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView", functionKey, nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Campaign" ,nameKey, @"showCampaignTableView", functionKey, nil] ,nil];
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Characters" ,nameKey, @"showCharacterTableView:", functionKey, nil],  [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable", functionKey, nil] , [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView:", functionKey, nil] ,
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView:", functionKey, nil] ,  [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView:", functionKey, nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Campaign" ,nameKey, @"showCampaignTableView:", functionKey, nil] ,nil];
 }
 
 
@@ -129,11 +128,8 @@ static NSString * fuctionObject=@"functionObject";
     NSDictionary * currentSelectionDictionary =[_SelectionFields objectAtIndex:indexPath.row];
     NSString *functionString = [currentSelectionDictionary objectForKey:functionKey];
     SEL appSelector = NSSelectorFromString(functionString);
-    if([currentSelectionDictionary objectForKey:fuctionObject] ){
-        [self performSelector:appSelector withObject:[currentSelectionDictionary objectForKey:fuctionObject]];
-    }else{
-        [self performSelector:appSelector];
-    }
+    self.sectionLabel.text = [currentSelectionDictionary objectForKey:nameKey];
+    [self performSelector:appSelector withObject:currentSelectionDictionary];
     _backbutton.alpha=1.0;
     _searchField.alpha=1.0;
        [_searchField resignFirstResponder];

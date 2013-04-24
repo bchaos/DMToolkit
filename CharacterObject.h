@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface CharacterObject : NSObject
-
-
--(void)loadCharacters;
+#import "ObjectBase.h"
+@interface CharacterObject : ObjectBase
+@property (nonatomic, retain)NSDictionary * currentCharacter;
 @end
