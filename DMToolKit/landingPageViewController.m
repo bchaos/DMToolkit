@@ -30,6 +30,7 @@
                                             selector:@selector(showCharacterCreator)
                                                 name:kShowCharacterCreator
                                               object:nil];
+    self.navigationController.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
 }
 
 - (void)didReceiveMemoryWarning

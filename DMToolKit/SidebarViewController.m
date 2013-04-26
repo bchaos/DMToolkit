@@ -10,9 +10,10 @@
 
 static NSString * nameKey= @"name";
 static NSString * functionKey=@"function";
-//static NSString * fuctionObject=@"functionObject";
+
 @interface SidebarViewController (){
     NSString * actionFunction;
+
 }
 @end
 
@@ -87,6 +88,7 @@ static NSString * functionKey=@"function";
 #pragma mark- TableView Updating functions
 
 -(void)showCharacterTableView:(NSDictionary *)dic{
+    actionFunction= kShowCharacterCreator;
  [_SelectionFields removeAllObjects];
 }
 
@@ -158,6 +160,9 @@ static NSString * functionKey=@"function";
         _PulldownToAddLabel.alpha=1.0;
         _PulldownToAddLabel.text= [NSString stringWithFormat:@"Pull down to add a %@", [nameToShow substringToIndex:nameToShow.length-1]];
     }
+    if(actionFunction !=nil){
+        [JE_ notifyName:actionFunction object:nil];
+    }
     [self.selectionTable reloadData];
 
    
@@ -194,6 +199,7 @@ static NSString * functionKey=@"function";
     _searchField.alpha=0.0;
        _PulldownToAddLabel.alpha=0.0;
     actionFunction=nil;
+    [JE_ notifyName:@"goBack" object:nil];
     }
 - (IBAction)filterCurrentSection:(id)sender {
 }
@@ -248,7 +254,9 @@ static NSString * functionKey=@"function";
             [_tempCell removeFromSuperview];
             _tempCell=nil;
             if(_newObjectAdded){
-                
+                if(actionFunction !=nil){
+                    [JE_ notifyName:actionFunction object:nil];
+                }
                  _selectedCellIndex=0;
                 [self startEditing:_editableTextField];
                 _isEditing=true;
@@ -279,6 +287,8 @@ static NSString * functionKey=@"function";
     [_SelectionFields replaceObjectAtIndex:_selectedCellIndex withObject:textDic];
     [_selectionTable reloadData];
 }
+
+
 -(void)startEditing:(UITextField *)textField{
     [textField becomeFirstResponder];
       NSMutableDictionary * textDic= [NSMutableDictionary dictionaryWithDictionary: [_SelectionFields objectAtIndex:_selectedCellIndex]];
@@ -288,6 +298,7 @@ static NSString * functionKey=@"function";
     }else{
         textField.text= currentName;
     }
+
 }
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     _isEditing=false;

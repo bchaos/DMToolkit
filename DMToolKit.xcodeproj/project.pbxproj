@@ -25,6 +25,8 @@
 		56F12104172804EE008D1DF2 /* AppNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F12103172804EE008D1DF2 /* AppNotifications.m */; };
 		56F1210717280523008D1DF2 /* ObjectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F1210617280523008D1DF2 /* ObjectBase.m */; };
 		56F1210A17281401008D1DF2 /* landingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F1210917281401008D1DF2 /* landingPageViewController.m */; };
+		56F1223D1729C18A008D1DF2 /* CharacterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F1223C1729C189008D1DF2 /* CharacterViewController.m */; };
+		56F12242172A1BC8008D1DF2 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F12241172A1BC7008D1DF2 /* BaseTableViewController.m */; };
 		97682A3A1725D1FF00675211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A391725D1FF00675211 /* UIKit.framework */; };
 		97682A3C1725D1FF00675211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A3B1725D1FF00675211 /* Foundation.framework */; };
 		97682A3E1725D1FF00675211 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A3D1725D1FF00675211 /* CoreGraphics.framework */; };
@@ -99,7 +101,6 @@
 		97682B021728585900675211 /* backgroundBlank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97682AFE1728585700675211 /* backgroundBlank@2x.png */; };
 		97682B031728585900675211 /* backgroundTopPort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97682AFF1728585800675211 /* backgroundTopPort@2x.png */; };
 		97682B041728585900675211 /* bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97682B001728585800675211 /* bar@2x.png */; };
-		97682B061728610600675211 /* scroll.png in Resources */ = {isa = PBXBuildFile; fileRef = 97682B051728610600675211 /* scroll.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,10 @@
 		56F1210617280523008D1DF2 /* ObjectBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectBase.m; sourceTree = "<group>"; };
 		56F1210817281401008D1DF2 /* landingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = landingPageViewController.h; sourceTree = "<group>"; };
 		56F1210917281401008D1DF2 /* landingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = landingPageViewController.m; sourceTree = "<group>"; };
+		56F1223B1729C188008D1DF2 /* CharacterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterViewController.h; sourceTree = "<group>"; };
+		56F1223C1729C189008D1DF2 /* CharacterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterViewController.m; sourceTree = "<group>"; };
+		56F12240172A1BC7008D1DF2 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		56F12241172A1BC7008D1DF2 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		97682A361725D1FF00675211 /* DMToolKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMToolKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97682A391725D1FF00675211 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		97682A3B1725D1FF00675211 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -230,7 +235,6 @@
 		97682AFE1728585700675211 /* backgroundBlank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgroundBlank@2x.png"; sourceTree = "<group>"; };
 		97682AFF1728585800675211 /* backgroundTopPort@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgroundTopPort@2x.png"; sourceTree = "<group>"; };
 		97682B001728585800675211 /* bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar@2x.png"; sourceTree = "<group>"; };
-		97682B051728610600675211 /* scroll.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scroll.png; path = ../../scroll.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,7 +344,6 @@
 		97682A631726CEDB00675211 /* Arts */ = {
 			isa = PBXGroup;
 			children = (
-				97682B051728610600675211 /* scroll.png */,
 				97682AFD1728585700675211 /* backgroundBlank copy.png */,
 				97682AFE1728585700675211 /* backgroundBlank@2x.png */,
 				97682AFF1728585800675211 /* backgroundTopPort@2x.png */,
@@ -378,6 +381,10 @@
 				97682AAB1726E7E900675211 /* SideBarBaseViewController.m */,
 				56F1210817281401008D1DF2 /* landingPageViewController.h */,
 				56F1210917281401008D1DF2 /* landingPageViewController.m */,
+				56F1223B1729C188008D1DF2 /* CharacterViewController.h */,
+				56F1223C1729C189008D1DF2 /* CharacterViewController.m */,
+				56F12240172A1BC7008D1DF2 /* BaseTableViewController.h */,
+				56F12241172A1BC7008D1DF2 /* BaseTableViewController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -586,7 +593,6 @@
 				97682B021728585900675211 /* backgroundBlank@2x.png in Resources */,
 				97682B031728585900675211 /* backgroundTopPort@2x.png in Resources */,
 				97682B041728585900675211 /* bar@2x.png in Resources */,
-				97682B061728610600675211 /* scroll.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,6 +636,8 @@
 				97682AEB17283FAF00675211 /* panableTable.m in Sources */,
 				97682AEE1728435C00675211 /* panableview.m in Sources */,
 				97682AF21728522100675211 /* masterBaseViewController.m in Sources */,
+				56F1223D1729C18A008D1DF2 /* CharacterViewController.m in Sources */,
+				56F12242172A1BC8008D1DF2 /* BaseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
