@@ -1,0 +1,293 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/325/trunk/Source/Services/SQLAdmin/Generated
+END
+GTLSQLAdminDatabaseInstance.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminDatabaseInstance.h
+END
+GTLSQLAdminInstanceOperation.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstanceOperation.m
+END
+GTLSQLAdminBackupRun.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRun.h
+END
+GTLSQLAdminInstancesInsertResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesInsertResponse.h
+END
+GTLSQLAdminExportContext.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminExportContext.m
+END
+GTLSQLAdminBackupRunsListResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRunsListResponse.m
+END
+GTLSQLAdminDatabaseInstance.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminDatabaseInstance.m
+END
+GTLSQLAdminBackupRun.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRun.m
+END
+GTLSQLAdminSettings.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminSettings.h
+END
+GTLServiceSQLAdmin.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLServiceSQLAdmin.h
+END
+GTLSQLAdminInstancesInsertResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesInsertResponse.m
+END
+GTLSQLAdminInstancesListResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesListResponse.h
+END
+GTLSQLAdminTier.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminTier.h
+END
+GTLServiceSQLAdmin.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLServiceSQLAdmin.m
+END
+GTLSQLAdminSettings.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminSettings.m
+END
+GTLSQLAdminInstancesListResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesListResponse.m
+END
+GTLSQLAdminTier.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminTier.m
+END
+GTLSQLAdminInstancesUpdateResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesUpdateResponse.h
+END
+GTLSQLAdminInstancesRestartResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestartResponse.h
+END
+GTLSQLAdminInstancesUpdateResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesUpdateResponse.m
+END
+GTLSQLAdmin.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdmin.h
+END
+GTLSQLAdminImportContext.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminImportContext.h
+END
+GTLSQLAdminInstancesRestartResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestartResponse.m
+END
+GTLSQLAdminImportContext.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminImportContext.m
+END
+GTLSQLAdminInstancesDeleteResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesDeleteResponse.h
+END
+GTLSQLAdminBackupConfiguration.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupConfiguration.h
+END
+GTLSQLAdminOperationsListResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminOperationsListResponse.h
+END
+GTLSQLAdminInstancesDeleteResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesDeleteResponse.m
+END
+GTLSQLAdminInstancesRestoreBackupResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestoreBackupResponse.h
+END
+GTLSQLAdminTiersListResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminTiersListResponse.h
+END
+GTLSQLAdminInstancesImportResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesImportResponse.h
+END
+GTLSQLAdminBackupConfiguration.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupConfiguration.m
+END
+GTLSQLAdminOperationsListResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminOperationsListResponse.m
+END
+GTLSQLAdminInstancesRestoreBackupResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesRestoreBackupResponse.m
+END
+GTLQuerySQLAdmin.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/325/trunk/Source/Services/SQLAdmin/Generated/GTLQuerySQLAdmin.h
+END
+GTLSQLAdminInstancesImportResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesImportResponse.m
+END
+GTLSQLAdminTiersListResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminTiersListResponse.m
+END
+GTLSQLAdminInstancesExportResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesExportResponse.h
+END
+GTLSQLAdminOperationError.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminOperationError.h
+END
+GTLQuerySQLAdmin.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLQuerySQLAdmin.m
+END
+GTLSQLAdminConstants.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/325/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminConstants.h
+END
+GTLSQLAdminInstancesExportResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstancesExportResponse.m
+END
+GTLSQLAdminOperationError.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminOperationError.m
+END
+GTLSQLAdminConstants.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/325/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminConstants.m
+END
+GTLSQLAdminInstanceOperation.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminInstanceOperation.h
+END
+GTLSQLAdminExportContext.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminExportContext.h
+END
+GTLSQLAdmin_Sources.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdmin_Sources.m
+END
+GTLSQLAdminBackupRunsListResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/320/trunk/Source/Services/SQLAdmin/Generated/GTLSQLAdminBackupRunsListResponse.h
+END

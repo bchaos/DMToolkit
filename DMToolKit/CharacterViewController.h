@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
+@class Character;
 @interface CharacterViewController : BaseTableViewController<UITableViewDataSource, UITableViewDelegate>
-
-- (IBAction)pullingdown:(UIPanGestureRecognizer *)sender;
+@property (nonatomic, strong) Character * myCharacter;
+@property (nonatomic, assign)NSString * racesTOUse;
 
 @end

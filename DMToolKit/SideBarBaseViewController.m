@@ -11,7 +11,7 @@
 @interface SideBarBaseViewController ()
 
 @end
-
+static int textTag=1001;
 @implementation SideBarBaseViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,9 +35,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)removeTextView:(UITableViewCell *)cell{
+    for(UIView *sub in cell.subviews){
+        if(sub.tag==textTag)
+           [sub removeFromSuperview];
+    }
 
--(UITableViewCell *) confgureCell:(UITableViewCell *)cell{
- 
+}
+
+-(TextFieldCell *) configureCell:(TextFieldCell *)cell{
+    [cell removeTextfieldFromCell];
     CGRect frame = CGRectMake(0, 0, 320, 70);
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
     cell.textLabel.frame= frame;
@@ -49,9 +56,14 @@
     cell.backgroundView.frame = frame;
     cell.backgroundView = imageView;
     cell.textLabel.textColor=[UIColor whiteColor];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     return cell;
     
+}
+-(TextFieldCell * )configureCellWithTextField:(TextFieldCell *)cell{
+  
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;

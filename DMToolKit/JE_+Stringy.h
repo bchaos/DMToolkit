@@ -7,4 +7,5 @@
 containsString:(NSString*)substring;
 
 + (NSString*)prettyMoneyFloat:(float)num;
++ (NSString *)GetUUID;
 @end

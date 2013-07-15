@@ -11,5 +11,5 @@
 @interface masterBaseViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (strong, nonatomic) IBOutlet UIImageView *tabbarImage;
-
+-(void)goBack;
 @end

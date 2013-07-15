@@ -1,0 +1,60 @@
+PODS:
+  - AFNetworking (1.2.1)
+  - Evernote-SDK-iOS (1.2.0):
+    - SSKeychain (= 0.2.1)
+  - FontAwesome-iOS (0.0.1)
+  - JRSwizzle (1.0)
+  - Kiwi (2.1)
+  - libextobjc/EXTConcreteProtocol (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.2.5):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.2.5)
+  - MBProgressHUD (0.6)
+  - ObjectiveRecord (1.1.2):
+    - ObjectiveSugar
+  - ObjectiveSugar (0.7)
+  - Reachability (3.1.0)
+  - ReactiveCocoa (1.8.1):
+    - ReactiveCocoa/Core
+    - ReactiveCocoa/RACExtensions
+  - ReactiveCocoa/Core (1.8.1):
+    - JRSwizzle (~> 1.0)
+    - libextobjc/EXTConcreteProtocol (~> 0.2.5)
+    - libextobjc/EXTKeyPathCoding (~> 0.2.5)
+    - libextobjc/EXTScope (~> 0.2.5)
+  - ReactiveCocoa/RACExtensions (1.8.1):
+    - ReactiveCocoa/Core
+  - SSKeychain (0.2.1)
+  - TPKeyboardAvoiding (0.0.1)
+
+DEPENDENCIES:
+  - AFNetworking
+  - Evernote-SDK-iOS
+  - FontAwesome-iOS
+  - Kiwi
+  - MBProgressHUD
+  - ObjectiveRecord
+  - ObjectiveSugar
+  - Reachability
+  - ReactiveCocoa
+  - TPKeyboardAvoiding
+
+SPEC CHECKSUMS:
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
+  Evernote-SDK-iOS: 5648d876c3deb4874b43854495426bb7e6288780
+  FontAwesome-iOS: d16e03666086da02c0c8993dc7317d816775f072
+  JRSwizzle: 6242ff38485d870fc2636899048ee1ab883ae587
+  Kiwi: 054ef97d0e50c279b21113a0880a906fa153a7fd
+  libextobjc: 2cbc74caf8bdc74a86fdf24673f773c83424ea98
+  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  ObjectiveRecord: 346a5da3822a6d3d889af5f45c44059edda4c936
+  ObjectiveSugar: 2c2835034d5ec0d27f66905f63465490e3b8e1e7
+  Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
+  ReactiveCocoa: 396e260e68f7a6ba3855b4486009381e0dc02cc3
+  SSKeychain: ffa1a79eb716d9ed1ca184fb0cf218087ca28486
+  TPKeyboardAvoiding: 7289409b17dc2193a3f324672283c542f17c1bb1
+
+COCOAPODS: 0.20.2

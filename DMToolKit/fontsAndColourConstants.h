@@ -22,5 +22,6 @@
 +(UITableViewCell *)configureSubNavCell:(UITableViewCell *)cell;
 +(UITableViewCell *)configureSubNavCellBlue:(UITableViewCell *)cell;
 +(UITableViewCell *)configureSubNavCellWhite:(UITableViewCell *)cell;
-
++(UIFont *)AwesomeFontWithSize:(int)size;
++(UIFont *)DNDFont:(int)size;
 @end

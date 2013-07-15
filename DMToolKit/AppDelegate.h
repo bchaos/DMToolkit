@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <EvernoteSDK.h>
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property( nonatomic, strong)UIImageView * imgView;
+
+- (void) copyDatabaseIfNeeded;
+- (NSString *) getDBPath;
 @end

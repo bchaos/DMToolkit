@@ -12,16 +12,19 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "DuegonMasterSingleton.h"
-#import <QuartzCore/QuartzCore.h>
-#import "JE_.h"
-#import "JE_+Downloady.h"
-#import "JE_+JSONy.h"
-#import "JE_+Alerty.h"
-#import "JE_+Viewy.h"
-#import "JE_+NavigationBary.h"
-#import "JE_+Stringy.h"
-#import "JE_+Array.h"
-#import "JE_+Notify.h"
-
-#import "AppNotifications.h"
+    #import <QuartzCore/QuartzCore.h>
+    #import "JE_.h"
+    #import "JE_+Downloady.h"
+    #import "JE_+JSONy.h"
+    #import "JE_+Alerty.h"
+    #import "JE_+Viewy.h"
+    #import "JE_+NavigationBary.h"
+    #import "JE_+Stringy.h"
+    #import "JE_+Array.h"
+    #import "JE_+Notify.h"
+    #import "AppNotifications.h"
+    #import <ObjectiveSugar.h>
+    #import "fontsAndColourConstants.h"
+    #import <ObjectiveRecord.h>
+    #import <ReactiveCocoa.h>
 #endif

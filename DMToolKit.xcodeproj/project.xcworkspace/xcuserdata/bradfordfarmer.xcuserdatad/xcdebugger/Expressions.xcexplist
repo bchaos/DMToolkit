@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[DefaultData appendHTMLTag:isOpeningTag:withAttributes:]:DefaultData.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.currentProperty">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapMakerViewController setupTools]:MapMakerViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "greenButton.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[FeatsAndSkills tableView:cellForRowAtIndexPath:]:FeatsAndSkills.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.featsArray">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 static NSString *kShowCharacterCreator=@"showCharacterCreator";
-
+static NSString *kShowCharacterCreatorNPC=@"showCharacterCreatorNPC";
 @interface AppNotifications : NSObject
 
 +(NSNotification*)showCharacterCreator;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TextFieldCell.h"
 @interface SideBarBaseViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *sectionLabel;
--(UITableViewCell *) confgureCell:(UITableViewCell *)cell;
+-(TextFieldCell *) configureCell:(TextFieldCell *)cell;
+-(TextFieldCell * )configureCellWithTextField:(TextFieldCell *)cell;
 @end

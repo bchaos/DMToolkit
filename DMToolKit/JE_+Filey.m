@@ -15,7 +15,8 @@
 
 + (NSString*)docs
 {
-    return [JE_ userFolder:NSDocumentDirectory];
+       NSString * docsDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    return docsDir;
 }
 + (NSString*)temp
 {
@@ -113,4 +114,13 @@
     return YES;
 }
 
++(BOOL)createFileinDocDirectory:(NSString*)fileName{
+    NSString * filePath=[NSString stringWithFormat:@"%@/%@", [self docs], fileName ];
+    if([[JE_ manager]fileExistsAtPath:filePath]){
+        return NO;
+    }
+    
+  return [[JE_ manager]createFileAtPath:filePath contents:Nil attributes:nil];
+   
+}
 @end

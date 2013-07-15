@@ -8,12 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "panableTable.h"
-@interface BaseTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+#import "textfieldWithEdgeInset.h"
+#import "DuegonMasterSingleton.h"
+#import "webViewPopoverViewController.h"
+#import "masterBaseViewController.h"
+@interface BaseTableViewController : masterBaseViewController<UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate,UIPopoverControllerDelegate>
 - (IBAction)pulledDown:(id)sender;
 -(UITableViewCell*)configureHeaderCell:(UITableViewCell*)cell;
 -(UITableViewCell*)configureBodyCell:(UITableViewCell*)cell;
+-(void)addPleaseAdd:(NSString *)nameToBegin;
+-(void)editingChanged:(UITextField*)text;
+-(NSString * )valueToUpdate:(int)index inSection:(int)sectionIndex;
+-(void)setClass:(CharacterClass *)class;
+-(void)setRace:(Race *)race;
+-(void)setItem:(Items *)item;
+-(void)setSkill:(Skills *)skill;
+-(void)setFeat:(Feats*)feat;
+
 @property (nonatomic, strong)NSMutableArray * sectionTable;
 @property (nonatomic, strong)UITextField * editField;
 @property (weak, nonatomic) IBOutlet panableTable *table;
 @property (nonatomic, assign)int selectedCell;
+@property (nonatomic, assign)BOOL resized;
+@property (nonatomic, strong)UIPickerView * picker;
+@property (nonatomic, strong)UITextField * pickerSearch;
+@property (nonatomic, strong)UIView * pickerView;
+@property (nonatomic, strong)NSArray * pickerArray;
+@property (nonatomic, strong)UIPopoverController * popover;
 @end

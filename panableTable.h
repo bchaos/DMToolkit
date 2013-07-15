@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TPKeyboardAvoidingTableView.h>
 
-@interface panableTable : UITableView
+@interface panableTable : TPKeyboardAvoidingTableView
 
 @end

@@ -10,4 +10,5 @@
 #import "ObjectBase.h"
 @interface CharacterObject : ObjectBase
 @property (nonatomic, retain)NSDictionary * currentCharacter;
+@property (nonatomic ,strong)NSDictionary * allCharacters;
 @end

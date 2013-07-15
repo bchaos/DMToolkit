@@ -53,9 +53,13 @@
     return [UIFont fontWithName:@"ApexSans-Bold" size:size];
 }
 
++(UIFont *)AwesomeFontWithSize:(int)size{
+    return [UIFont fontWithName:@"FontAwesome" size:size];
+}
 
-
-
++(UIFont *)DNDFont:(int)size{
+    return [UIFont fontWithName:@"souvenir_gothic_becker_ant_demi" size:size];
+}
 +(UITableViewCell *)configureSubNavCell:(UITableViewCell *)cell{
     
     [cell.textLabel setTextColor:[self EthiconDarkRed]];
@@ -94,4 +98,6 @@
     
     return cell;
 }
+
+
 @end

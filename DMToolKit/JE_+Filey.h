@@ -23,5 +23,5 @@
 + (BOOL)fileExists:(NSString*)path;
 + (BOOL)isDirectory:(NSString*)path;
 + (BOOL)createFolder:(NSString*)path;
-
++(BOOL)createFileinDocDirectory:(NSString*)fileName;
 @end

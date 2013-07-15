@@ -53,6 +53,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [[[UIApplication sharedApplication] delegate] performSelector:@selector(fixRoundedSplitViewCorner)];
+}
 #pragma mark - Split view
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController

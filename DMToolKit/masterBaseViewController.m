@@ -26,29 +26,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(goBack)
+                                                name:@"goBack"
+                                              object:nil];
 
+}
+-(void)viewDidAppear:(BOOL)animated{
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
-    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation ==UIInterfaceOrientationLandscapeRight){
-        _backgroundImage.image= [UIImage imageNamed:@"backgroundBlank.png"];
-        _backgroundImage.frame=CGRectMake(0, 0, 703, 700);
-        _tabbarImage.image= [UIImage imageNamed:@"tabbar.png"];
-       
-    }
-    else{
-        _tabbarImage.image= [UIImage imageNamed:@"tabbarPortrait.png"]; 
-        _backgroundImage.image= [UIImage imageNamed:@"backgroundTopPort.png"];
-        _backgroundImage.frame=CGRectMake(0, 0, 768, 972);
 
-
-    }
+-(void)goBack{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

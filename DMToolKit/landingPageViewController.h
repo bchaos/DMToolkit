@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "masterBaseViewController.h"
+#import "CampaingButtonViewController.h"
+#import "PCButtonStack.h"
 @interface landingPageViewController : masterBaseViewController
-
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (strong, nonatomic) IBOutlet PCButtonStack *topStack;
+@property (strong, nonatomic) IBOutlet PCButtonStack *bottomStack;
+@property (strong, nonatomic) IBOutlet UIScrollView *scroller;
+@property (nonatomic, strong)NSMutableArray * buttons;
 @end

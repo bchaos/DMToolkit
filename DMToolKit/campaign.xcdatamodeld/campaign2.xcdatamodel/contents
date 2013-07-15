@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Affiliations" representedClassName="Affiliations" syncable="YES">
+        <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="affiliations" inverseEntity="Character" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="affiliations" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="affiliations" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Campaign" representedClassName="Campaign" syncable="YES">
+        <attribute name="briefDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="location" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="campaign" inverseEntity="Location" syncable="YES"/>
+        <relationship name="map" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="campain" inverseEntity="Map" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="campaign" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="campaing" inverseEntity="Player" syncable="YES"/>
+    </entity>
+    <entity name="Character" representedClassName="Character" syncable="YES">
+        <attribute name="ac" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="actionPoints" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="age" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="apperance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="charisma" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="constitution" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentXP" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dexterity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fortitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gods" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hitpoints" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initiative" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intelligence" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paragonpath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="perception" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personalTraits" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reflex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="story" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strength" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surges" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="will" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wisdom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="affiliations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Affiliations" inverseName="character" inverseEntity="Affiliations" syncable="YES"/>
+        <relationship name="characterClass" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterClass" inverseName="character" inverseEntity="CharacterClass" syncable="YES"/>
+        <relationship name="companions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="companion" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="domain" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Domain" inverseName="character" inverseEntity="Domain" syncable="YES"/>
+        <relationship name="feats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feats" inverseName="character" inverseEntity="Feats" syncable="YES"/>
+        <relationship name="inventory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="character" inverseEntity="Items" syncable="YES"/>
+        <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="character" inverseEntity="Location" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="character" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="characters" inverseEntity="Player" syncable="YES"/>
+        <relationship name="powerAtWill" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Powers" inverseName="atwill" inverseEntity="Powers" syncable="YES"/>
+        <relationship name="powerDaily" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Powers" inverseName="daily" inverseEntity="Powers" syncable="YES"/>
+        <relationship name="powerEncounter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Powers" inverseName="encounter" inverseEntity="Powers" syncable="YES"/>
+        <relationship name="powerUtility" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Powers" inverseName="utility" inverseEntity="Powers" syncable="YES"/>
+        <relationship name="race" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Race" inverseName="character" inverseEntity="Race" syncable="YES"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="character" inverseEntity="Skills" syncable="YES"/>
+        <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spells" inverseName="character" inverseEntity="Spells" syncable="YES"/>
+    </entity>
+    <entity name="CharacterClass" representedClassName="CharacterClass" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="characterClass" inverseEntity="Character" syncable="YES"/>
+        <relationship name="classSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="classSkills" inverseEntity="Skills" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="npcClass" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Domain" representedClassName="Domain" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="domain" inverseEntity="Character" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="domain" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spells" inverseName="domain" inverseEntity="Spells" syncable="YES"/>
+    </entity>
+    <entity name="Encounter" representedClassName="Encounter" syncable="YES">
+        <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="map" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="encounter" inverseEntity="Map" syncable="YES"/>
+        <relationship name="monsters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="encounterApart" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="possibleTreasure" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="encounter" inverseEntity="Items" syncable="YES"/>
+    </entity>
+    <entity name="Feats" representedClassName="Feats" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="feats" inverseEntity="Character" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="feats" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Items" representedClassName="Items" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subtype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="inventory" inverseEntity="Character" syncable="YES"/>
+        <relationship name="encounter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Encounter" inverseName="possibleTreasure" inverseEntity="Encounter" syncable="YES"/>
+        <relationship name="location" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="items" inverseEntity="Location" syncable="YES"/>
+        <relationship name="map" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="treasure" inverseEntity="Map" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="items" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="npcItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="items" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="npcTreasure" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="treasure" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spells" inverseName="items" inverseEntity="Spells" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="gridPoint" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="campaign" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Campaign" inverseName="location" inverseEntity="Campaign" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="location" inverseEntity="Character" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="location" inverseEntity="Items" syncable="YES"/>
+        <relationship name="map" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="location" inverseEntity="Map" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="location" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="location" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Map" representedClassName="Map" syncable="YES">
+        <attribute name="gridInfomation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="campain" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Campaign" inverseName="map" inverseEntity="Campaign" syncable="YES"/>
+        <relationship name="encounter" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Encounter" inverseName="map" inverseEntity="Encounter" syncable="YES"/>
+        <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="map" inverseEntity="Location" syncable="YES"/>
+        <relationship name="notes" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Notes" inverseName="map" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="npcs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="map" inverseEntity="NPC" syncable="YES"/>
+        <relationship name="partyMembers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="map" inverseEntity="Player" syncable="YES"/>
+        <relationship name="subMaps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="subMaps" inverseEntity="Map" syncable="YES"/>
+        <relationship name="treasure" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="map" inverseEntity="Items" syncable="YES"/>
+    </entity>
+    <entity name="NoteGroup" representedClassName="NoteGroup" syncable="YES">
+        <attribute name="groupname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="notegroup" inverseEntity="Notes" syncable="YES"/>
+    </entity>
+    <entity name="Notes" representedClassName="Notes" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="externalID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="affiliations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliations" inverseName="notes" inverseEntity="Affiliations" syncable="YES"/>
+        <relationship name="campaign" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Campaign" inverseName="notes" inverseEntity="Campaign" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="notes" inverseEntity="Character" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="notes" inverseEntity="Items" syncable="YES"/>
+        <relationship name="location" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="notes" inverseEntity="Location" syncable="YES"/>
+        <relationship name="map" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="notes" inverseEntity="Map" syncable="YES"/>
+        <relationship name="notegroup" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="NoteGroup" inverseName="notes" inverseEntity="NoteGroup" syncable="YES"/>
+        <relationship name="player" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="notes" inverseEntity="Player" syncable="YES"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="notes" inverseEntity="Skills" syncable="YES"/>
+    </entity>
+    <entity name="NPC" representedClassName="NPC" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isMonster" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="affiliations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliations" inverseName="npc" inverseEntity="Affiliations" syncable="YES"/>
+        <relationship name="companion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Character" inverseName="companions" inverseEntity="Character" syncable="YES"/>
+        <relationship name="domain" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Domain" inverseName="npc" inverseEntity="Domain" syncable="YES"/>
+        <relationship name="encounterApart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Encounter" inverseName="monsters" inverseEntity="Encounter" syncable="YES"/>
+        <relationship name="feats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feats" inverseName="npc" inverseEntity="Feats" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="npcItems" inverseEntity="Items" syncable="YES"/>
+        <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="npc" inverseEntity="Location" syncable="YES"/>
+        <relationship name="map" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="npcs" inverseEntity="Map" syncable="YES"/>
+        <relationship name="npcClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterClass" inverseName="npc" inverseEntity="CharacterClass" syncable="YES"/>
+        <relationship name="race" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Race" inverseName="npc" inverseEntity="Race" syncable="YES"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="npc" inverseEntity="Skills" syncable="YES"/>
+        <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spells" inverseName="npc" inverseEntity="Spells" syncable="YES"/>
+        <relationship name="treasure" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="npcTreasure" inverseEntity="Items" syncable="YES"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="campaing" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Campaign" inverseName="players" inverseEntity="Campaign" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="owner" inverseEntity="Character" syncable="YES"/>
+        <relationship name="map" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Map" inverseName="partyMembers" inverseEntity="Map" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="player" inverseEntity="Notes" syncable="YES"/>
+    </entity>
+    <entity name="Powers" representedClassName="Powers" syncable="YES">
+        <attribute name="discipline" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subDiscipline" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="atwill" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="powerAtWill" inverseEntity="Character" syncable="YES"/>
+        <relationship name="daily" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="powerDaily" inverseEntity="Character" syncable="YES"/>
+        <relationship name="encounter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="powerEncounter" inverseEntity="Character" syncable="YES"/>
+        <relationship name="utility" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="powerUtility" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <entity name="Race" representedClassName="Race" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="playerRace" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="race" inverseEntity="Character" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="race" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Skills" representedClassName="Skills" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="keyAbility" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="skills" inverseEntity="Character" syncable="YES"/>
+        <relationship name="classSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterClass" inverseName="classSkills" inverseEntity="CharacterClass" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Notes" inverseName="skills" inverseEntity="Notes" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="skills" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <entity name="Spells" representedClassName="Spells" syncable="YES">
+        <attribute name="fulltext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="school" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subschool" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="spells" inverseEntity="Character" syncable="YES"/>
+        <relationship name="domain" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Domain" inverseName="spells" inverseEntity="Domain" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Items" inverseName="spells" inverseEntity="Items" syncable="YES"/>
+        <relationship name="npc" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NPC" inverseName="spells" inverseEntity="NPC" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Affiliations" positionX="18" positionY="531" width="128" height="120"/>
+        <element name="Campaign" positionX="-182" positionY="-54" width="128" height="135"/>
+        <element name="Character" positionX="819" positionY="441" width="128" height="735"/>
+        <element name="CharacterClass" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Domain" positionX="-614" positionY="702" width="128" height="120"/>
+        <element name="Encounter" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Feats" positionX="-369" positionY="810" width="128" height="105"/>
+        <element name="Items" positionX="711" positionY="117" width="128" height="240"/>
+        <element name="Location" positionX="-576" positionY="189" width="128" height="150"/>
+        <element name="Map" positionX="403" positionY="-45" width="128" height="180"/>
+        <element name="Notes" positionX="432" positionY="315" width="128" height="240"/>
+        <element name="NPC" positionX="574" positionY="666" width="128" height="285"/>
+        <element name="Player" positionX="-198" positionY="360" width="128" height="120"/>
+        <element name="Powers" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Race" positionX="-146" positionY="744" width="128" height="120"/>
+        <element name="Skills" positionX="153" positionY="900" width="128" height="165"/>
+        <element name="Spells" positionX="-738" positionY="423" width="128" height="165"/>
+        <element name="NoteGroup" positionX="160" positionY="192" width="128" height="75"/>
+    </elements>
+</model>

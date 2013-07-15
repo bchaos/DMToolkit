@@ -19,4 +19,14 @@ static NSString * characterFileName= @"Characters.DMKit";
     
 }
 
+
+-(void)getAllCharacters{
+    
+
+}
+
+-(void)getSaveCharacters{
+    
+
+}
 @end
