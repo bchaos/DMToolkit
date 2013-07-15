@@ -397,7 +397,7 @@ static DuegonMasterSingleton * _sharedInstance =nil;
     NSArray * notes =  [self allItemsInClass:[Notes class] withFilter:filter];
     NSMutableArray * internalNotes = [[NSMutableArray alloc]init];
     for (Notes * note in notes ){
-        if (![note.group isEqualToString:@"Evernote"]){
+        if (![note.group isEqualToString:@"Evernote"] && ![note.group isEqualToString:@"GoogleDoc"]){
             [internalNotes addObject:note];
         }
     }

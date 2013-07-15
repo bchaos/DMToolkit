@@ -55,6 +55,8 @@
 		971D18FD1746D19100E6A3D7 /* buttonWithFrameData.m in Sources */ = {isa = PBXBuildFile; fileRef = 971D18FC1746D19100E6A3D7 /* buttonWithFrameData.m */; };
 		9727B44717944C3200606B80 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9727B44617944C3200606B80 /* SystemConfiguration.framework */; };
 		9727B44A179480CB00606B80 /* PDFWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = 9727B449179480CB00606B80 /* PDFWidget.m */; };
+		9727B44F17949C3200606B80 /* bottom_tab_closed~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9727B44D17949C3200606B80 /* bottom_tab_closed~iphone.png */; };
+		9727B45017949C3200606B80 /* legal~iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9727B44E17949C3200606B80 /* legal~iphone.jpg */; };
 		973227FF174FDEC500A753E7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973227FE174FDEC500A753E7 /* SenTestingKit.framework */; };
 		97322800174FDEC500A753E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A391725D1FF00675211 /* UIKit.framework */; };
 		97322801174FDEC500A753E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A3B1725D1FF00675211 /* Foundation.framework */; };
@@ -649,6 +651,8 @@
 		9727B44617944C3200606B80 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9727B448179480CB00606B80 /* PDFWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFWidget.h; sourceTree = "<group>"; };
 		9727B449179480CB00606B80 /* PDFWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFWidget.m; sourceTree = "<group>"; };
+		9727B44D17949C3200606B80 /* bottom_tab_closed~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_tab_closed~iphone.png"; sourceTree = "<group>"; };
+		9727B44E17949C3200606B80 /* legal~iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "legal~iphone.jpg"; sourceTree = "<group>"; };
 		973227FD174FDEC500A753E7 /* DMTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		973227FE174FDEC500A753E7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		97322804174FDEC500A753E7 /* DMTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DMTest-Info.plist"; sourceTree = "<group>"; };
@@ -1347,6 +1351,15 @@
 			name = uibutton;
 			sourceTree = "<group>";
 		};
+		9727B44C17949C2900606B80 /* iphone */ = {
+			isa = PBXGroup;
+			children = (
+				9727B44D17949C3200606B80 /* bottom_tab_closed~iphone.png */,
+				9727B44E17949C3200606B80 /* legal~iphone.jpg */,
+			);
+			name = iphone;
+			sourceTree = "<group>";
+		};
 		97322802174FDEC500A753E7 /* DMTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1522,7 @@
 		97682A631726CEDB00675211 /* Arts */ = {
 			isa = PBXGroup;
 			children = (
+				9727B44C17949C2900606B80 /* iphone */,
 				974AAEDF1759498E003D17B9 /* campaign.png */,
 				56788A69173A158400F93B8E /* tiles */,
 				974AB7A417341DF200502DC2 /* FeatsAndSkills.png */,
@@ -2671,6 +2685,8 @@
 				97B3C0701790670A0075DC6F /* sword.png in Resources */,
 				97B3C0711790670A0075DC6F /* sword@2x.png in Resources */,
 				5637078C17936BBC00860AA8 /* GTMOAuth2ViewTouch.xib in Resources */,
+				9727B44F17949C3200606B80 /* bottom_tab_closed~iphone.png in Resources */,
+				9727B45017949C3200606B80 /* legal~iphone.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3035,6 +3051,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3081,6 +3098,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

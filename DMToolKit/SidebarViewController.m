@@ -408,7 +408,6 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     self.sectionLabel.text= @"External Notes";
     _SelectionFields= [NSMutableArray arrayWithObjects: [NSDictionary dictionaryWithObjectsAndKeys:@"Google Drive" ,nameKey, @"GoogleDrive:", functionKey, nil] ,
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Evernote" ,nameKey, @"EverNote:", functionKey, nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"DropBox" ,nameKey, @"DropBox:", functionKey, nil],
                        nil];
     actionFunction= nil;
 }
@@ -524,8 +523,18 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
                 [self presentViewController:reader animated:YES completion:nil];
             }else{
                 NSString* fileContent = [[NSString alloc] initWithData:data
-                  
                                                           encoding:NSUTF8StringEncoding];
+                
+                Notes *GoogleDoc = [[DuegonMasterSingleton sharedInstance]findNoteWithExternalID:[dic objectForKey:@"guid"]];
+                if(GoogleDoc==nil)
+                    GoogleDoc =[[DuegonMasterSingleton sharedInstance]createNotes];
+                GoogleDoc.date= [NSDate date];
+                GoogleDoc.group = @"GoogleDoc";
+                GoogleDoc.externalid= [dic objectForKey:@"guid"];
+                GoogleDoc.text=fileContent;
+                [DuegonMasterSingleton sharedInstance].currentNote= GoogleDoc;
+                [JE_ notifyName: @"toNoteTaker" object:nil];
+
             }
         } else {
             [JE_ okWithTitle:@"Unable to load files"
