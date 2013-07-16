@@ -16,16 +16,20 @@
     // Override point for customization after application launch.
     [self copyDatabaseIfNeeded];
     [self startUpEvernote];
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-    splitViewController.delegate = (id)navigationController.topViewController;
-    splitViewController.view.opaque = NO;
-    _imgView = [[UIImageView alloc] initWithImage:
-                [UIImage imageNamed:@"FullNavBar.png"]];
-    [_imgView setFrame:CGRectMake(0, 0, 1024, 768)];
-    [[splitViewController view] insertSubview:_imgView atIndex:0];
-    [[splitViewController view] setBackgroundColor:[UIColor clearColor]];
-    [self fixRoundedSplitViewCorner];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate = (id)navigationController.topViewController;
+        splitViewController.view.opaque = NO;
+        _imgView = [[UIImageView alloc] initWithImage:
+                    [UIImage imageNamed:@"FullNavBar.png"]];
+        [_imgView setFrame:CGRectMake(0, 0, 1024, 768)];
+        [[splitViewController view] insertSubview:_imgView atIndex:0];
+        [[splitViewController view] setBackgroundColor:[UIColor clearColor]];
+        [self fixRoundedSplitViewCorner];
+    }else{
+        
+    }
     //DefaultData *data=[[DefaultData alloc]init];
     //[data createDefaultData];
     
@@ -33,7 +37,7 @@
     return YES;
 }
 -(void)startUpEvernote{
-    NSString *EVERNOTE_HOST = BootstrapServerBaseURLStringSandbox;
+    NSString *EVERNOTE_HOST = BootstrapServerBaseURLStringUS;
     NSString *CONSUMER_KEY = @"bchaos";
     NSString *CONSUMER_SECRET = @"6fd93884666eef5b";
     

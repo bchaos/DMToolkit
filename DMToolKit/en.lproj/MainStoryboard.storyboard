@@ -18,7 +18,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="-1210"/>
+            <point key="canvasLocation" x="1370" y="-690"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="3D1-e9-dWr">
@@ -998,6 +998,146 @@
         <image name="sword.png" width="28" height="23"/>
         <image name="tabbar.png" width="704" height="54"/>
     </resources>
+    <classes>
+        <class className="BaseTableViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pulledDown:"/>
+                <relationship kind="outlet" name="table" candidateClass="panableTable"/>
+            </relationships>
+        </class>
+        <class className="CampaigninfoViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CampaigninfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="campaignWebview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="CharacterStatViewController" superclassName="BaseTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CharacterStatViewController.h"/>
+        </class>
+        <class className="CharacterViewController" superclassName="BaseTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CharacterViewController.h"/>
+        </class>
+        <class className="CompendiumViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompendiumViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="Custom_TabBar" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Custom_TabBar.h"/>
+        </class>
+        <class className="EncounterMakerViewController" superclassName="MapMakerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EncounterMakerViewController.h"/>
+        </class>
+        <class className="EncounterViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EncounterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="campaignWebview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="FeatsAndSkills" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeatsAndSkills.h"/>
+            <relationships>
+                <relationship kind="action" name="didPan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="featPanner" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="featsTable" candidateClass="panableTable"/>
+                <relationship kind="outlet" name="skillPanner" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="skillsTable" candidateClass="panableTable"/>
+            </relationships>
+        </class>
+        <class className="InventoryViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InventoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="BagOfHoldingIsPanning:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="inventoryTable" candidateClass="panableTable"/>
+            </relationships>
+        </class>
+        <class className="MapMakerViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapMakerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openMapDetails:"/>
+                <relationship kind="action" name="previousMapSelected:"/>
+                <relationship kind="action" name="switchEditingModes:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="PreviousMapButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="TitleButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="groupSelectionTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scrollAbleMap" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sideMenu" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="toolkit" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="NoteTakingViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteTakingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeColourToUse:"/>
+                <relationship kind="action" name="sendnote:"/>
+                <relationship kind="action" name="toggleNoteTakingMode:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="blackbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bluebutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clearbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="greenbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="noteView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="orangebutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="purple" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="signatureImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="PCButtonStack" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PCButtonStack.h"/>
+        </class>
+        <class className="SideBarBaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideBarBaseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sectionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SidebarViewController" superclassName="SideBarBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SidebarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNew:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="filterCurrentSection:" candidateClass="UITextField"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="importpdf:"/>
+                <relationship kind="action" name="showDemBones:" candidateClass="UIButton"/>
+                <relationship kind="action" name="showInfo:"/>
+                <relationship kind="outlet" name="PulldownToAddLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="backbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editableTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="networkactivity" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="selectionTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TPKeyboardAvoidingTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingTableView.h"/>
+        </class>
+        <class className="landingPageViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/landingPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bottomStack" candidateClass="PCButtonStack"/>
+                <relationship kind="outlet" name="scroller" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="topStack" candidateClass="PCButtonStack"/>
+            </relationships>
+        </class>
+        <class className="masterBaseViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/masterBaseViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tabbarImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="panableTable" superclassName="TPKeyboardAvoidingTableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/panableTable.h"/>
+        </class>
+        <class className="panableview" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/panableview.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
