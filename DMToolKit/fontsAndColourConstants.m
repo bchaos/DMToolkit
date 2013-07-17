@@ -31,7 +31,11 @@
 }
 
 +(UIColor*)MentorBlueGray{
-    return [UIColor colorWithRed:(204.0f/255.0) green:(219.0f/255.0) blue:(232.0f/255.0) alpha:1];
+    return [UIColor colorWithRed:(42.0f/255.0) green:(54.0f/255.0) blue:(66.0f/255.0) alpha:1];
+}
+
++(UIColor*)MentorLightBlue{
+    return [UIColor colorWithRed:(84.0f/255.0) green:(94.0f/255.0) blue:(104.0f/255.0) alpha:1];
 }
 +(UIColor*)EthiconOrange{
     return [UIColor colorWithRed:(255.0f/255.0) green:(183.0f/255.0) blue:(24.0f/255.0) alpha:1];
@@ -60,6 +64,7 @@
 +(UIFont *)DNDFont:(int)size{
     return [UIFont fontWithName:@"souvenir_gothic_becker_ant_demi" size:size];
 }
+
 +(UITableViewCell *)configureSubNavCell:(UITableViewCell *)cell{
     
     [cell.textLabel setTextColor:[self EthiconDarkRed]];

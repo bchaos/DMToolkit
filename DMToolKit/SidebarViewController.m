@@ -19,10 +19,10 @@ static int textTag=1001;
 
 }
 @end
-
 static NSString *const kKeychainItemName = @"Google Drive Quickstart";
 static NSString *const kClientID = @"438117934368-6lbqvsfggi8892vcscmeec28cm974k12.apps.googleusercontent.com";
 static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
+
 
 @implementation SidebarViewController
 -(NSManagedObjectContext *)context{
@@ -70,25 +70,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 
 
--(TextFieldCell* )addDetailsToCell:(TextFieldCell *)cell forObject:(NSManagedObject*)Object{
-      cell.detailTextLabel.text=@"";
-    if([self atNoteMenu]){
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat: @"MM-dd-yyyy HH:mm:ss"];
-        NSString *stringFromDate = [dateFormat stringFromDate:[Object valueForKey:@"date" ]];
-        cell.detailTextLabel.text=stringFromDate;
-        
-    }else if([self atPlayermenu]){
-        Character *character = [[Object valueForKey:@"characters"]anyObject];
-        if (character)
-            if(character.name)
-            cell.detailTextLabel.text= [@"Character: " stringByAppendingString: character.name];
-            
-    }
-       
-    
-    return cell;
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     // Identify cell
@@ -158,9 +140,8 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     SEL appSelector =NSSelectorFromString(writeToFunction);
     [self performSelector:appSelector withObject:name];
     [[DuegonMasterSingleton sharedInstance]save];
-    
-
 }
+
 #pragma  mark -filtering functions
 
 
@@ -675,99 +656,20 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 -(void)setStartingContnet{
     self.sectionLabel.text= @"Main Menu";
     _SelectionFields = [NSMutableArray arrayWithObjects:
-                         [NSDictionary dictionaryWithObjectsAndKeys:@"Campaigns" ,nameKey, @"showCampaignTableView:", functionKey, nil] ,
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Players" ,nameKey, @"showCharacterTableView:", functionKey, nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView:", functionKey, nil],
-                         [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView:", functionKey, nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Notes" ,nameKey, @"showNotesTableView:", functionKey, nil] ,
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"External Notes" ,nameKey, @"showExternalNotes:", functionKey, nil],
+                         [NSDictionary dictionaryWithObjectsAndKeys:@"Campaigns" ,nameKey, @"showCampaignTableView:", functionKey,@"103-map-white" ,@"icon" ,  nil] ,
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Players" ,nameKey, @"showCharacterTableView:", functionKey, @"253-person-white" ,@"icon",  nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView:", functionKey,  @"253-person-white" ,@"icon", nil],
+                         [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView:", functionKey,@"251-sword-white" ,@"icon", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Notes" ,nameKey, @"showNotesTableView:", functionKey,@"179-notepad-white" ,@"icon", nil] ,
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"External Notes" ,nameKey, @"showExternalNotes:", functionKey,@"180-stickynote-white" ,@"icon", nil],
 
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Compendium" ,nameKey, @"showReferenceTableView:", functionKey, nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Compendium" ,nameKey, @"showReferenceTableView:", functionKey,@"33-cabinet-white" ,@"icon", nil],
                         
                        nil];
 }
 
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     return YES;
-}
-#pragma mark menu location functions
-
--(BOOL)atMenuNamed:(NSString *) MenuName{
-    
-    if([self.sectionLabel.text isEqualToString:MenuName]){
-        return YES;
-    }
-    return NO;
-}
--(BOOL)atMainMenu{
-    return  [self atMenuNamed:@"Main Menu"];
-}
--(BOOL)atNoteMenu{
-    return  [self atMenuNamed:@"Notes"];
-}
--(BOOL)atNPCMenu{
-    return [self atMenuNamed:@"NPCs"];
-}
-
--(BOOL)atEncounterMenu{
-    return [self atMenuNamed:@"Encounters"];
-}
--(BOOL)atItemsMenu{
-    return [self atMenuNamed:@"Items"];
-}
--(BOOL)atMonstersMenu{
-    return [self atMenuNamed:@"Monsters"];
-}
-
--(BOOL)atFeatsMenu{
-    return [self atMenuNamed:@"Feats"];
-}
-
--(BOOL)atSkillsMenu{
-    return [self atMenuNamed:@"Skills"];
-}
-
--(BOOL)atPowersMenu{
-    return [self atMenuNamed:@"Powers"];
-}
-
--(BOOL)atDomainsMenu{
-    return [self atMenuNamed:@"Domains"];
-}
-
--(BOOL)atClassesMenu{
-    return [self atMenuNamed:@"Classes"];
-}
-
--(BOOL)atEvernoteNoteMenu{
-    return [self atMenuNamed:@"Evernote notes"];
-}
-
--(BOOL)atDriveMenu{
-    return [self atMenuNamed:@"Google Drive"];
-}
-
-
--(BOOL)atCompendiumSubMenu{
-    return ( [self atMenuNamed:@"Items"] ||[self atMenuNamed:@"Monsters"]||[self atMenuNamed:@"Feats"]||[self atMenuNamed:@"Skills"]||[self atMenuNamed:@"Powers"]||[self atMenuNamed:@"Domains"]||[self atMenuNamed:@"Classes"]  );
-}
--(BOOL)atExternalNoteSubMenu{
-    return [self atMenuNamed:@"External Notes"];
-
-}
-
--(BOOL)atEverNoteBook{
-    return [self atMenuNamed:@"Evernote notebooks"];
-}
-
--(BOOL)atReferenceMenu{
-    return [self atMenuNamed:@"Compendium"];
-}
--(BOOL)atPlayermenu{
-     return  [self atMenuNamed:@"Players"];
-}
--(BOOL)atCampaignMenu{
-    return  [self atMenuNamed:@"Campaigns"];
 }
 #pragma mark - Table view delegate
 
@@ -802,12 +704,8 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
         [self loadMenu:_selectedCellIndex];
     }
     
- 
-    
-
-       
-    
 }
+
 -(void)loadMenu:(int)index{
     BOOL refMenu=NO;
     if([self atReferenceMenu])refMenu=YES;
@@ -882,6 +780,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     
 }
 - (IBAction)goBack:(id)sender {
+   
         [_searchField resignFirstResponder];
     
     if(![self atCompendiumSubMenu]){

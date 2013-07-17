@@ -15,6 +15,8 @@
 +(UIColor*)EthiconRed;
 +(UIColor*)EthiconOrange;
 +(UIColor*)EthiconDarkRed;
++(UIColor*)MentorBlueGray;
++(UIColor*)MentorLightBlue;
 +(UIFont *)ApexBook:(int)size;
 +(UIFont *)ApexMedium:(int)size;
 +(UIFont *)ApexLight:(int)size;
