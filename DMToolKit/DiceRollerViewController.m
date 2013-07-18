@@ -233,6 +233,9 @@
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
 }
+-(UITableViewCell *)configureCellSection:(UITableViewCell *)cell{
+    return cell;
+}
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_selectedButton == _diceloader){
         return YES;
@@ -269,26 +272,27 @@
             cell.textLabel.text= [_selectionList objectAtIndex:indexPath.row];
         }
         cell.textLabel.textAlignment=NSTextAlignmentCenter;
+        [self configureCellSection:cell];
     }
     else{
         cell= [self configureCell:cell];
-        UILabel * totalLabel=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, 150, 40)];
-        totalLabel.font= [fontsAndColourConstants ApexBook:14];
-        totalLabel.textColor= [UIColor whiteColor];
+        UILabel * totalLabel=[[UILabel alloc]initWithFrame:CGRectMake(20, 0, cell.frame.size.width/3-5, 40)];
+        totalLabel.font= cell.textLabel.font;
+        totalLabel.textColor= cell.textLabel.textColor;
          totalLabel.backgroundColor=[UIColor clearColor];
         totalLabel.text= [[[_results objectAtIndex:indexPath.row] valueForKey:@"total"]stringValue];
         [cell addSubview:totalLabel];
-        UILabel * individualDiceLabel=[[UILabel alloc]initWithFrame:CGRectMake(160, 0, 150, 40)];
-        individualDiceLabel.font= [fontsAndColourConstants ApexBook:14];
-        individualDiceLabel.textColor= [UIColor whiteColor];
-        
+        UILabel * individualDiceLabel=[[UILabel alloc]initWithFrame:CGRectMake(20+cell.frame.size.width/3, 0, _resultsTable.frame.size.width/3-5, 40)];
+        individualDiceLabel.font= cell.textLabel.font;
+        individualDiceLabel.textColor= cell.textLabel.textColor;
         individualDiceLabel.backgroundColor=[UIColor clearColor];
         individualDiceLabel.text = [[_results objectAtIndex:indexPath.row] valueForKey:@"individualDice"];
         [cell addSubview:individualDiceLabel];
-        UILabel * diceNotationLabel=[[UILabel alloc]initWithFrame:CGRectMake(320, 0, 150, 40)];
-        diceNotationLabel.font= [fontsAndColourConstants ApexBook:14];
-        diceNotationLabel.textColor= [UIColor whiteColor];
+        UILabel * diceNotationLabel=[[UILabel alloc]initWithFrame:CGRectMake(20+2*cell.frame.size.width/3-5, 0, _resultsTable.frame.size.width/3, 40)];
+        diceNotationLabel.font= cell.textLabel.font;
+        diceNotationLabel.textColor= cell.textLabel.textColor;
         diceNotationLabel.backgroundColor=[UIColor clearColor];
+        diceNotationLabel.numberOfLines=0;
         diceNotationLabel.text = [[_results objectAtIndex:indexPath.row] valueForKey:@"diceNotation"];
         [cell addSubview:diceNotationLabel];
         

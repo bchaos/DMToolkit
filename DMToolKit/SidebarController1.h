@@ -18,5 +18,5 @@
 @property (nonatomic, weak) IBOutlet UILabel* profileLocationLabel;
 
 @property (nonatomic, weak) IBOutlet UIImageView* profileImageView;
-
+@property (nonatomic, strong)SidebarCell1 * tempCelliphone;
 @end

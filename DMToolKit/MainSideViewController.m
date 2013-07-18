@@ -25,12 +25,19 @@
     return self;
 }
 
+-(void)setupSidebars{
+    UIStoryboard* diceRoller = [UIStoryboard storyboardWithName:@"dicerolleriphone" bundle:nil];
+    self.diceBar = [diceRoller instantiateViewControllerWithIdentifier:@"dice"];
+    UIStoryboard* sidebarStoryboard = [UIStoryboard storyboardWithName:@"SidebarStoryboard" bundle:nil];
+    self.normalSideBar = [sidebarStoryboard instantiateViewControllerWithIdentifier:@"SidebarController1"];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIStoryboard* sidebarStoryboard = [UIStoryboard storyboardWithName:@"SidebarStoryboard" bundle:nil];
-    UIViewController *rearVC = [sidebarStoryboard instantiateViewControllerWithIdentifier:@"SidebarController1"];
-    
+
+    [self setupSidebars ];
+   
     UIViewController* frontController = [[UIViewController alloc] init];
     frontController.view.backgroundColor = [fontsAndColourConstants MentorLightBlue];
     
@@ -51,9 +58,9 @@
     UIBarButtonItem* menuItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     UIBarButtonItem* rollItem = [[UIBarButtonItem alloc] initWithCustomView:rollDiceButton];
     
-    frontController.navigationItem.leftBarButtonItems= @[menuItem, rollItem];
+    frontController.navigationItem.leftBarButtonItems= @[menuItem];
+    frontController.navigationItem.rightBarButtonItems= @[rollItem];
     self.contentViewController = nav;
-    self.normalSideBar = rearVC;
 }
 
 - (void)viewDidUnload {

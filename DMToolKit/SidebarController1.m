@@ -10,7 +10,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-@interface SidebarController1 ()
+@interface SidebarController1 (){
+      NSString * actionFunction;
+}
 
 @property (nonatomic, strong) NSArray* items;
 
@@ -61,11 +63,6 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 	
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return self.SelectionFields.count;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
      static NSString *CellIdentifier = @"SidebarCell1";
     
@@ -75,27 +72,27 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     {
         cell = [[SidebarCell1 alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    [cell clearsContextBeforeDrawing];
     
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     if(![self atMainMenu] && ![self atReferenceMenu]){
         NSManagedObject*item = self.SelectionFields[indexPath.row];
-        cell.textLabel.text=[item valueForKey:@"name"];
-        
+        cell.titleLabel.text=[item valueForKey:@"name"];
+        cell.iconImageView.image=nil;
         cell.countLabel.alpha = 0;
+        UILongPressGestureRecognizer * press= [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(editCell:)];
+        [cell addGestureRecognizer:press];
         
     }else{
+        cell.countLabel.alpha = 1;
         NSDictionary* item = self.SelectionFields[indexPath.row];
         cell.titleLabel.text = item[@"name"];
         cell.iconImageView.image = [UIImage imageNamed:item[@"icon"]];
-        NSString* count = item[@"count"];
-        if(![count isEqualToString:@"0"]){
-            cell.countLabel.text = count;
-        }
-        else{
-            cell.countLabel.alpha = 0;
-        }
+        NSNumber* count = item[@"count"];
+        cell.countLabel.text = [count stringValue];
+      
     }
    
 
@@ -105,7 +102,86 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 
 
+- (IBAction)addNew:(UIPanGestureRecognizer *)sender {
+    UITableViewCell * topCell;
+    NSArray * visibleCells=[self.selectionTable visibleCells];
+    if(visibleCells.count > 0) topCell = [visibleCells objectAtIndex:0];
+    else {
+        topCell= [[UITableViewCell alloc]init];
+        topCell.tag=0;
+    }
+    
+    if(self.newObjectAdded && self.isEditing){
+        [self textFieldDidEndEditing: self.editableTextField];
+    }
+    [self.searchField resignFirstResponder];
+    if(![self atMainMenu] && ![self atReferenceMenu]&&  topCell.tag ==0){
+        if (self.tempCelliphone==nil){
+    
+                self.tempCelliphone = [[SidebarCell1 alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"SidebarCell1"];
+            
 
+            self.tempCelliphone.frame =CGRectMake(0, 93, self.selectionTable.frame.size.width, 0);
+            self.tempCelliphone.alpha=1.0;
+            [self.view addSubview:self.tempCelliphone];
+             self.tempCelliphone.textLabel.textColor=[UIColor whiteColor];
+        }
+        
+        switch (sender.state) {
+            case UIGestureRecognizerStateBegan:
+                self.newObjectAdded=NO;
+                [self.tempCelliphone upateCellWithFrame:CGRectMake(0, 93,  self.selectionTable.frame.size.width, [sender translationInView:self.selectionTable].y/2)];
+                break;
+            case UIGestureRecognizerStateChanged:
+                if ( [sender translationInView:self.selectionTable].y /2> 0 && [sender translationInView:self.selectionTable].y/2 <  46 && !self.newObjectAdded){
+                    [self.tempCelliphone upateCellWithFrame:CGRectMake(0, 93,  self.selectionTable.frame.size.width, [sender translationInView:self.selectionTable].y/2)];
+                }
+                else if ([sender translationInView:self.selectionTable].y/2 >  46 && !self.newObjectAdded ){
+                    [self createNewObjectBasedOnCurrentmenu];
+                    self.newObjectAdded=YES;
+                    self.tempCelliphone.alpha=0.0;
+                    [self.selectionTable reloadData];
+                    
+                    [UIView animateWithDuration:.3
+                                          delay: 0.0
+                                        options: UIViewAnimationOptionAllowUserInteraction
+                                     animations:^{
+                                         self.PulldownToAddLabel.alpha=0.0;
+                                     }
+                                     completion:^(BOOL finished){
+                                         
+                                     }];
+                    
+                    
+                }
+                else{
+                    self.tempCelliphone.alpha=0.0;
+                }
+                
+                break;
+            case UIGestureRecognizerStateEnded:
+                
+                [self.tempCelliphone upateCellWithFrame:CGRectMake(0, 93,  self.selectionTable.frame.size.width, [sender translationInView:self.selectionTable].y/2)];
+                [self.tempCelliphone removeFromSuperview];
+                self.tempCelliphone=nil;
+                if(self.newObjectAdded){
+                    if(actionFunction !=nil){
+                        [JE_ notifyName:actionFunction object:nil];
+                    }
+                    
+                    self.selectedCellIndex=0;
+                    if(![self atNoteMenu]) [self startEditing:self.editableTextField];
+                    self.isEditing=true;
+                    
+                    
+                    
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

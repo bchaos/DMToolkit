@@ -373,13 +373,20 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 -(void)showReferenceTableView:(NSDictionary *)dic{
     [_SelectionFields removeAllObjects];
      self.sectionLabel.text= @"Compendium";
-    _SelectionFields= [NSMutableArray arrayWithObjects: [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable:", functionKey, nil] , 
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView:", functionKey, nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"Feats" ,nameKey, @"showFeatsTableView:", functionKey, nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"Skills" ,nameKey, @"showSkillsTableView:", functionKey, nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"Powers" ,nameKey, @"showPowersTableView:", functionKey, nil],
-                       [NSDictionary dictionaryWithObjectsAndKeys:@"Domains" ,nameKey, @"showDomainsTableView:", functionKey, nil],
-                           [NSDictionary dictionaryWithObjectsAndKeys:@"Classes" ,nameKey, @"showClassesTableView:", functionKey, nil],
+    NSNumber * monsterCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllMonsters:nil]count]];
+    NSNumber * featCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllFeats:nil]count]];
+    NSNumber * skillCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllSkills:nil]count]];
+    NSNumber * powerCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllPowers:nil]count]];
+    NSNumber * domainCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllDomains:nil]count]];
+    NSNumber * classCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllCharacterClasses:nil]count]];
+    NSNumber * itemcount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllItems:nil]count]];
+    _SelectionFields= [NSMutableArray arrayWithObjects: [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable:", functionKey,itemcount,@"count", nil] ,
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView:", functionKey, monsterCount,@"count", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Feats" ,nameKey, @"showFeatsTableView:", functionKey,featCount,@"count", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Skills" ,nameKey, @"showSkillsTableView:", functionKey, skillCount, @"count", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Powers" ,nameKey, @"showPowersTableView:", functionKey,powerCount,@"count", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Domains" ,nameKey, @"showDomainsTableView:", functionKey, domainCount,@"count",nil],
+                           [NSDictionary dictionaryWithObjectsAndKeys:@"Classes" ,nameKey, @"showClassesTableView:", functionKey,classCount,@"count", nil],
                        nil];
     actionFunction= nil;
 }
@@ -654,16 +661,22 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 
 -(void)setStartingContnet{
+    NSNumber * campaignCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllCampaigns:nil]count]];
+    
+    NSNumber * playerCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]allPlayers:nil]count]];
+    NSNumber * NPCscount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllNPC:nil]count]];
+    NSNumber * encountersCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllEncounter:nil]count]];
+    NSNumber * notecount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllNotes:nil]count]];
     self.sectionLabel.text= @"Main Menu";
     _SelectionFields = [NSMutableArray arrayWithObjects:
-                         [NSDictionary dictionaryWithObjectsAndKeys:@"Campaigns" ,nameKey, @"showCampaignTableView:", functionKey,@"103-map-white" ,@"icon" ,  nil] ,
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Players" ,nameKey, @"showCharacterTableView:", functionKey, @"253-person-white" ,@"icon",  nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView:", functionKey,  @"253-person-white" ,@"icon", nil],
-                         [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView:", functionKey,@"251-sword-white" ,@"icon", nil],
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Notes" ,nameKey, @"showNotesTableView:", functionKey,@"179-notepad-white" ,@"icon", nil] ,
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"External Notes" ,nameKey, @"showExternalNotes:", functionKey,@"180-stickynote-white" ,@"icon", nil],
+                         [NSDictionary dictionaryWithObjectsAndKeys:@"Campaigns" ,nameKey, @"showCampaignTableView:", functionKey,@"103-map-white" ,@"icon" , campaignCount , @"count",  nil] ,
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Players" ,nameKey, @"showCharacterTableView:", functionKey, @"253-person-white" ,@"icon",playerCount,@"count",  nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"NPCs" ,nameKey, @"showNPCSTableView:", functionKey,  @"253-person-white" ,@"icon",NPCscount,@"count", nil],
+                         [NSDictionary dictionaryWithObjectsAndKeys:@"Encounters" ,nameKey, @"showEncountersTableView:", functionKey,@"251-sword-white" ,@"icon",encountersCount,@"count", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Notes" ,nameKey, @"showNotesTableView:", functionKey,@"179-notepad-white" ,@"icon",notecount,@"count", nil] ,
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"External Notes" ,nameKey, @"showExternalNotes:", functionKey,@"180-stickynote-white" ,@"icon",@3, @"count", nil],
 
-                        [NSDictionary dictionaryWithObjectsAndKeys:@"Compendium" ,nameKey, @"showReferenceTableView:", functionKey,@"33-cabinet-white" ,@"icon", nil],
+                        [NSDictionary dictionaryWithObjectsAndKeys:@"Compendium" ,nameKey, @"showReferenceTableView:", functionKey,@"33-cabinet-white" ,@"icon", @7, @"count", nil],
                         
                        nil];
 }

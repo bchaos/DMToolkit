@@ -44,6 +44,7 @@
 @property (nonatomic, strong) UIPopoverController * pop;
 @property (nonatomic, retain) GTLServiceDrive *driveService;
 @property (nonatomic, strong) NSMutableArray * driveFiles;
-
+-(void)createNewObjectBasedOnCurrentmenu;
+- (void)startEditing:(UITextField *)textField;
 - (IBAction)showDemBones:(UIButton *)sender;
 @end

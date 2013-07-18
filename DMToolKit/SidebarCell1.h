@@ -26,4 +26,5 @@
 @property (nonatomic, assign) id <sideCellDelegate> delegate;
 @property (nonatomic, weak) IBOutlet UIImageView* iconImageView;
 -(void)select;
+-(void)upateCellWithFrame :(CGRect)frame;
 @end

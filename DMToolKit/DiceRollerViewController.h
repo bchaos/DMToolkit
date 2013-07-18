@@ -32,7 +32,7 @@
 
 - (IBAction)loadDice:(id)sender;
 - (IBAction)saveDice:(id)sender;
-
+-(UITableViewCell *)configureCell :(UITableViewCell *)cell;
 - (IBAction)dxSelected:(UIButton *)sender;
 - (IBAction)mutiplierSelected:(UIButton *)sender;
 - (IBAction)modifierSelected:(UIButton *)sender;

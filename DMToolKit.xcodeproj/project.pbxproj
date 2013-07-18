@@ -97,6 +97,14 @@
 		974AB7CE17382C5B00502DC2 /* DiceRollerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974AB7CC17382C5B00502DC2 /* DiceRollerViewController.xib */; };
 		974E872F174AC990006CD98B /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 974E872D174AC990006CD98B /* book.png */; };
 		974E8730174AC990006CD98B /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 974E872E174AC990006CD98B /* book@2x.png */; };
+		9751AC6C17983AB900B8AF4B /* 50-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC6A17983AB900B8AF4B /* 50-plus.png */; };
+		9751AC6D17983AB900B8AF4B /* 50-plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC6B17983AB900B8AF4B /* 50-plus@2x.png */; };
+		9751AC6F179876D000B8AF4B /* dicerolleriphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC6E179876D000B8AF4B /* dicerolleriphone.storyboard */; };
+		9751AC72179878CC00B8AF4B /* 19-circle-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC70179878CC00B8AF4B /* 19-circle-check.png */; };
+		9751AC73179878CC00B8AF4B /* 19-circle-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC71179878CC00B8AF4B /* 19-circle-check@2x.png */; };
+		9751AC76179878DA00B8AF4B /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC74179878DA00B8AF4B /* 06-arrow-south.png */; };
+		9751AC77179878DA00B8AF4B /* 06-arrow-south@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC75179878DA00B8AF4B /* 06-arrow-south@2x.png */; };
+		9751AC7A1798864D00B8AF4B /* diceRolleriphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */; };
 		97607A5A173D989D00F07364 /* Dice roll sound effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97607A59173D989D00F07364 /* Dice roll sound effect.mp3 */; };
 		97682A3A1725D1FF00675211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A391725D1FF00675211 /* UIKit.framework */; };
 		97682A3C1725D1FF00675211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A3B1725D1FF00675211 /* Foundation.framework */; };
@@ -748,6 +756,15 @@
 		974AB7CC17382C5B00502DC2 /* DiceRollerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiceRollerViewController.xib; sourceTree = "<group>"; };
 		974E872D174AC990006CD98B /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		974E872E174AC990006CD98B /* book@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book@2x.png"; sourceTree = "<group>"; };
+		9751AC6A17983AB900B8AF4B /* 50-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-plus.png"; sourceTree = "<group>"; };
+		9751AC6B17983AB900B8AF4B /* 50-plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-plus@2x.png"; sourceTree = "<group>"; };
+		9751AC6E179876D000B8AF4B /* dicerolleriphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = dicerolleriphone.storyboard; sourceTree = "<group>"; };
+		9751AC70179878CC00B8AF4B /* 19-circle-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check.png"; sourceTree = "<group>"; };
+		9751AC71179878CC00B8AF4B /* 19-circle-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-circle-check@2x.png"; sourceTree = "<group>"; };
+		9751AC74179878DA00B8AF4B /* 06-arrow-south.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south.png"; sourceTree = "<group>"; };
+		9751AC75179878DA00B8AF4B /* 06-arrow-south@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south@2x.png"; sourceTree = "<group>"; };
+		9751AC781798864C00B8AF4B /* diceRolleriphoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diceRolleriphoneViewController.h; sourceTree = "<group>"; };
+		9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = diceRolleriphoneViewController.m; sourceTree = "<group>"; };
 		97607A59173D989D00F07364 /* Dice roll sound effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dice roll sound effect.mp3"; sourceTree = "<group>"; };
 		97682A361725D1FF00675211 /* DMToolKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMToolKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97682A391725D1FF00675211 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1460,6 +1477,12 @@
 		9727B44C17949C2900606B80 /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				9751AC74179878DA00B8AF4B /* 06-arrow-south.png */,
+				9751AC75179878DA00B8AF4B /* 06-arrow-south@2x.png */,
+				9751AC70179878CC00B8AF4B /* 19-circle-check.png */,
+				9751AC71179878CC00B8AF4B /* 19-circle-check@2x.png */,
+				9751AC6A17983AB900B8AF4B /* 50-plus.png */,
+				9751AC6B17983AB900B8AF4B /* 50-plus@2x.png */,
 				9727B44D17949C3200606B80 /* bottom_tab_closed~iphone.png */,
 				9727B44E17949C3200606B80 /* legal~iphone.jpg */,
 			);
@@ -2238,6 +2261,9 @@
 				97C9DB011796E32D00AFA661 /* MainSideViewController.h */,
 				97C9DB021796E32D00AFA661 /* MainSideViewController.m */,
 				97C9DAFB1796E30F00AFA661 /* SidebarStoryboard.storyboard */,
+				9751AC6E179876D000B8AF4B /* dicerolleriphone.storyboard */,
+				9751AC781798864C00B8AF4B /* diceRolleriphoneViewController.h */,
+				9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */,
 			);
 			name = iphonecontorllers;
 			sourceTree = "<group>";
@@ -2936,6 +2962,13 @@
 				97F9CE4D1797312C00014413 /* 180-stickynote-white@2x.png in Resources */,
 				97F9CE501797316100014413 /* 251-sword-white.png in Resources */,
 				97F9CE511797316100014413 /* 251-sword-white@2x.png in Resources */,
+				9751AC6C17983AB900B8AF4B /* 50-plus.png in Resources */,
+				9751AC6D17983AB900B8AF4B /* 50-plus@2x.png in Resources */,
+				9751AC6F179876D000B8AF4B /* dicerolleriphone.storyboard in Resources */,
+				9751AC72179878CC00B8AF4B /* 19-circle-check.png in Resources */,
+				9751AC73179878CC00B8AF4B /* 19-circle-check@2x.png in Resources */,
+				9751AC76179878DA00B8AF4B /* 06-arrow-south.png in Resources */,
+				9751AC77179878DA00B8AF4B /* 06-arrow-south@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3146,6 +3179,7 @@
 				97F9CE2F1796E4BE00014413 /* FlatTheme.m in Sources */,
 				97F9CE301796E4BE00014413 /* ControllerInfo.m in Sources */,
 				97F9CE311796E4BE00014413 /* StoryboardInfo.m in Sources */,
+				9751AC7A1798864D00B8AF4B /* diceRolleriphoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
