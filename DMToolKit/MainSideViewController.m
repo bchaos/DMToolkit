@@ -11,7 +11,9 @@
 #import "FlatTheme.h"
 #import "Utils.h"
 #import "fontsAndColourConstants.h"
-@interface MainSideViewController ()
+@interface MainSideViewController (){
+    UIStoryboard *mainStoryBoard;
+}
 
 @end
 
@@ -37,15 +39,25 @@
     
 
     [self setupSidebars ];
-   
-    UIViewController* frontController = [[UIViewController alloc] init];
+   mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard@iphone" bundle:nil];
+    
+    UIViewController* frontController =  [mainStoryBoard instantiateViewControllerWithIdentifier:@"campaignsmain"];
     frontController.view.backgroundColor = [fontsAndColourConstants MentorLightBlue];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:frontController];
     
+    frontController= [self setUpbarItems:frontController];
+  
+    self.contentViewController = nav;
+    
+    
+    [JE_ notifyObserver:self selector:@selector(openCampaignViewer) name:@"toCampaign"];
+}
+
+-(UIViewController *)setUpbarItems:(UIViewController *)frontController{
     [FlatTheme styleNavigationBarWithFontName:@"ApexSans-Light" andColor:[fontsAndColourConstants MentorBlueGray]];
     
-
+    
     UIButton* menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 14)];
     [menuButton setBackgroundImage:[UIImage imageNamed:@"259-list-white.png"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -60,7 +72,28 @@
     
     frontController.navigationItem.leftBarButtonItems= @[menuItem];
     frontController.navigationItem.rightBarButtonItems= @[rollItem];
-    self.contentViewController = nav;
+    return frontController;
+}
+
+-(void)closeSide{
+    if(self.sidebarShowing)
+         [super toggleSidebar:!self.sidebarShowing duration:kGHRevealSidebarDefaultAnimationDuration];
+}
+
+
+-(void)openCampaignViewer{
+    [self closeSide];
+    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
+    UIViewController* campaignViewer= [mainStoryBoard instantiateViewControllerWithIdentifier:@"campaignViewer"];
+    campaignViewer = [self setUpbarItems:campaignViewer];
+    [(UINavigationController *)self.contentViewController  pushViewController:campaignViewer animated:YES];
+}
+
+
+-(void)addCampainInfo{
+
+    
+    
 }
 
 - (void)viewDidUnload {
@@ -93,6 +126,8 @@
     
     [super dragContentView:recognizer];
 }
+
+
 
 @end
 

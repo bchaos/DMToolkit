@@ -29,10 +29,10 @@
 
 -(void)awakeFromNib{
     
-    self.bgView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.bgView.backgroundColor= [fontsAndColourConstants MentorBlueGray];
     
-    self.topSeparator.backgroundColor = [UIColor colorWithWhite:0.1f alpha:1.0f];
-    self.bottomSeparator.backgroundColor = [UIColor colorWithWhite:0.3f alpha:1.0f];
+    self.topSeparator.backgroundColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
+    self.bottomSeparator.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f];
     
     NSString* boldFontName = @"Avenir-Black";
     

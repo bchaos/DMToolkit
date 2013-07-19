@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) NSString* controllerId;
 @property (nonatomic,strong)UIViewController * normalSideBar;
+@property (strong, nonatomic) IBOutlet UILabel *NoCapLabel;
 @property (nonatomic, strong)UIViewController * diceBar;
 @end

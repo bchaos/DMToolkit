@@ -7,7 +7,7 @@
 //
 
 #import "SidebarController1.h"
-
+#import "fontsAndColourConstants.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface SidebarController1 (){
@@ -39,8 +39,8 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     self.selectionTable.dataSource = self;
     self.selectionTable.delegate = self;
     
-    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
-    self.selectionTable.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.view.backgroundColor = [fontsAndColourConstants MentorBlueGray];
+    self.selectionTable.backgroundColor = [fontsAndColourConstants MentorBlueGray];
     self.selectionTable.separatorColor = [UIColor clearColor];
     
     NSString* boldFontName = @"Avenir-Black";

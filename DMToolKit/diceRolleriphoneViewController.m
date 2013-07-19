@@ -27,6 +27,9 @@
 {
     [super viewDidLoad];
     [self configureIphone];
+    self.view.backgroundColor= [fontsAndColourConstants MentorBlueGray];
+    self.SelectionTable.backgroundColor= [fontsAndColourConstants MentorBlueGray];
+    
 	// Do any additional setup after loading the view.
 }
 -(void)configureIphone{

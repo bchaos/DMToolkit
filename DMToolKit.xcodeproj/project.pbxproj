@@ -105,6 +105,20 @@
 		9751AC76179878DA00B8AF4B /* 06-arrow-south.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC74179878DA00B8AF4B /* 06-arrow-south.png */; };
 		9751AC77179878DA00B8AF4B /* 06-arrow-south@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC75179878DA00B8AF4B /* 06-arrow-south@2x.png */; };
 		9751AC7A1798864D00B8AF4B /* diceRolleriphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */; };
+		9751AC801799C74300B8AF4B /* FeedCell3.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC7C1799C74300B8AF4B /* FeedCell3.m */; };
+		9751AC811799C74300B8AF4B /* FeedController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC7E1799C74300B8AF4B /* FeedController3.m */; };
+		9751AC821799C74300B8AF4B /* FeedStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC7F1799C74300B8AF4B /* FeedStoryboard.storyboard */; };
+		9751AC841799C76E00B8AF4B /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC831799C76D00B8AF4B /* ProfileStoryboard.storyboard */; };
+		9751AC911799C7B300B8AF4B /* FeedCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC861799C7B100B8AF4B /* FeedCell1.m */; };
+		9751AC921799C7B300B8AF4B /* FeedCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC881799C7B100B8AF4B /* FeedCell2.m */; };
+		9751AC931799C7B300B8AF4B /* FeedCell4.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC8A1799C7B100B8AF4B /* FeedCell4.m */; };
+		9751AC941799C7B300B8AF4B /* FeedController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC8C1799C7B200B8AF4B /* FeedController1.m */; };
+		9751AC951799C7B300B8AF4B /* FeedController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC8E1799C7B200B8AF4B /* FeedController2.m */; };
+		9751AC961799C7B300B8AF4B /* FeedController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC901799C7B300B8AF4B /* FeedController4.m */; };
+		9751AC991799CA6700B8AF4B /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC971799CA6700B8AF4B /* 53-house.png */; };
+		9751AC9A1799CA6700B8AF4B /* 53-house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC981799CA6700B8AF4B /* 53-house@2x.png */; };
+		9751AC9D1799CDE500B8AF4B /* CampaignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC9C1799CDE500B8AF4B /* CampaignCell.m */; };
+		9751ACA01799CF1100B8AF4B /* CampaigniphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9751AC9F1799CF1000B8AF4B /* CampaigniphoneViewController.m */; };
 		97607A5A173D989D00F07364 /* Dice roll sound effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 97607A59173D989D00F07364 /* Dice roll sound effect.mp3 */; };
 		97682A3A1725D1FF00675211 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A391725D1FF00675211 /* UIKit.framework */; };
 		97682A3C1725D1FF00675211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97682A3B1725D1FF00675211 /* Foundation.framework */; };
@@ -765,6 +779,30 @@
 		9751AC75179878DA00B8AF4B /* 06-arrow-south@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-arrow-south@2x.png"; sourceTree = "<group>"; };
 		9751AC781798864C00B8AF4B /* diceRolleriphoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diceRolleriphoneViewController.h; sourceTree = "<group>"; };
 		9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = diceRolleriphoneViewController.m; sourceTree = "<group>"; };
+		9751AC7B1799C74300B8AF4B /* FeedCell3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell3.h; sourceTree = "<group>"; };
+		9751AC7C1799C74300B8AF4B /* FeedCell3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell3.m; sourceTree = "<group>"; };
+		9751AC7D1799C74300B8AF4B /* FeedController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController3.h; sourceTree = "<group>"; };
+		9751AC7E1799C74300B8AF4B /* FeedController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController3.m; sourceTree = "<group>"; };
+		9751AC7F1799C74300B8AF4B /* FeedStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FeedStoryboard.storyboard; sourceTree = "<group>"; };
+		9751AC831799C76D00B8AF4B /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		9751AC851799C7B100B8AF4B /* FeedCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell1.h; sourceTree = "<group>"; };
+		9751AC861799C7B100B8AF4B /* FeedCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell1.m; sourceTree = "<group>"; };
+		9751AC871799C7B100B8AF4B /* FeedCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell2.h; sourceTree = "<group>"; };
+		9751AC881799C7B100B8AF4B /* FeedCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell2.m; sourceTree = "<group>"; };
+		9751AC891799C7B100B8AF4B /* FeedCell4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCell4.h; sourceTree = "<group>"; };
+		9751AC8A1799C7B100B8AF4B /* FeedCell4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCell4.m; sourceTree = "<group>"; };
+		9751AC8B1799C7B100B8AF4B /* FeedController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController1.h; sourceTree = "<group>"; };
+		9751AC8C1799C7B200B8AF4B /* FeedController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController1.m; sourceTree = "<group>"; };
+		9751AC8D1799C7B200B8AF4B /* FeedController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController2.h; sourceTree = "<group>"; };
+		9751AC8E1799C7B200B8AF4B /* FeedController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController2.m; sourceTree = "<group>"; };
+		9751AC8F1799C7B200B8AF4B /* FeedController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedController4.h; sourceTree = "<group>"; };
+		9751AC901799C7B300B8AF4B /* FeedController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedController4.m; sourceTree = "<group>"; };
+		9751AC971799CA6700B8AF4B /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		9751AC981799CA6700B8AF4B /* 53-house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house@2x.png"; sourceTree = "<group>"; };
+		9751AC9B1799CDE400B8AF4B /* CampaignCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaignCell.h; sourceTree = "<group>"; };
+		9751AC9C1799CDE500B8AF4B /* CampaignCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaignCell.m; sourceTree = "<group>"; };
+		9751AC9E1799CF1000B8AF4B /* CampaigniphoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampaigniphoneViewController.h; sourceTree = "<group>"; };
+		9751AC9F1799CF1000B8AF4B /* CampaigniphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampaigniphoneViewController.m; sourceTree = "<group>"; };
 		97607A59173D989D00F07364 /* Dice roll sound effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Dice roll sound effect.mp3"; sourceTree = "<group>"; };
 		97682A361725D1FF00675211 /* DMToolKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DMToolKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97682A391725D1FF00675211 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -1753,6 +1791,8 @@
 		97682AAD1726EBE800675211 /* glyphs */ = {
 			isa = PBXGroup;
 			children = (
+				9751AC971799CA6700B8AF4B /* 53-house.png */,
+				9751AC981799CA6700B8AF4B /* 53-house@2x.png */,
 				97F9CE3E179730DF00014413 /* 253-person-white.png */,
 				97F9CE461797310900014413 /* 103-map-white.png */,
 				97F9CE4A1797312400014413 /* 180-stickynote-white.png */,
@@ -2248,6 +2288,24 @@
 		97C9DAFA1796DD8400AFA661 /* iphonecontorllers */ = {
 			isa = PBXGroup;
 			children = (
+				9751AC851799C7B100B8AF4B /* FeedCell1.h */,
+				9751AC861799C7B100B8AF4B /* FeedCell1.m */,
+				9751AC871799C7B100B8AF4B /* FeedCell2.h */,
+				9751AC881799C7B100B8AF4B /* FeedCell2.m */,
+				9751AC891799C7B100B8AF4B /* FeedCell4.h */,
+				9751AC8A1799C7B100B8AF4B /* FeedCell4.m */,
+				9751AC8B1799C7B100B8AF4B /* FeedController1.h */,
+				9751AC8C1799C7B200B8AF4B /* FeedController1.m */,
+				9751AC8D1799C7B200B8AF4B /* FeedController2.h */,
+				9751AC8E1799C7B200B8AF4B /* FeedController2.m */,
+				9751AC8F1799C7B200B8AF4B /* FeedController4.h */,
+				9751AC901799C7B300B8AF4B /* FeedController4.m */,
+				9751AC7B1799C74300B8AF4B /* FeedCell3.h */,
+				9751AC7C1799C74300B8AF4B /* FeedCell3.m */,
+				9751AC7D1799C74300B8AF4B /* FeedController3.h */,
+				9751AC831799C76D00B8AF4B /* ProfileStoryboard.storyboard */,
+				9751AC7E1799C74300B8AF4B /* FeedController3.m */,
+				9751AC7F1799C74300B8AF4B /* FeedStoryboard.storyboard */,
 				97F9CE251796E4B700014413 /* flat */,
 				97C9DB231796E43300AFA661 /* images */,
 				97C9DB1C1796E41900AFA661 /* rchswitch */,
@@ -2264,6 +2322,10 @@
 				9751AC6E179876D000B8AF4B /* dicerolleriphone.storyboard */,
 				9751AC781798864C00B8AF4B /* diceRolleriphoneViewController.h */,
 				9751AC791798864D00B8AF4B /* diceRolleriphoneViewController.m */,
+				9751AC9B1799CDE400B8AF4B /* CampaignCell.h */,
+				9751AC9C1799CDE500B8AF4B /* CampaignCell.m */,
+				9751AC9E1799CF1000B8AF4B /* CampaigniphoneViewController.h */,
+				9751AC9F1799CF1000B8AF4B /* CampaigniphoneViewController.m */,
 			);
 			name = iphonecontorllers;
 			sourceTree = "<group>";
@@ -2969,6 +3031,10 @@
 				9751AC73179878CC00B8AF4B /* 19-circle-check@2x.png in Resources */,
 				9751AC76179878DA00B8AF4B /* 06-arrow-south.png in Resources */,
 				9751AC77179878DA00B8AF4B /* 06-arrow-south@2x.png in Resources */,
+				9751AC821799C74300B8AF4B /* FeedStoryboard.storyboard in Resources */,
+				9751AC841799C76E00B8AF4B /* ProfileStoryboard.storyboard in Resources */,
+				9751AC991799CA6700B8AF4B /* 53-house.png in Resources */,
+				9751AC9A1799CA6700B8AF4B /* 53-house@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3180,6 +3246,16 @@
 				97F9CE301796E4BE00014413 /* ControllerInfo.m in Sources */,
 				97F9CE311796E4BE00014413 /* StoryboardInfo.m in Sources */,
 				9751AC7A1798864D00B8AF4B /* diceRolleriphoneViewController.m in Sources */,
+				9751AC801799C74300B8AF4B /* FeedCell3.m in Sources */,
+				9751AC811799C74300B8AF4B /* FeedController3.m in Sources */,
+				9751AC911799C7B300B8AF4B /* FeedCell1.m in Sources */,
+				9751AC921799C7B300B8AF4B /* FeedCell2.m in Sources */,
+				9751AC931799C7B300B8AF4B /* FeedCell4.m in Sources */,
+				9751AC941799C7B300B8AF4B /* FeedController1.m in Sources */,
+				9751AC951799C7B300B8AF4B /* FeedController2.m in Sources */,
+				9751AC961799C7B300B8AF4B /* FeedController4.m in Sources */,
+				9751AC9D1799CDE500B8AF4B /* CampaignCell.m in Sources */,
+				9751ACA01799CF1100B8AF4B /* CampaigniphoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
