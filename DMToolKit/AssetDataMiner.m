@@ -12,7 +12,7 @@
 NSString * const AssetMetadataMinerDidSaveNotification = @"AssetMetadataMinerDidSaveNotification";
 NSString * const AssetMetadataMinerDidSaveFailedNotification = @"AssetMetadataMinerDidSaveFailedNotification";
 @interface AssetDataMiner (){
-    sqlite3 *DuegonMasterDB;
+    sqlite3 *dungeonMasterDB;
 
 }
 
@@ -134,75 +134,75 @@ static NSString * const kDataManagerSQLiteBaseName = @"campaign";
             {
                 const char *dbpath = [storePath UTF8String];
                 
-                if (sqlite3_open(dbpath, &DuegonMasterDB) == SQLITE_OK)
+                if (sqlite3_open(dbpath, &dungeonMasterDB) == SQLITE_OK)
                 {
                     char *errMsg;
                     const char *sql_stmt = "CREATE TABLE IF NOT EXISTS Campaign (NSString name, NSString briefDescription , Map map,NSSet players, NSSet notes  )";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Skills (NSString name, NSString type, NSString keyAbility, NSString fulltext, NSSet notes,NSSet npc,  NSSet character, NSSet classSkills)";
 
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Notes (NSString name, NSString text, NSDate date,NSSet location, NSSet *affiliations, NSSet campaign,NSSet character,NSSet items,NSSet map,NSSet player,NSSet *skills , NSString *group ,  NSString *externalid  )";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                    
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Domain (NSString name, NSString fulltext, NSSet Character,NSSet npc,NSSet spells )";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Feats NSString name, NSString fulltext, NSSet Character,NSSet npc)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
   
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Items (NSString name, NSString type,NSString subtype, NSString weight,NSString fulltext, NSSet spells, NSSet location,NSSet map, NSSet notes, NSSet spells, NSSet npcTreasure, NSSet npcItems, NSSet ecnounter)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS NPC (NSString name, NSString fulltext,NSNumber isMonster,NSSet skills, NSSet race, NSSet diety, NSSet feats, NSSet items, NSSet affiliations, Location location,NSSet treasure,NSSet *spells,  NSSet characterClass, NSSet encounterApart)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Character (NSString strength, NSString constitution,NSString dexterity, NSString intelligence,NSString wisdom, NSString charisma , NSString ac, NSString fortitude,NSString reflex, NSString will , NSString surges, NSString initiative,NSString alignment, NSString hitpoints , NSString perception, NSString story, NSString paragonpath, NSString height, NSString gender, NSString age, NSString currentXP,NSString personalTraits,NSString apperance,NSString background,NSSet inventory,Player owner,NSSet companions,NSSet diety,Race race, NSSet notes,NSString name, Location location,NSSet spells, NSString actionPoints, NSSet  powerAtWill, NSSet powerDaily, NSSet powerEncounter,  NSSet powerUtility,  CharacterClass characterClass)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
   
 
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Location (NSString gridPoint, Campaign campaign , NSSet character, NSSet items, NSSet map, NSSet notes,NSSet npc)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
           
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Spells (NSString name, NSString school,NSString subSchool, NSString fulltext, NSSet character, NSSet items, NSSet npc, NSSet domain )";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
 
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Player (NSString name, NSSet characters,NSSet notes ,NSSet map)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Race (NSString name, NSString fulltext , NSSet character, NSSet npc)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Powers (NSString name, NSString fulltext , NSString discipline,NSString  subDiscipline, NSSet atwill, NSSet daily, NSSet encounter, NSSet utility)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS CharacterClass (NSString name, NSString type, NSString fulltext , NSSet npc, NSSet character, NSSet classSkills)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
                     sql_stmt= "CREATE TABLE IF NOT EXISTS Encounter (NSString name, NSString about, NSSet monsters, NSSet possibleTreasure , Map map)";
                     
-                    sqlite3_exec(DuegonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
+                    sqlite3_exec(dungeonMasterDB, sql_stmt, NULL, NULL, &errMsg) ;
                     
 
-                    sqlite3_close(DuegonMasterDB);
+                    sqlite3_close(dungeonMasterDB);
                     
                 } else {
                     

@@ -8,7 +8,7 @@
 
 #import "BaseTableViewController.h"
 #import "panableTable.h"
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 #import "webViewPopoverViewController.h"
 #import "FeatAndSkillsCell.h"
 @interface FeatsAndSkills : masterBaseViewController<UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, webPopoverDelegate>

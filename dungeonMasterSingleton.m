@@ -1,24 +1,24 @@
 //
-//  DuegonMasterSingleton.m
+//  dungeonMasterSingleton.m
 //  DMToolKit
 //
 //  Created by Bradford Farmer on 4/23/13.
 //  Copyright (c) 2013 Bradford Farmer. All rights reserved.
 //
 
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 #import "AssetDataMiner.h"
 #import "PCOneLineFetch.h"
 
 
-static DuegonMasterSingleton * _sharedInstance =nil;
-@implementation DuegonMasterSingleton
+static dungeonMasterSingleton * _sharedInstance =nil;
+@implementation dungeonMasterSingleton
 -(NSManagedObjectContext *)context{
     return [[AssetDataMiner sharedInstance]mainObjectContext];
 }
-+(DuegonMasterSingleton *)sharedInstance {
++(dungeonMasterSingleton *)sharedInstance {
     
-    @synchronized([DuegonMasterSingleton class])
+    @synchronized([dungeonMasterSingleton class])
 	{
 		if (!_sharedInstance){
 			if([[self alloc] init]){
@@ -34,7 +34,7 @@ static DuegonMasterSingleton * _sharedInstance =nil;
 
 +(id)alloc
 {
-	@synchronized([DuegonMasterSingleton class])
+	@synchronized([dungeonMasterSingleton class])
 	{
 		NSAssert(_sharedInstance == nil, @"Attempted to allocate a second instance of a singleton.");
 		_sharedInstance = [super alloc];

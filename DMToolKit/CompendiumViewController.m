@@ -7,7 +7,7 @@
 //
 
 #import "CompendiumViewController.h"
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 @interface CompendiumViewController (){
     NSManagedObject * mananaged;
 }
@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    mananaged= [DuegonMasterSingleton sharedInstance].currentObject;
+    mananaged= [dungeonMasterSingleton sharedInstance].currentObject;
     if(mananaged)
     [self reloadData];
    
@@ -66,7 +66,7 @@
     NSString * host= url.host;
     if([protocol hasSuffix:@"save"]){
         [mananaged setValue:host forKey:@"fulltext"];
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         return YES;
     }
     return NO;
@@ -77,7 +77,7 @@
    
         [mananaged setValue:[_webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('Content').innerHTML" ] forKey:@"fulltext"];
     }
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
 }
 
 

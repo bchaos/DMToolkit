@@ -1,5 +1,5 @@
 //
-//  DuegonMasterSingleton.h
+//  dungeonMasterSingleton.h
 //  DMToolKit
 //
 //  Created by Bradford Farmer on 4/23/13.
@@ -30,11 +30,11 @@
 #import "EvernoteUserStore.h"
 #import <ENMLUtility.h>
 #import <Reachability.h>
-@interface DuegonMasterSingleton : NSObject{
+@interface dungeonMasterSingleton : NSObject{
     
     CharacterObject * character;
    }
-+(DuegonMasterSingleton *)sharedInstance;
++(dungeonMasterSingleton *)sharedInstance;
 -(NSArray * )allCharacters:(NSString *)filter;
 -(Character *)createCharacterForPlayer:(Player *)player;
 -(NSArray * )allPlayers:(NSString*)filter;

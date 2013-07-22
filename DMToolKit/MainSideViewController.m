@@ -50,14 +50,22 @@
   
     self.contentViewController = nav;
     
-    
+    [self setupObservers];
+
+}
+-(void)setupObservers{
     [JE_ notifyObserver:self selector:@selector(openCampaignViewer) name:@"toCampaign"];
+    
+     [JE_ notifyObserver:self selector:@selector(openNoteTaker) name:@"toNoteTaker"];
+         [JE_ notifyObserver:self selector:@selector(openComdendiumViewer) name:@"toReferenceViewer"];
+   
 }
 
 -(UIViewController *)setUpbarItems:(UIViewController *)frontController{
     [FlatTheme styleNavigationBarWithFontName:@"ApexSans-Light" andColor:[fontsAndColourConstants MentorBlueGray]];
     
-    
+    [FlatTheme styleToolbarWithFontName:@"ApexSans-Light" andColor:[fontsAndColourConstants MentorBlueGray]];
+    [FlatTheme styleTabBar:@"" andColor:[fontsAndColourConstants MentorBlueGray] ];
     UIButton* menuButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 14)];
     [menuButton setBackgroundImage:[UIImage imageNamed:@"259-list-white.png"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -89,6 +97,24 @@
     [(UINavigationController *)self.contentViewController  pushViewController:campaignViewer animated:YES];
 }
 
+-(void)openNoteTaker{
+    [self closeSide];
+    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
+    UIViewController* noteView= [mainStoryBoard instantiateViewControllerWithIdentifier:@"notetaking"];
+    noteView = [self setUpbarItems:noteView];
+    [(UINavigationController *)self.contentViewController  pushViewController:noteView animated:YES];
+    
+}
+
+
+-(void)openComdendiumViewer{
+    [self closeSide];
+    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
+    UIViewController* compView= [mainStoryBoard instantiateViewControllerWithIdentifier:@"compendium"];
+    compView = [self setUpbarItems:compView];
+    [(UINavigationController *)self.contentViewController  pushViewController:compView animated:YES];
+    
+}
 
 -(void)addCampainInfo{
 

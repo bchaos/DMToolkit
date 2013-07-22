@@ -117,11 +117,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="1" green="0.98167157400000005" blue="0.98978650020000003" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="uFi-pG-Mta">
-                                <rect key="frame" x="74" y="38" width="184" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="search" minimumFontSize="17" clearButtonMode="whileEditing" id="uFi-pG-Mta">
+                                <rect key="frame" x="51" y="38" width="184" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <action selector="filterCurrentSection:" destination="qZh-PN-nMs" eventType="editingChanged" id="5eZ-qa-S9K"/>
+                                    <action selector="returnHit:" destination="qZh-PN-nMs" eventType="editingDidBegin" id="WQz-cY-TcA"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G7R-92-h4d">
                                 <rect key="frame" x="8" y="9" width="16" height="16"/>
@@ -284,58 +288,6 @@
     <resources>
         <image name="arrow.png" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="GHRevealViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GHRevealViewController.h"/>
-        </class>
-        <class className="MainSideViewController" superclassName="GHRevealViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainSideViewController.h"/>
-        </class>
-        <class className="SideBarBaseViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SideBarBaseViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="sectionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SidebarCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SidebarCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bgView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="bottomSeparator" candidateClass="UIView"/>
-                <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topSeparator" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SidebarController1" superclassName="SidebarViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SidebarController1.h"/>
-            <relationships>
-                <relationship kind="action" name="addNew:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="outlet" name="profileImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="profileLocationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="profileNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SidebarViewController" superclassName="SideBarBaseViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SidebarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addNew:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="filterCurrentSection:" candidateClass="UITextField"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="importpdf:"/>
-                <relationship kind="action" name="showDemBones:" candidateClass="UIButton"/>
-                <relationship kind="action" name="showInfo:"/>
-                <relationship kind="outlet" name="PulldownToAddLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="backbutton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="editableTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="networkactivity" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="searchField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="selectionTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

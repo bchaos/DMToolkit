@@ -31,7 +31,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.labelText = @"Loading";
-    currentCampaign= [DuegonMasterSingleton sharedInstance].currentCampaign;
+    currentCampaign= [dungeonMasterSingleton sharedInstance].currentCampaign;
     if (currentCampaign) {
             [self reloadData];
         }
@@ -83,7 +83,7 @@
     NSString * host= url.host;
     if([protocol hasSuffix:@"save"]){
       currentCampaign.briefDescription=host;
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         return YES;
     }
     return NO;
@@ -93,7 +93,7 @@
     if(currentCampaign){
         [currentCampaign setValue:[_campaignWebview stringByEvaluatingJavaScriptFromString:@"document.getElementById('Content').innerHTML" ] forKey:@"briefDescription"];
     }
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
 }
 - (void)didReceiveMemoryWarning
 {

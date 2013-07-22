@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		381952EDB7E34BEA946AFA33 /* libPods-DMTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2ED170BF5A41B6A8B4495F /* libPods-DMTest.a */; };
+		5601A422179C56C800B53604 /* mapMakeriphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5601A421179C56C800B53604 /* mapMakeriphoneViewController.m */; };
+		5601A425179C676800B53604 /* 42-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 5601A423179C676800B53604 /* 42-info.png */; };
+		5601A426179C676800B53604 /* 42-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5601A424179C676800B53604 /* 42-info@2x.png */; };
 		56370767178F6DF800860AA8 /* PDFImporterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56370765178F6DF800860AA8 /* PDFImporterViewController.m */; };
 		56370768178F6DF800860AA8 /* PDFImporterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56370766178F6DF800860AA8 /* PDFImporterViewController.xib */; };
 		5637076A1790313D00860AA8 /* MainStoryboard@iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563707691790313D00860AA8 /* MainStoryboard@iphone.storyboard */; };
@@ -95,6 +98,7 @@
 		974AB7C5173826F700502DC2 /* config.js in Resources */ = {isa = PBXBuildFile; fileRef = 974AB7B0173809DC00502DC2 /* config.js */; };
 		974AB7C6173826F900502DC2 /* styles.js in Resources */ = {isa = PBXBuildFile; fileRef = 974AB7B5173809DC00502DC2 /* styles.js */; };
 		974AB7CE17382C5B00502DC2 /* DiceRollerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 974AB7CC17382C5B00502DC2 /* DiceRollerViewController.xib */; };
+		974D4131179D7BB800BA4DCA /* ToolSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 974D4130179D7BB800BA4DCA /* ToolSelectorViewController.m */; };
 		974E872F174AC990006CD98B /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 974E872D174AC990006CD98B /* book.png */; };
 		974E8730174AC990006CD98B /* book@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 974E872E174AC990006CD98B /* book@2x.png */; };
 		9751AC6C17983AB900B8AF4B /* 50-plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 9751AC6A17983AB900B8AF4B /* 50-plus.png */; };
@@ -150,7 +154,7 @@
 		97682AC01726FD3700675211 /* ApexSans-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 97682AB81726FD3700675211 /* ApexSans-MediumItalic.otf */; };
 		97682AC41726FD5100675211 /* fontsAndColourConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682AC31726FD5100675211 /* fontsAndColourConstants.m */; };
 		97682ADB17271E8F00675211 /* CharacterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682ADA17271E8F00675211 /* CharacterObject.m */; };
-		97682ADE17271F0800675211 /* DuegonMasterSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682ADD17271F0800675211 /* DuegonMasterSingleton.m */; };
+		97682ADE17271F0800675211 /* dungeonMasterSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682ADD17271F0800675211 /* dungeonMasterSingleton.m */; };
 		97682AE11728254E00675211 /* borderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682AE01728254E00675211 /* borderedTextView.m */; };
 		97682AE51728350400675211 /* tempSideCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682AE41728350400675211 /* tempSideCellView.m */; };
 		97682AEB17283FAF00675211 /* panableTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 97682AEA17283FAF00675211 /* panableTable.m */; };
@@ -638,6 +642,10 @@
 
 /* Begin PBXFileReference section */
 		1388704F96924DA6973E5CF4 /* Pods-DMTest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DMTest.xcconfig"; path = "Pods/Pods-DMTest.xcconfig"; sourceTree = SOURCE_ROOT; };
+		5601A420179C56C800B53604 /* mapMakeriphoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapMakeriphoneViewController.h; sourceTree = "<group>"; };
+		5601A421179C56C800B53604 /* mapMakeriphoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapMakeriphoneViewController.m; sourceTree = "<group>"; };
+		5601A423179C676800B53604 /* 42-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-info.png"; sourceTree = "<group>"; };
+		5601A424179C676800B53604 /* 42-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-info@2x.png"; sourceTree = "<group>"; };
 		56370764178F6DF800860AA8 /* PDFImporterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFImporterViewController.h; sourceTree = "<group>"; };
 		56370765178F6DF800860AA8 /* PDFImporterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFImporterViewController.m; sourceTree = "<group>"; };
 		56370766178F6DF800860AA8 /* PDFImporterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFImporterViewController.xib; sourceTree = "<group>"; };
@@ -768,6 +776,8 @@
 		974AB7C017380AF400502DC2 /* NoteTakingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTakingViewController.h; sourceTree = "<group>"; };
 		974AB7C117380AF500502DC2 /* NoteTakingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTakingViewController.m; sourceTree = "<group>"; };
 		974AB7CC17382C5B00502DC2 /* DiceRollerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiceRollerViewController.xib; sourceTree = "<group>"; };
+		974D412F179D7BB800BA4DCA /* ToolSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolSelectorViewController.h; sourceTree = "<group>"; };
+		974D4130179D7BB800BA4DCA /* ToolSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolSelectorViewController.m; sourceTree = "<group>"; };
 		974E872D174AC990006CD98B /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		974E872E174AC990006CD98B /* book@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book@2x.png"; sourceTree = "<group>"; };
 		9751AC6A17983AB900B8AF4B /* 50-plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "50-plus.png"; sourceTree = "<group>"; };
@@ -844,8 +854,8 @@
 		97682AC31726FD5100675211 /* fontsAndColourConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fontsAndColourConstants.m; sourceTree = "<group>"; };
 		97682AD917271E8F00675211 /* CharacterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterObject.h; sourceTree = "<group>"; };
 		97682ADA17271E8F00675211 /* CharacterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterObject.m; sourceTree = "<group>"; };
-		97682ADC17271F0800675211 /* DuegonMasterSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DuegonMasterSingleton.h; sourceTree = "<group>"; };
-		97682ADD17271F0800675211 /* DuegonMasterSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DuegonMasterSingleton.m; sourceTree = "<group>"; };
+		97682ADC17271F0800675211 /* dungeonMasterSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dungeonMasterSingleton.h; sourceTree = "<group>"; };
+		97682ADD17271F0800675211 /* dungeonMasterSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dungeonMasterSingleton.m; sourceTree = "<group>"; };
 		97682ADF1728254E00675211 /* borderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = borderedTextView.h; sourceTree = "<group>"; };
 		97682AE01728254E00675211 /* borderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = borderedTextView.m; sourceTree = "<group>"; };
 		97682AE31728350400675211 /* tempSideCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tempSideCellView.h; sourceTree = "<group>"; };
@@ -1689,6 +1699,8 @@
 		97682A631726CEDB00675211 /* Arts */ = {
 			isa = PBXGroup;
 			children = (
+				5601A423179C676800B53604 /* 42-info.png */,
+				5601A424179C676800B53604 /* 42-info@2x.png */,
 				9727B44C17949C2900606B80 /* iphone */,
 				974AAEDF1759498E003D17B9 /* campaign.png */,
 				56788A69173A158400F93B8E /* tiles */,
@@ -2168,8 +2180,8 @@
 			children = (
 				97682AD917271E8F00675211 /* CharacterObject.h */,
 				97682ADA17271E8F00675211 /* CharacterObject.m */,
-				97682ADC17271F0800675211 /* DuegonMasterSingleton.h */,
-				97682ADD17271F0800675211 /* DuegonMasterSingleton.m */,
+				97682ADC17271F0800675211 /* dungeonMasterSingleton.h */,
+				97682ADD17271F0800675211 /* dungeonMasterSingleton.m */,
 				56F120D4172803A7008D1DF2 /* MonsterObject.h */,
 				56F120D5172803A7008D1DF2 /* MonsterObject.m */,
 				56F120D7172803B5008D1DF2 /* NPCObject.h */,
@@ -2326,6 +2338,10 @@
 				9751AC9C1799CDE500B8AF4B /* CampaignCell.m */,
 				9751AC9E1799CF1000B8AF4B /* CampaigniphoneViewController.h */,
 				9751AC9F1799CF1000B8AF4B /* CampaigniphoneViewController.m */,
+				5601A420179C56C800B53604 /* mapMakeriphoneViewController.h */,
+				5601A421179C56C800B53604 /* mapMakeriphoneViewController.m */,
+				974D412F179D7BB800BA4DCA /* ToolSelectorViewController.h */,
+				974D4130179D7BB800BA4DCA /* ToolSelectorViewController.m */,
 			);
 			name = iphonecontorllers;
 			sourceTree = "<group>";
@@ -3035,6 +3051,8 @@
 				9751AC841799C76E00B8AF4B /* ProfileStoryboard.storyboard in Resources */,
 				9751AC991799CA6700B8AF4B /* 53-house.png in Resources */,
 				9751AC9A1799CA6700B8AF4B /* 53-house@2x.png in Resources */,
+				5601A425179C676800B53604 /* 42-info.png in Resources */,
+				5601A426179C676800B53604 /* 42-info@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3133,7 +3151,7 @@
 				97682AAC1726E7E900675211 /* SideBarBaseViewController.m in Sources */,
 				97682AC41726FD5100675211 /* fontsAndColourConstants.m in Sources */,
 				97682ADB17271E8F00675211 /* CharacterObject.m in Sources */,
-				97682ADE17271F0800675211 /* DuegonMasterSingleton.m in Sources */,
+				97682ADE17271F0800675211 /* dungeonMasterSingleton.m in Sources */,
 				56F120D6172803A7008D1DF2 /* MonsterObject.m in Sources */,
 				56F120D9172803B5008D1DF2 /* NPCObject.m in Sources */,
 				56F120DC172803CB008D1DF2 /* ItemObject.m in Sources */,
@@ -3256,6 +3274,8 @@
 				9751AC961799C7B300B8AF4B /* FeedController4.m in Sources */,
 				9751AC9D1799CDE500B8AF4B /* CampaignCell.m in Sources */,
 				9751ACA01799CF1100B8AF4B /* CampaigniphoneViewController.m in Sources */,
+				5601A422179C56C800B53604 /* mapMakeriphoneViewController.m in Sources */,
+				974D4131179D7BB800BA4DCA /* ToolSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

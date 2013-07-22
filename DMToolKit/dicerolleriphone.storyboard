@@ -269,46 +269,6 @@
     <resources>
         <image name="298-circlex.png" width="22" height="22"/>
     </resources>
-    <classes>
-        <class className="DiceRollerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiceRollerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="clearHistory:"/>
-                <relationship kind="action" name="diceNumberSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="didpan:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="dxSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="loadDice:"/>
-                <relationship kind="action" name="modifierSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="mutiplierSelected:" candidateClass="UIButton"/>
-                <relationship kind="action" name="saveDice:"/>
-                <relationship kind="outlet" name="SelectionTable" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="clearhistory" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="diceNumber" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="diceloader" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dx" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="modifiers" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="mutliplier" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="resultsTable" candidateClass="panableTable"/>
-                <relationship kind="outlet" name="selectedTotal" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="shakeToRollLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingTableView.h"/>
-        </class>
-        <class className="diceRolleriphoneViewController" superclassName="DiceRollerViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/diceRolleriphoneViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="toplabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="panableTable" superclassName="TPKeyboardAvoidingTableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/panableTable.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

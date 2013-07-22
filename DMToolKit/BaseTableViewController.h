@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "panableTable.h"
 #import "textfieldWithEdgeInset.h"
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 #import "webViewPopoverViewController.h"
 #import "masterBaseViewController.h"
 @interface BaseTableViewController : masterBaseViewController<UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate,UIPopoverControllerDelegate>

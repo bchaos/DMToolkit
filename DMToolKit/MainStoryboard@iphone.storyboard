@@ -149,94 +149,185 @@
             </objects>
             <point key="canvasLocation" x="-419" y="97"/>
         </scene>
-        <!--Map Maker View Controller - map-->
+        <!--Map Makeriphone View Controller - map-->
         <scene sceneID="BYB-PK-4hG">
             <objects>
-                <viewController id="Iie-0c-KUG" customClass="MapMakerViewController" sceneMemberID="viewController">
+                <viewController id="Iie-0c-KUG" customClass="mapMakeriphoneViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ht7-d7-uGs">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6t-Sj-8KL">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="MsP-vn-mxV"/>
-                                    <constraint firstAttribute="width" constant="36" id="j5R-Mw-0qj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="187-pencil.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="12-eye.png"/>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="switchEditingModes:" destination="Iie-0c-KUG" eventType="touchUpInside" id="6zy-ZX-3WN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gct-IN-D5k">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="openMapDetails:" destination="Iie-0c-KUG" eventType="touchUpInside" id="lrA-JZ-qYJ"/>
-                                </connections>
-                            </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4KC-eC-jUy"/>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJ5-Js-rzc"/>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-og-jrk"/>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="1Jc-Fo-S7o">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="SmS-vP-OWY"/>
-                                    <constraint firstAttribute="height" constant="199" id="vge-z2-l9m"/>
-                                </constraints>
-                            </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfE-0M-sD9"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GCs-og-jrk">
+                                <color key="color" red="0.031372550870000002" green="0.20000001789999999" blue="0.34509804840000002" alpha="1" colorSpace="deviceRGB"/>
+                            </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SA-zV-31O"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="Gy7-a2-tfl">
+                                <items>
+                                    <barButtonItem image="arrow.png" style="plain" id="8zj-LU-9DY">
+                                        <connections>
+                                            <action selector="back:" destination="Iie-0c-KUG" id="3Xy-vv-fLy"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JTG-Oi-d85"/>
+                                    <barButtonItem image="12-eye-white.png" style="plain" id="XqM-lw-9Ye">
+                                        <connections>
+                                            <action selector="toggleEditMode:" destination="Iie-0c-KUG" id="r7K-EU-Gee"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="wGp-PW-n7W"/>
+                                    <barButtonItem image="33-cabinet-white.png" style="plain" id="0qq-W7-6Wy">
+                                        <connections>
+                                            <action selector="mapmaking:" destination="Iie-0c-KUG" id="161-Bj-7Cw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="ica-x5-9yn"/>
+                                    <barButtonItem image="42-info.png" style="plain" id="XU1-VB-KDR">
+                                        <connections>
+                                            <action selector="openMapDetails:" destination="Iie-0c-KUG" id="A9m-Cf-QqZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="yn6-u8-aa2"/>
+                                    <barButtonItem image="18-envelope.png" style="plain" id="mpc-fe-t1u">
+                                        <connections>
+                                            <action selector="email:" destination="Iie-0c-KUG" id="HTZ-E2-20r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="EfE-0M-sD9" firstAttribute="centerX" secondItem="4KC-eC-jUy" secondAttribute="centerX" type="default" id="1bX-SE-RDn"/>
-                            <constraint firstAttribute="trailing" secondItem="gct-IN-D5k" secondAttribute="trailing" constant="8" id="GS6-uK-EAB"/>
-                            <constraint firstItem="gct-IN-D5k" firstAttribute="centerY" secondItem="EfE-0M-sD9" secondAttribute="centerY" type="default" id="HS3-ZS-McS"/>
-                            <constraint firstItem="4KC-eC-jUy" firstAttribute="trailing" secondItem="gct-IN-D5k" secondAttribute="trailing" type="default" id="Mu9-Z9-hX6"/>
-                            <constraint firstItem="4KC-eC-jUy" firstAttribute="top" secondItem="EfE-0M-sD9" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NdQ-xo-LJP"/>
-                            <constraint firstItem="zJ5-Js-rzc" firstAttribute="top" secondItem="Ht7-d7-uGs" secondAttribute="top" constant="451" id="TYt-fK-agO"/>
-                            <constraint firstItem="GCs-og-jrk" firstAttribute="centerY" secondItem="1Jc-Fo-S7o" secondAttribute="centerY" type="default" id="X9u-iR-aQS"/>
-                            <constraint firstItem="zJ5-Js-rzc" firstAttribute="trailing" secondItem="4KC-eC-jUy" secondAttribute="trailing" type="default" id="cSI-yF-V3H"/>
-                            <constraint firstItem="u6t-Sj-8KL" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" constant="8" id="etO-FG-U3B"/>
-                            <constraint firstItem="zJ5-Js-rzc" firstAttribute="leading" secondItem="4KC-eC-jUy" secondAttribute="leading" type="default" id="fLX-43-YUL"/>
-                            <constraint firstItem="gct-IN-D5k" firstAttribute="top" secondItem="Ht7-d7-uGs" secondAttribute="top" constant="20" symbolic="YES" type="default" id="hW8-32-by1"/>
-                            <constraint firstAttribute="bottom" secondItem="4KC-eC-jUy" secondAttribute="bottom" constant="46" id="lcY-s9-4Q3"/>
-                            <constraint firstItem="EfE-0M-sD9" firstAttribute="top" secondItem="Ht7-d7-uGs" secondAttribute="top" constant="11" id="nNE-4z-fZv"/>
-                            <constraint firstItem="4KC-eC-jUy" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" constant="15" id="pAC-Qd-9c3"/>
-                            <constraint firstAttribute="bottom" secondItem="zJ5-Js-rzc" secondAttribute="bottom" constant="5" id="qXX-mL-tMF"/>
-                            <constraint firstItem="1Jc-Fo-S7o" firstAttribute="centerX" secondItem="Ht7-d7-uGs" secondAttribute="centerX" type="default" id="rAa-0d-aET"/>
-                            <constraint firstItem="GCs-og-jrk" firstAttribute="centerY" secondItem="Ht7-d7-uGs" secondAttribute="centerY" type="default" id="sjI-Ok-bcj"/>
-                            <constraint firstItem="u6t-Sj-8KL" firstAttribute="centerY" secondItem="EfE-0M-sD9" secondAttribute="centerY" type="default" id="tSU-IR-MuP"/>
-                            <constraint firstItem="EfE-0M-sD9" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" constant="43" id="xng-Pm-ltA"/>
+                            <constraint firstItem="Gy7-a2-tfl" firstAttribute="top" secondItem="Ht7-d7-uGs" secondAttribute="top" type="default" id="1XS-r1-RhN"/>
+                            <constraint firstItem="GCs-og-jrk" firstAttribute="centerY" secondItem="Ht7-d7-uGs" secondAttribute="centerY" type="default" id="LFs-fo-XFu"/>
+                            <constraint firstItem="Gy7-a2-tfl" firstAttribute="trailing" secondItem="Ht7-d7-uGs" secondAttribute="trailing" type="default" id="OJK-Ed-jw3"/>
+                            <constraint firstItem="7SA-zV-31O" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" type="default" id="RoQ-Mn-Quu"/>
+                            <constraint firstItem="Gy7-a2-tfl" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" type="default" id="kSE-Y8-wVe"/>
+                            <constraint firstItem="7SA-zV-31O" firstAttribute="bottom" secondItem="Ht7-d7-uGs" secondAttribute="bottom" type="default" id="lHo-Lf-Pr8"/>
+                            <constraint firstItem="7SA-zV-31O" firstAttribute="trailing" secondItem="Ht7-d7-uGs" secondAttribute="trailing" type="default" id="rcC-c3-eK2"/>
+                            <constraint firstItem="7SA-zV-31O" firstAttribute="top" secondItem="Gy7-a2-tfl" secondAttribute="bottom" type="default" id="wvC-ou-St1"/>
                             <constraint firstItem="GCs-og-jrk" firstAttribute="leading" secondItem="Ht7-d7-uGs" secondAttribute="leading" constant="141" id="yMp-7A-M4F"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="map" image="178-city.png" id="Cu6-NQ-fb1"/>
                     <connections>
-                        <outlet property="groupSelectionTable" destination="1Jc-Fo-S7o" id="XjN-Vg-SSr"/>
-                        <outlet property="scrollAbleMap" destination="4KC-eC-jUy" id="GNd-3u-6EN"/>
-                        <outlet property="sideMenu" destination="EfE-0M-sD9" id="HMV-9R-kDV"/>
+                        <outlet property="backbutton" destination="8zj-LU-9DY" id="0ZL-HG-XuK"/>
+                        <outlet property="openMapEditingMenu" destination="0qq-W7-6Wy" id="dbH-n3-z1q"/>
+                        <outlet property="scrollAbleMap" destination="7SA-zV-31O" id="cZE-Ba-rkE"/>
                         <outlet property="spinner" destination="GCs-og-jrk" id="krq-tP-6Ru"/>
-                        <outlet property="toolkit" destination="zJ5-Js-rzc" id="soT-zg-cI0"/>
+                        <outlet property="toolbar" destination="Gy7-a2-tfl" id="Vxk-tx-xfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3je-cl-8B7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="462" y="374"/>
+        </scene>
+        <!--Tool Selector View Controller-->
+        <scene sceneID="xo6-oF-KNb">
+            <objects>
+                <viewController storyboardIdentifier="tools" id="zXc-jH-qss" customClass="ToolSelectorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="687-Jo-2sK">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baC-3R-zbr"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfL-sa-lWS">
+                                <items>
+                                    <barButtonItem systemItem="cancel" id="dZt-Ib-Mgx">
+                                        <connections>
+                                            <action selector="done:" destination="zXc-jH-qss" id="xIt-aE-y0V"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16078431904315948" green="0.20784315466880798" blue="0.25098040699958801" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="AfL-sa-lWS" firstAttribute="trailing" secondItem="687-Jo-2sK" secondAttribute="trailing" type="default" id="COv-oo-lDp"/>
+                            <constraint firstItem="baC-3R-zbr" firstAttribute="leading" secondItem="687-Jo-2sK" secondAttribute="leading" constant="15" id="NFD-af-evZ"/>
+                            <constraint firstItem="baC-3R-zbr" firstAttribute="top" secondItem="687-Jo-2sK" secondAttribute="top" constant="117" id="X3Q-2q-0SE"/>
+                            <constraint firstItem="AfL-sa-lWS" firstAttribute="leading" secondItem="687-Jo-2sK" secondAttribute="leading" type="default" id="dcn-xx-dDA"/>
+                            <constraint firstItem="baC-3R-zbr" firstAttribute="bottom" secondItem="687-Jo-2sK" secondAttribute="bottom" type="default" id="gCw-lj-TeY"/>
+                            <constraint firstItem="AfL-sa-lWS" firstAttribute="top" secondItem="687-Jo-2sK" secondAttribute="top" type="default" id="vSs-Yh-sqS"/>
+                            <constraint firstAttribute="trailing" secondItem="baC-3R-zbr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vUY-tD-uzd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tileSelectionScroll" destination="baC-3R-zbr" id="xEP-L3-6ek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IIA-Dc-kzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-953" y="-545"/>
+        </scene>
+        <!--Compendium View Controller-->
+        <scene sceneID="Yti-kX-0Pg">
+            <objects>
+                <viewController storyboardIdentifier="compendium" id="lso-iB-BRW" customClass="CompendiumViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="obF-Gw-Hju">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-zC-UZb">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i3d-zC-UZb" firstAttribute="top" secondItem="obF-Gw-Hju" secondAttribute="top" type="default" id="5Dq-kb-dMM"/>
+                            <constraint firstItem="i3d-zC-UZb" firstAttribute="trailing" secondItem="obF-Gw-Hju" secondAttribute="trailing" type="default" id="DmI-aa-Jm5"/>
+                            <constraint firstItem="i3d-zC-UZb" firstAttribute="bottom" secondItem="obF-Gw-Hju" secondAttribute="bottom" type="default" id="NdE-Q7-ro7"/>
+                            <constraint firstItem="i3d-zC-UZb" firstAttribute="leading" secondItem="obF-Gw-Hju" secondAttribute="leading" type="default" id="iRy-3x-QmF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="i3d-zC-UZb" id="cYd-5I-lqU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wga-al-LCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-495" y="-464"/>
+        </scene>
+        <!--Note Taking View Controller-->
+        <scene sceneID="Yjh-g4-MMj">
+            <objects>
+                <viewController storyboardIdentifier="notetaking" id="6Su-n1-iE2" customClass="NoteTakingViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F8C-dl-Q9z">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v8-s5-fkV">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mEs-vI-6eQ"/>
+                                    <barButtonItem image="18-envelope.png" style="plain" id="e0P-3A-dmM">
+                                        <connections>
+                                            <action selector="sendnote:" destination="6Su-n1-iE2" id="awQ-fh-UXn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ha-zQ-OlJ">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Ha-zQ-OlJ" firstAttribute="leading" secondItem="F8C-dl-Q9z" secondAttribute="leading" type="default" id="5rG-Y4-2rG"/>
+                            <constraint firstItem="5v8-s5-fkV" firstAttribute="bottom" secondItem="F8C-dl-Q9z" secondAttribute="bottom" type="default" id="L8M-Hl-yxe"/>
+                            <constraint firstItem="6Ha-zQ-OlJ" firstAttribute="top" secondItem="F8C-dl-Q9z" secondAttribute="top" type="default" id="WUP-7Z-po5"/>
+                            <constraint firstItem="6Ha-zQ-OlJ" firstAttribute="bottom" secondItem="5v8-s5-fkV" secondAttribute="top" type="default" id="i8A-Ao-Jpa"/>
+                            <constraint firstItem="6Ha-zQ-OlJ" firstAttribute="trailing" secondItem="F8C-dl-Q9z" secondAttribute="trailing" type="default" id="lfg-uM-6Gc"/>
+                            <constraint firstItem="5v8-s5-fkV" firstAttribute="leading" secondItem="F8C-dl-Q9z" secondAttribute="leading" type="default" id="rqn-Sl-Niq"/>
+                            <constraint firstItem="5v8-s5-fkV" firstAttribute="trailing" secondItem="F8C-dl-Q9z" secondAttribute="trailing" type="default" id="t2l-TW-RWC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="noteView" destination="6Ha-zQ-OlJ" id="FNl-Nm-W0J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KwP-jm-o88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-138" y="-449"/>
         </scene>
         <!--Campaigninfo View Controller - Campaign overview-->
         <scene sceneID="iv2-Wp-hVD">
@@ -283,6 +374,18 @@
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1At-oS-bJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VVT-2k-deg">
+                    <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </objects>
             <point key="canvasLocation" x="-68" y="77"/>
         </scene>
@@ -290,11 +393,13 @@
     <resources>
         <image name="103-map-white.png" width="26" height="21"/>
         <image name="12-eye-white.png" width="24" height="16"/>
-        <image name="12-eye.png" width="24" height="16"/>
         <image name="178-city.png" width="23" height="27"/>
         <image name="179-notepad.png" width="22" height="28"/>
-        <image name="187-pencil.png" width="23" height="23"/>
+        <image name="18-envelope.png" width="24" height="16"/>
         <image name="251-sword-white.png" width="28" height="23"/>
+        <image name="33-cabinet-white.png" width="20" height="26"/>
+        <image name="42-info.png" width="28" height="28"/>
+        <image name="arrow.png" width="16" height="16"/>
     </resources>
     <classes>
         <class className="CampaignCell" superclassName="UITableViewCell">
@@ -316,6 +421,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CampaigniphoneViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="campaignsTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CompendiumViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompendiumViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="GHRevealViewController" superclassName="UIViewController">
@@ -344,6 +455,45 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NoteTakingViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteTakingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeColourToUse:"/>
+                <relationship kind="action" name="sendnote:"/>
+                <relationship kind="action" name="toggleNoteTakingMode:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="addLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="blackbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="bluebutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="clearbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="greenbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="noteView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="orangebutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="purple" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="redbutton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="signatureImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ToolSelectorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToolSelectorViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="actionsItemView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tileSelectionScroll" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="mapMakeriphoneViewController" superclassName="MapMakerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mapMakeriphoneViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="mapmaking:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="placeAnObject:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="toggleEditMode:"/>
+                <relationship kind="outlet" name="backbutton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="mapEditingMenu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="openMapEditingMenu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="openPlaceAnObjectMenu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
         </class>
         <class className="masterBaseViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/masterBaseViewController.h"/>

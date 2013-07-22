@@ -37,8 +37,47 @@
     
 }
 
-+(void)styleSegmentedControlWithFontName:(NSString*)fontName andSelectedColor:(UIColor*)selectedColor andUnselectedColor:(UIColor*)unselectedColor andDidviderColor:(UIColor*)dividerColor{
++(void)styleToolbarWithFontName:(NSString*)navigationTitleFont andColor:(UIColor*)color{
+ 
     
+    CGSize size = CGSizeMake(320, 44);
+    
+    UIGraphicsBeginImageContext(size);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGRect fillRect = CGRectMake(0,0,size.width,size.height);
+    CGContextSetFillColorWithColor(currentContext, color.CGColor);
+    CGContextFillRect(currentContext, fillRect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    UIToolbar* toolAppearance = [UIToolbar appearance];
+    
+    [toolAppearance setBackgroundImage: image forToolbarPosition:UIToolbarPositionAny
+                            barMetrics:UIBarMetricsDefault];
+          
+}
+
++(void)styleTabBar:(NSString*)navigationTitleFont andColor:(UIColor*)color{
+    CGSize size = CGSizeMake(320, 44);
+    
+    UIGraphicsBeginImageContext(size);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    CGRect fillRect = CGRectMake(0,0,size.width,size.height);
+    CGContextSetFillColorWithColor(currentContext, color.CGColor);
+    CGContextFillRect(currentContext, fillRect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UITabBar *bar = [UITabBar appearance];
+    
+    [bar setBackgroundImage:image];
+
+}
+
++(void)styleSegmentedControlWithFontName:(NSString*)fontName andSelectedColor:(UIColor*)selectedColor andUnselectedColor:(UIColor*)unselectedColor andDidviderColor:(UIColor*)dividerColor{
     UIFont* font = [UIFont fontWithName:fontName size:13.0f];
     
     UIImage* segmentedBackground = [Utils drawImageOfSize:CGSizeMake(50, 30) andColor:unselectedColor];

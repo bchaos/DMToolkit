@@ -45,8 +45,8 @@
 }
 
 - (IBAction)goToCampaing:(id)sender {
-    [DuegonMasterSingleton sharedInstance].currentCampaign=self.campaign;
-    [DuegonMasterSingleton sharedInstance].currentMap=self.campaign.map;
+    [dungeonMasterSingleton sharedInstance].currentCampaign=self.campaign;
+    [dungeonMasterSingleton sharedInstance].currentMap=self.campaign.map;
     [JE_ notifyName:@"toCampaign" object:nil];
 }
 @end

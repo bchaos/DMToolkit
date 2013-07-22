@@ -33,8 +33,8 @@ static NSString * placeHolderKey=@"placeHolder";
 }
 -(void)viewDidAppear:(BOOL)animated{
    
-    _myCharacter =[DuegonMasterSingleton sharedInstance].currentCharacter;
-    if([DuegonMasterSingleton sharedInstance].toNPCPage){
+    _myCharacter =[dungeonMasterSingleton sharedInstance].currentCharacter;
+    if([dungeonMasterSingleton sharedInstance].toNPCPage){
         _racesTOUse = @"race";
         [JE_ notifyObserver:self selector:@selector(reloadData) name:@"updateHeader"];
     }else{
@@ -97,7 +97,7 @@ static NSString * placeHolderKey=@"placeHolder";
        [_myCharacter.race removeCharacterObject:_myCharacter];
     _myCharacter.race=race;
     [race addCharacterObject:_myCharacter];
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     [self reloadData];
 }
 
@@ -106,7 +106,7 @@ static NSString * placeHolderKey=@"placeHolder";
         [_myCharacter.characterClass removeCharacterObject:_myCharacter];
     _myCharacter.characterClass=class;
     [class addCharacterObject:_myCharacter];
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     [self reloadData];
 }
 

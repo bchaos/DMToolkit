@@ -54,19 +54,19 @@
     NSString * host= url.host;
     if([protocol hasSuffix:@"engage"]){
         [_delegate done];
-        [DuegonMasterSingleton sharedInstance].currentEncounter=[[DuegonMasterSingleton sharedInstance]findEncounterNamed:host];
-        [DuegonMasterSingleton sharedInstance].currentMap=[DuegonMasterSingleton sharedInstance].currentEncounter.map;
+        [dungeonMasterSingleton sharedInstance].currentEncounter=[[dungeonMasterSingleton sharedInstance]findEncounterNamed:host];
+        [dungeonMasterSingleton sharedInstance].currentMap=[dungeonMasterSingleton sharedInstance].currentEncounter.map;
         [JE_ notifyName:@"toEncounterViewer" object:nil];
     return YES;
     }else if([protocol hasSuffix:@"fullpc"]){
            [_delegate done];
-         [DuegonMasterSingleton sharedInstance].currentCharacter=[[DuegonMasterSingleton sharedInstance]findPlayerCharacterNamed:host];
+         [dungeonMasterSingleton sharedInstance].currentCharacter=[[dungeonMasterSingleton sharedInstance]findPlayerCharacterNamed:host];
         [JE_ notifyName:kShowCharacterCreator object:nil];
             return YES;
     }
     else if([protocol hasSuffix:@"fullnpc"]){
            [_delegate done];
-        [DuegonMasterSingleton sharedInstance].currentCharacter=[[DuegonMasterSingleton sharedInstance]findNPCNamed:host];
+        [dungeonMasterSingleton sharedInstance].currentCharacter=[[dungeonMasterSingleton sharedInstance]findNPCNamed:host];
         [JE_ notifyName:kShowCharacterCreatorNPC object:nil];
             return YES;
     }
@@ -80,16 +80,16 @@
 - (IBAction)view:(id)sender {
         [_delegate done];
     if ([_type isEqualToString:@"enage"] ){
-        [DuegonMasterSingleton sharedInstance].currentEncounter=[[DuegonMasterSingleton sharedInstance]findEncounterNamed:_openFileNamed];
-        [DuegonMasterSingleton sharedInstance].currentMap=[DuegonMasterSingleton sharedInstance].currentEncounter.map;
+        [dungeonMasterSingleton sharedInstance].currentEncounter=[[dungeonMasterSingleton sharedInstance]findEncounterNamed:_openFileNamed];
+        [dungeonMasterSingleton sharedInstance].currentMap=[dungeonMasterSingleton sharedInstance].currentEncounter.map;
         [JE_ notifyName:@"toEncounterViewer" object:nil];
     }else if([_type isEqualToString:@"FullPC"]){
         [_delegate done];
-        [DuegonMasterSingleton sharedInstance].currentCharacter=[[DuegonMasterSingleton sharedInstance]findPlayerCharacterNamed:_openFileNamed];
+        [dungeonMasterSingleton sharedInstance].currentCharacter=[[dungeonMasterSingleton sharedInstance]findPlayerCharacterNamed:_openFileNamed];
         [JE_ notifyName:kShowCharacterCreator object:nil];
     }else{
         [_delegate done];
-        [DuegonMasterSingleton sharedInstance].currentCharacter=[[DuegonMasterSingleton sharedInstance]findNPCNamed:_openFileNamed];
+        [dungeonMasterSingleton sharedInstance].currentCharacter=[[dungeonMasterSingleton sharedInstance]findNPCNamed:_openFileNamed];
         [JE_ notifyName:kShowCharacterCreatorNPC object:nil];
     }
     

@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	currentEncounter = [DuegonMasterSingleton sharedInstance].currentEncounter;
+	currentEncounter = [dungeonMasterSingleton sharedInstance].currentEncounter;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.labelText = @"Loading";
@@ -82,7 +82,7 @@
     NSString * host= url.host;
     if([protocol hasSuffix:@"save"]){
         currentEncounter.about=host;
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         return YES;
     }
     return NO;
@@ -93,7 +93,7 @@
         [currentEncounter setValue:[_campaignWebview stringByEvaluatingJavaScriptFromString:@"document.getElementById('Content').innerHTML" ] forKey:@"about"];
          //[currentEncounter setValue:[_campaignWebview stringByEvaluatingJavaScriptFromString:@"document.getElementById('sampleTitle').innerHTML" ] forKey:@"name"];
     }
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
 }
 
 - (void)didReceiveMemoryWarning

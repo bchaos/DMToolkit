@@ -38,7 +38,7 @@ static NSString * placeHolderKey=@"placeHolder";
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
 }
 -(void)addEditFieldToScreen{
     _editField = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, 5, 5)];
@@ -286,17 +286,17 @@ static NSString * placeHolderKey=@"placeHolder";
 -(void)updatePickerFilter{
     NSString * value = [self valueToUpdate:0 inSection:_picker.tag];
     if([value isEqualToString:@"class"]){
-        _pickerArray= [[ DuegonMasterSingleton sharedInstance]AllCharacterClasses:_pickerSearch.text];
+        _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllCharacterClasses:_pickerSearch.text];
     }else if ([value isEqualToString:@"playerRace"]){
-         _pickerArray= [[ DuegonMasterSingleton sharedInstance]allPlayerRaces:_pickerSearch.text];
+         _pickerArray= [[ dungeonMasterSingleton sharedInstance]allPlayerRaces:_pickerSearch.text];
     }else if ([value isEqualToString:@"items"]){
-        _pickerArray= [[ DuegonMasterSingleton sharedInstance]AllItems:_pickerSearch.text];
+        _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllItems:_pickerSearch.text];
     }else if ([value isEqualToString:@"skills"]){
-        _pickerArray= [[ DuegonMasterSingleton sharedInstance]AllSkills:_pickerSearch.text];
+        _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllSkills:_pickerSearch.text];
     }else if ([value isEqualToString:@"feats"]){
-        _pickerArray= [[ DuegonMasterSingleton sharedInstance]AllFeats:_pickerSearch.text];
+        _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllFeats:_pickerSearch.text];
     }else if ([value isEqualToString:@"race"]){
-        _pickerArray= [[ DuegonMasterSingleton sharedInstance]AllRace:_pickerSearch.text];
+        _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllRace:_pickerSearch.text];
     }
     [_picker reloadAllComponents];
 

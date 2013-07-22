@@ -52,7 +52,7 @@
     self.topStack.isHorizontal=YES;
     self.bottomStack.gutter=10;
     self.bottomStack.isHorizontal=YES;
-    [[[DuegonMasterSingleton sharedInstance]AllCampaigns:nil]each:^(Campaign *camp) {
+    [[[dungeonMasterSingleton sharedInstance]AllCampaigns:nil]each:^(Campaign *camp) {
         CampaingButtonViewController * myButton = [[ CampaingButtonViewController alloc]initWithNibName:@"CampaingButtonViewController" bundle:[NSBundle mainBundle]];
         myButton.campaign= camp;
         [_buttons addObject:myButton];
@@ -81,12 +81,12 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)showCharacterCreator{
-    [DuegonMasterSingleton sharedInstance].toNPCPage=NO;
+    [dungeonMasterSingleton sharedInstance].toNPCPage=NO;
      [self.navigationController popToRootViewControllerAnimated:NO];
     [self performSegueWithIdentifier:@"toCharacterSheet" sender:self];
 }
 -(void)showNPCCharacterCreator{
-    [DuegonMasterSingleton sharedInstance].toNPCPage=YES;
+    [dungeonMasterSingleton sharedInstance].toNPCPage=YES;
     [self.navigationController popToRootViewControllerAnimated:NO];
     [self performSegueWithIdentifier:@"toCharacterSheet" sender:self];
 }

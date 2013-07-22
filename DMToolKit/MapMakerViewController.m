@@ -10,13 +10,16 @@
 #import "fontsAndColourConstants.h"
 #import <NSString+FontAwesome.h>
 #import <MBProgressHUD.h>
+#define IS_IPAD    (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
 #define WIDTH 32
 #define HEIGHT 32
 #define PADDING 0
-#define NUMBEROFBUTTONSINAROW 15
+#define NUMBEROFBUTTONSINAROW (IS_IPAD ? 15 : 8)
 #define X 0
 #define Y 0
-#define TOTALBUTTONS 225
+ 
+
+#define TOTALBUTTONS (IS_IPAD ? 225 : 64)
 #define TileMapSizeWidth 512
 #define TileMapSizeHeight 384
 #define tilesInARow 16
@@ -49,10 +52,9 @@ typedef enum {
     buttonWithFrameData * currentSelection;
     UIButton * currentlyEditing;
     BOOL buttonEdited;
-    NSMutableArray * Dic;
     NSMutableDictionary * mapInfoDic;
     NSString *keyToEdit;
-    Map *currentMap;
+    
 }
 
 @end
@@ -84,7 +86,7 @@ typedef enum {
     NSString * fileName= [NSString stringWithFormat:@"%@.txt",[JE_ GetUUID]];
     assert( [JE_ createFileinDocDirectory:fileName]);
      NSString * filePath=[NSString stringWithFormat:@"%@/%@", [JE_ docs], fileName ];
-    currentMap.gridInfomation=filePath;
+    _currentMap.gridInfomation=filePath;
    
     
     [self setupDictWithGridPath:filePath];
@@ -92,7 +94,7 @@ typedef enum {
 
 -(void)setupDictWithGridPath:(NSString *)filePath{
     
-    Dic= [[NSMutableArray alloc]init];
+    _Dic= [[NSMutableArray alloc]init];
     for(int i=0 ; i<TOTALBUTTONS;i++)
     {
         NSArray * objects= @[NSStringFromCGRect(CGRectMake(0, 0, 40, 40)), @"", @"",@"",@"",@"",@"",@""];
@@ -100,7 +102,7 @@ typedef enum {
         
         NSMutableDictionary* newItem = [[ NSMutableDictionary  alloc]initWithObjects:objects
                                                                              forKeys:keys];
-        [Dic addObject:newItem];
+        [_Dic addObject:newItem];
     }
     
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:_mapDataString ofType:@"html"];
@@ -109,8 +111,8 @@ typedef enum {
                   @"mapName":@"New Map" ,
                   @"mapDescription" : basicMapDescriptionString
                   }];
-    [Dic addObject:mapInfoDic];
-    if([Dic writeToFile:filePath atomically:YES]){
+    [_Dic addObject:mapInfoDic];
+    if([_Dic writeToFile:filePath atomically:YES]){
         NSLog(@"wroteTOpath");
     }else{
         NSLog(@"failed");
@@ -119,42 +121,47 @@ typedef enum {
 }
 
 -(void)setupDic{
-    currentMap=[DuegonMasterSingleton sharedInstance].currentMap;
-    NSString * gridInfo= currentMap.gridInfomation;
+    _currentMap=[dungeonMasterSingleton sharedInstance].currentMap;
+    NSString * gridInfo= _currentMap.gridInfomation;
     if(gridInfo){
-        Dic =[NSMutableArray arrayWithContentsOfFile:gridInfo];
-        if(!Dic){
+        _Dic =[NSMutableArray arrayWithContentsOfFile:gridInfo];
+        if(!_Dic){
             [self setupDictWithGridPath:gridInfo];
         }
     }else{
         [self createDefaultDic];
     }
 }
+-(void)viewWillAppear:(BOOL)animated{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading";
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     if(!_loaded){
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Loading";
-        
             [self setupDic];
-            [self.TitleButton setTitle:Dic.last[@"mapName"] forState:UIControlStateNormal];
+            [self.TitleButton setTitle:_Dic.last[@"mapName"] forState:UIControlStateNormal];
             [self setupGrid];
             [self setupTools];
             [self createSideBar];
-        if(self.previousMap.count >0){
-            _PreviousMapButton.hidden=NO;
-        }else{
-            _PreviousMapButton.hidden=YES;
-        }
+            [self setupPreviousButton];
             _loaded=YES;
             canEdit=YES;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self openMapDetails:self];
-
-        
     }
 }
+
+-(void)setupPreviousButton{
+    if(self.previousMap.count >0){
+        _PreviousMapButton.hidden=NO;
+    }else{
+        _PreviousMapButton.hidden=YES;
+    }
+}
+
 -(void)viewWillDisappear:(BOOL)animated{
-     [Dic writeToFile:currentMap.gridInfomation atomically:YES];
+     [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -177,8 +184,8 @@ typedef enum {
     @autoreleasepool {
         
     
-    [Dic eachWithIndex:^(id object, int i) {
-        if( object!=Dic.last){
+    [_Dic eachWithIndex:^(id object, int i) {
+        if( object!=_Dic.last){
         
         UIImage * baseImage= [_map crop: CGRectFromString([object objectForKey:buttonKey])];
         UIButton *btnClick = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -225,7 +232,7 @@ typedef enum {
 
 - (IBAction)previousMapSelected:(id)sender {
     Map * prevMap =[self.previousMap  pop];
-    [DuegonMasterSingleton sharedInstance].currentMap=prevMap;
+    [dungeonMasterSingleton sharedInstance].currentMap=prevMap;
     [self reloadMap:NO];
     
 }
@@ -279,13 +286,13 @@ typedef enum {
     int toolsize=50;
     [self createToolsDictionary];
     [_toolsDic eachWithIndex:^(NSArray * array, int i) {
-        NSDictionary * dic= [array objectAtIndex:0];
+        NSDictionary * my_Dic= [array objectAtIndex:0];
         buttonWithFrameData * greenButton = [buttonWithFrameData buttonWithType:UIButtonTypeCustom];
         greenButton.frame= CGRectMake(toolsize *i+2*i, 2, toolsize, toolsize);
         [greenButton addTarget:self action:@selector(showToolSubMenu:) forControlEvents:UIControlEventTouchUpInside];
         greenButton.tag=i;
-        greenButton.frameValue=[dic objectForKey:@"frame"];
-        [greenButton setImage:[dic objectForKey:@"image"] forState:UIControlStateNormal];
+        greenButton.frameValue=[my_Dic objectForKey:@"frame"];
+        [greenButton setImage:[my_Dic objectForKey:@"image"] forState:UIControlStateNormal];
         greenButton.layer.borderWidth=1.0f;
         greenButton.backgroundColor=[UIColor whiteColor];
         [_toolkit addSubview:greenButton];
@@ -342,32 +349,41 @@ typedef enum {
 }
 
 -(void)setMode:(buttonWithFrameData*)sender{
-    mode=sender.tag;
+    [self setModeWithInt:sender.tag];
     [self addButtonGlow:sender];
+}
+-(void)setModeWithInt:(NSInteger)newmode{
+    
+    mode=newmode;
 }
 
 -(void)addSelectionContorller:(NSArray* )initalList inButton:(UIButton *)button{
+    
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     SelectionViewController * selection = [[SelectionViewController alloc]init];
     [selection setList:initalList];
     selection.delegate=self;
     _popover= [[UIPopoverController alloc]initWithContentViewController:selection];
     _popover.delegate=self;
     [_popover presentPopoverFromRect:CGRectMake(0, 0, 25, 25) inView:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+     }
 }
 #pragma mark map Popover
 
 
 -(void)showMapPopOverControllerForMap:(mapDescriptionViewController *)map{
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     _popover= [[UIPopoverController alloc]initWithContentViewController:map];
     _popover.delegate=self;
     [_popover setPopoverContentSize:CGSizeMake(500, 500)];
     [_popover presentPopoverFromRect:CGRectMake(300, 400, 25, 25) inView:self.view permittedArrowDirections:0 animated:YES];
+     }
 
 }
 -(void)go:(NSString *)fileName{
     [_popover dismissPopoverAnimated:NO];
     
-    [DuegonMasterSingleton sharedInstance].currentMap = [[DuegonMasterSingleton sharedInstance]findMapNamed:fileName];
+    [dungeonMasterSingleton sharedInstance].currentMap = [[dungeonMasterSingleton sharedInstance]findMapNamed:fileName];
     [NSTimer scheduledTimerWithTimeInterval:.06 target:self selector:@selector(reloadMap:) userInfo:nil repeats:NO];
    
 }
@@ -380,8 +396,8 @@ typedef enum {
 }
 
 -(void)showMapInfo: (Map *)mapToShow{
-    NSMutableArray * tempDic =[NSMutableArray arrayWithContentsOfFile:mapToShow.gridInfomation];
-    mapDescriptionViewController * map= [self createMapWithGridInfo:tempDic.last andFileName:mapToShow.gridInfomation];
+    NSMutableArray * temp_Dic =[NSMutableArray arrayWithContentsOfFile:mapToShow.gridInfomation];
+    mapDescriptionViewController * map= [self createMapWithGridInfo:temp_Dic.last andFileName:mapToShow.gridInfomation];
     map.hasViewButton=YES;
     [self showMapPopOverControllerForMap:map];
 }
@@ -391,8 +407,8 @@ typedef enum {
 -(void)ItemSelected:(NSManagedObject *)object{
     buttonEdited=YES;
     [_popover dismissPopoverAnimated:YES];
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:[object valueForKey:@"name"] forKey:keyToEdit];
-     [Dic writeToFile:currentMap.gridInfomation atomically:YES];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:[object valueForKey:@"name"] forKey:keyToEdit];
+     [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
 }
 -(void)reloadMap :(BOOL)foward{
     [_spinner startAnimating];
@@ -403,7 +419,7 @@ typedef enum {
     }
     newMap.previousMap= self.previousMap;
     if(foward){
-        [newMap.previousMap push:currentMap];
+        [newMap.previousMap push:_currentMap];
     }
         
         
@@ -418,17 +434,17 @@ typedef enum {
 -(void)addZone:(UIButton *)button{
     if([self dicIsEmpty]){
         [button setImage:[UIImage imageNamed:@"53-house.png"] forState:UIControlStateNormal];
-        Map *newMap = [[DuegonMasterSingleton sharedInstance]createMap];
-        [currentMap addSubMapsObject:newMap];
-        [newMap addSubMapsObject:currentMap];
+        Map *newMap = [[dungeonMasterSingleton sharedInstance]createMap];
+        [_currentMap addSubMapsObject:newMap];
+        [newMap addSubMapsObject:_currentMap];
         NSString * fileName= [NSString stringWithFormat:@"%@.txt",[JE_ GetUUID]];
         assert( [JE_ createFileinDocDirectory:fileName]);
         NSString * filePath=[NSString stringWithFormat:@"%@/%@", [JE_ docs], fileName ];
         newMap.gridInfomation=filePath;
-        [DuegonMasterSingleton sharedInstance].currentMap=newMap;
-        [[DuegonMasterSingleton sharedInstance]save];
-        [[Dic objectAtIndex:currentlyEditing.tag] setObject:newMap.gridInfomation forKey:keyToEdit];
-        [Dic writeToFile:currentMap.gridInfomation atomically:YES];
+        [dungeonMasterSingleton sharedInstance].currentMap=newMap;
+        [[dungeonMasterSingleton sharedInstance]save];
+        [[_Dic objectAtIndex:currentlyEditing.tag] setObject:newMap.gridInfomation forKey:keyToEdit];
+        [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
         _spinner.hidden=NO;
         [self reloadMap :YES];
     }
@@ -440,26 +456,26 @@ typedef enum {
 -(void)addNote:(UIButton *)button{
     if([self dicIsEmpty]){
         [button setImage:[UIImage imageNamed:@"179-notepad.png"] forState:UIControlStateNormal];
-        Notes * newNote = [[DuegonMasterSingleton sharedInstance] createNotes];
+        Notes * newNote = [[dungeonMasterSingleton sharedInstance] createNotes];
         newNote.name= @"New Note";
         newNote.date= [NSDate date];
-        [[Dic objectAtIndex:currentlyEditing.tag] setObject:newNote.date forKey:keyToEdit];
-        [[DuegonMasterSingleton sharedInstance]save];
-        [DuegonMasterSingleton sharedInstance].currentNote=newNote;
+        [[_Dic objectAtIndex:currentlyEditing.tag] setObject:newNote.date forKey:keyToEdit];
+        [[dungeonMasterSingleton sharedInstance]save];
+        [dungeonMasterSingleton sharedInstance].currentNote=newNote;
         campaignNoteTakerViewController *taker= [[campaignNoteTakerViewController alloc]initWithNibName:@"campaignNoteTakerViewController"bundle:[NSBundle mainBundle]];
         taker.delegate=self;
         _popover= [[UIPopoverController alloc]initWithContentViewController:taker];
         _popover.delegate=self;
         [_popover setPopoverContentSize:CGSizeMake(500, 500)];
         [_popover presentPopoverFromRect:CGRectMake(0, 0, 25, 25) inView:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-         [Dic writeToFile:currentMap.gridInfomation atomically:YES];
+         [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
     }else{
         [self showNeedToClearAlert];
     }
 }
 -(void)newGrid:(NSDictionary *)newGrid{
-    [Dic setObject:newGrid atIndexedSubscript:Dic.count-1];
-    [self.TitleButton setTitle:Dic.last[@"mapName"] forState:UIControlStateNormal];
+    [_Dic setObject:newGrid atIndexedSubscript:_Dic.count-1];
+    [self.TitleButton setTitle:_Dic.last[@"mapName"] forState:UIControlStateNormal];
 }
 -(void)done{
     [_popover dismissPopoverAnimated:YES];
@@ -483,18 +499,18 @@ typedef enum {
 }
 
 -(void)clearDic{
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:MapKey];
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:NPCkey];
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:ItemKey];
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:NoteKey];
-        [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:monsterKey];
-        [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:playerKey];
-    [[Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:EncounterKey];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:MapKey];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:NPCkey];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:ItemKey];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:NoteKey];
+        [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:monsterKey];
+        [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:playerKey];
+    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:@"" forKey:EncounterKey];
     [currentlyEditing setImage:nil forState:UIControlStateNormal];
 }
 
 -(BOOL)dicIsEmpty{
-    NSMutableDictionary * currentIndex= [Dic objectAtIndex:currentlyEditing.tag];
+    NSMutableDictionary * currentIndex= [_Dic objectAtIndex:currentlyEditing.tag];
     if(![[currentIndex objectForKey:NPCkey] isEqual:@""]){
       return NO;
     }else if(![[currentIndex objectForKey:EncounterKey] isEqual:@""]){
@@ -523,16 +539,16 @@ typedef enum {
         switch (mode) {
             case 0:
                 [sender setBackgroundImage:[currentSelection imageForState:UIControlStateNormal] forState:UIControlStateNormal];
-                [[Dic objectAtIndex:currentlyEditing.tag] setObject:currentSelection.frameValue forKey:buttonKey];
-                 [Dic writeToFile:currentMap.gridInfomation atomically:YES];
+                [[_Dic objectAtIndex:currentlyEditing.tag] setObject:currentSelection.frameValue forKey:buttonKey];
+                 [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
             break;
             case 2:
-                [self addSelectionContorller:[[DuegonMasterSingleton sharedInstance] AllNPC:nil] inButton:sender];
+                [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllNPC:nil] inButton:sender];
                 [sender setImage:[UIImage imageNamed:@"145-persondot.png"] forState:UIControlStateNormal];
                 keyToEdit= NPCkey;
             break;
             case 3:
-                [self addSelectionContorller:[[DuegonMasterSingleton sharedInstance] AllEncounter:nil] inButton:sender];
+                [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllEncounter:nil] inButton:sender];
                   [sender setImage:[UIImage imageNamed:@"sword.png"] forState:UIControlStateNormal];
                 keyToEdit= EncounterKey;
                 break;
@@ -542,7 +558,7 @@ typedef enum {
             
                 break;
             case 5:
-                [self addSelectionContorller:[[DuegonMasterSingleton sharedInstance] AllItems:nil] inButton:sender];
+                [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllItems:nil] inButton:sender];
                 [sender setImage:[UIImage imageNamed:@"chest.png"] forState:UIControlStateNormal];
                 keyToEdit=ItemKey;
                 break;
@@ -551,12 +567,12 @@ typedef enum {
                 [self addNote: sender];
                 break;
             case 8:
-                [self addSelectionContorller:[[DuegonMasterSingleton sharedInstance] AllPlayerCharacters:nil] inButton:sender];
+                [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllPlayerCharacters:nil] inButton:sender];
                 [sender setImage:[UIImage imageNamed:@"111-user.png"] forState:UIControlStateNormal];
                 keyToEdit= playerKey;
                 break;
             case 9:
-                [self addSelectionContorller:[[DuegonMasterSingleton sharedInstance] AllNPC:nil]  inButton:sender];
+                [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllNPC:nil]  inButton:sender];
                 [sender setImage:[UIImage imageNamed:@"132-ghost.png"] forState:UIControlStateNormal];
                 keyToEdit= monsterKey;
                 break;
@@ -564,7 +580,7 @@ typedef enum {
                 [self resetButton: sender];
                 break;
 			case 12:
-                	 [[DuegonMasterSingleton sharedInstance]save];
+                	 [[dungeonMasterSingleton sharedInstance]save];
 					_mail=[[PCMailHandler alloc]init];
 					_mail.delegate=self;
 					[_mail composeEmailForSession];
@@ -575,27 +591,27 @@ typedef enum {
         _itemMode=mode;
     }else{
         // here is show what is currently on a tile or open a zone
-        NSMutableDictionary * currentIndex= [Dic objectAtIndex:currentlyEditing.tag];
+        NSMutableDictionary * currentIndex= [_Dic objectAtIndex:currentlyEditing.tag];
         if(![[currentIndex objectForKey:NPCkey] isEqual:@""]){
     
-            _currentMangagedObject = [[DuegonMasterSingleton sharedInstance]findNPCNamed:currentIndex[NPCkey]];
+            _currentMangagedObject = [[dungeonMasterSingleton sharedInstance]findNPCNamed:currentIndex[NPCkey]];
             [self infoPopup:sender];
         }else if(![[currentIndex objectForKey:EncounterKey] isEqual:@""]){
-            _currentMangagedObject = [[DuegonMasterSingleton sharedInstance]findEncounterNamed:[currentIndex objectForKey:EncounterKey]];
+            _currentMangagedObject = [[dungeonMasterSingleton sharedInstance]findEncounterNamed:[currentIndex objectForKey:EncounterKey]];
             [self infoPopup:sender];
         }else if(![[currentIndex objectForKey:NoteKey]isEqual:@""]){
-            [DuegonMasterSingleton sharedInstance].currentNote= [[DuegonMasterSingleton sharedInstance]findNoteWithTimeStamp:[currentIndex objectForKey:NoteKey]];
+            [dungeonMasterSingleton sharedInstance].currentNote= [[dungeonMasterSingleton sharedInstance]findNoteWithTimeStamp:[currentIndex objectForKey:NoteKey]];
             [self notePopup:sender];
         }else if(![[currentIndex objectForKey:MapKey]isEqual:@""]){
-            [self showMapInfo:[[DuegonMasterSingleton sharedInstance]findMapNamed:[currentIndex objectForKey:MapKey]]];
+            [self showMapInfo:[[dungeonMasterSingleton sharedInstance]findMapNamed:[currentIndex objectForKey:MapKey]]];
         }else if(![[currentIndex objectForKey:ItemKey]isEqual:@""]){
-            _currentMangagedObject = [[DuegonMasterSingleton sharedInstance]findItemNamed:[currentIndex objectForKey:ItemKey]];
+            _currentMangagedObject = [[dungeonMasterSingleton sharedInstance]findItemNamed:[currentIndex objectForKey:ItemKey]];
             [self infoPopup:sender];
         }else if(![[currentIndex objectForKey:monsterKey]isEqual:@""]){
-            _currentMangagedObject = [[DuegonMasterSingleton sharedInstance]findNPCNamed:[currentIndex objectForKey:monsterKey]];
+            _currentMangagedObject = [[dungeonMasterSingleton sharedInstance]findNPCNamed:[currentIndex objectForKey:monsterKey]];
             [self infoPopup:sender];
         }else if(![[currentIndex objectForKey:playerKey]isEqual:@""]){
-            _currentMangagedObject = [[DuegonMasterSingleton sharedInstance]findPlayerCharacterNamed:[currentIndex objectForKey:playerKey]];
+            _currentMangagedObject = [[dungeonMasterSingleton sharedInstance]findPlayerCharacterNamed:[currentIndex objectForKey:playerKey]];
             [self infoPopup:sender];
         }
         
@@ -652,7 +668,7 @@ typedef enum {
         NSString * raceName = ((Character *)_currentMangagedObject).race.name;
         if(raceName==nil)raceName=@"None";        
         fullText= [fullText stringByReplacingOccurrencesOfString:@"{{CharacterRace}}" withString: raceName];
-        if ([[DuegonMasterSingleton sharedInstance]findNPCNamed:nameString]){
+        if ([[dungeonMasterSingleton sharedInstance]findNPCNamed:nameString]){
          
             webView.type=@"FullNPC";
              fullText= [fullText stringByReplacingOccurrencesOfString:@"{{HostName}}" withString: @"FullNPC"];
@@ -729,9 +745,9 @@ typedef enum {
     return HEIGHT;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary * selectedDic= [[_toolsDic objectAtIndex:currentSelection.tag]objectAtIndex:indexPath.row];
-    [currentSelection setImage:[selectedDic objectForKey:@"image"] forState:UIControlStateNormal];
-    mode= [[selectedDic objectForKey:@"mode"]integerValue];
+    NSDictionary * selected_Dic= [[_toolsDic objectAtIndex:currentSelection.tag]objectAtIndex:indexPath.row];
+    [currentSelection setImage:[selected_Dic objectForKey:@"image"] forState:UIControlStateNormal];
+    mode= [[selected_Dic objectForKey:@"mode"]integerValue];
     _groupSelectionTable.hidden=YES;
 
 }
@@ -795,7 +811,7 @@ typedef enum {
 
 - (IBAction)openMapDetails:(id)sender {
     
-    mapDescriptionViewController * map= [self createMapWithGridInfo:Dic.last andFileName:currentMap.gridInfomation];
+    mapDescriptionViewController * map= [self createMapWithGridInfo:_Dic.last andFileName:_currentMap.gridInfomation];
     map.hasViewButton=NO;
     [self showMapPopOverControllerForMap:map];
 }

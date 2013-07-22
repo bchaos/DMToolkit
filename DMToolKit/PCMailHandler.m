@@ -53,7 +53,7 @@
         return;
     }
 
-    NSString *opening = NSLocalizedString(@"<p>Here is a message from your Duegon Master.</p>\n", @"email header");
+    NSString *opening = NSLocalizedString(@"<p>Here is a message from your dungeon Master.</p>\n", @"email header");
     
   
     NSString *closing = NSLocalizedString(@"<p class='disclaimer'>Sent via DMKeeper", @"email disclaimer");

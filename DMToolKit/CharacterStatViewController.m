@@ -30,7 +30,7 @@ static NSString * placeHolderKey=@"placeHolder";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _myCharacter =[DuegonMasterSingleton sharedInstance].currentCharacter;
+    _myCharacter =[dungeonMasterSingleton sharedInstance].currentCharacter;
     if(_myCharacter !=nil){
         NSMutableDictionary * characterStrengthDefaultData = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Strength", placeHolderKey, @"45", @"rowHeight" ,@"strength", @"key",  [_myCharacter valueForKey:@"strength"], textKey,nil];
         

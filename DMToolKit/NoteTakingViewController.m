@@ -7,7 +7,7 @@
 //
 
 #import "NoteTakingViewController.h"
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 @interface NoteTakingViewController (){
     CGPoint lastPoint;
     //	UIImageView *drawImage;
@@ -105,7 +105,7 @@
     [super viewDidLoad];
     [self setupColourButtons];
     Notemode=NO;
-    _myNote= [[DuegonMasterSingleton sharedInstance]currentNote];
+    _myNote= [[dungeonMasterSingleton sharedInstance]currentNote];
     
     if(_myNote){
         [self reloadData];
@@ -168,7 +168,7 @@
     NSString * host= url.host;
     if([protocol hasSuffix:@"save"]){
         _myNote.text=host;
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         return YES;
     }
     return NO;
@@ -178,10 +178,10 @@
         _myNote.text= [_noteView stringByEvaluatingJavaScriptFromString:@"document.getElementById('Content').innerHTML"];
         _myNote.name= [_noteView stringByEvaluatingJavaScriptFromString:@"document.getElementById('Title').innerHTML"];
     }if([_myNote.group isEqualToString:@"Evernote"]){
-        [[DuegonMasterSingleton sharedInstance]saveEvernote:_myNote];
+        [[dungeonMasterSingleton sharedInstance]saveEvernote:_myNote];
     }
     
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     NSURL *myid=[_myNote.objectID URIRepresentation];
     NSString *string =[myid.host stringByAppendingString:myid.pathComponents.lastObject];
     NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.png",string]];
@@ -304,7 +304,7 @@
     }
 
     
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     _mail=[[PCMailHandler alloc]init];
     _mail.delegate=self;
     [_mail composeEmailWithNote:_myNote];

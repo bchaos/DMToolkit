@@ -14,7 +14,8 @@
 +(void)styleNavigationBarWithFontName:(NSString*)navigationTitleFont andColor:(UIColor*)color;
 
 +(void)styleSegmentedControlWithFontName:(NSString*)fontName andSelectedColor:(UIColor*)selectedColor andUnselectedColor:(UIColor*)unselectedColor andDidviderColor:(UIColor*)dividerColor;
-    
++(void)styleToolbarWithFontName:(NSString*)navigationTitleFont andColor:(UIColor*)color;
++(void)styleTabBar:(NSString*)navigationTitleFont andColor:(UIColor*)color;
 @property (nonatomic, strong) UIImage* switchOnBackground;
 @property (nonatomic, strong) UIImage* switchOffBackground;
 @property (nonatomic, strong) UIImage* switchThumb;

@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _myCharacter =[DuegonMasterSingleton sharedInstance].currentCharacter;
+    _myCharacter =[dungeonMasterSingleton sharedInstance].currentCharacter;
     [self reloadData];
     [JE_ notifyObserver:self selector:@selector(keyboardShown) name:UIKeyboardWillShowNotification];
     [JE_ notifyObserver:self selector:@selector(keyboardHidden) name:UIKeyboardWillHideNotification];
@@ -247,7 +247,7 @@
             [curSkill removeCharacterObject:_myCharacter];
             
         }
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         [self reloadData];
        
     }
@@ -326,9 +326,9 @@
 
 -(void)updatePickerFilter:(BOOL)isSkill{
     if(isSkill){
-        _pickerArray= [[DuegonMasterSingleton sharedInstance]AllSkills:_pickerSearch.text];
+        _pickerArray= [[dungeonMasterSingleton sharedInstance]AllSkills:_pickerSearch.text];
     }else{
-          _pickerArray= [[DuegonMasterSingleton sharedInstance]AllFeats:_pickerSearch.text];
+          _pickerArray= [[dungeonMasterSingleton sharedInstance]AllFeats:_pickerSearch.text];
     }
     [_picker reloadAllComponents];
 }
@@ -400,7 +400,7 @@
         [_myCharacter addSkillsObject:((Skills *)pickedStat)];
         [_skillsTable reloadData];
     }
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     _priorSelectedStat =pickedStat;
 }
 

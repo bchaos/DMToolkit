@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.campaigns= [[DuegonMasterSingleton sharedInstance]AllCampaigns:nil];
+    self.campaigns= [[dungeonMasterSingleton sharedInstance]AllCampaigns:nil];
     self.campaignsTable.backgroundColor=[fontsAndColourConstants MentorLightBlue];
 	
     self.campaignsTable.separatorColor= [UIColor clearColor];
@@ -56,7 +56,7 @@ CampaignCell* cell = [tableView dequeueReusableCellWithIdentifier:@"campaignCell
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    [DuegonMasterSingleton sharedInstance].currentCampaign= [self.campaigns objectAtIndex:indexPath.row];
+    [dungeonMasterSingleton sharedInstance].currentCampaign= [self.campaigns objectAtIndex:indexPath.row];
     [JE_ notifyName:@"toCampaign" object:nil];
     
 }

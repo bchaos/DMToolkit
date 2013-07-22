@@ -37,8 +37,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *PreviousMapButton;
 @property (nonatomic, strong) NSMutableArray* previousMap;
 @property (strong,  nonatomic) PCMailHandler *mail;
+@property (nonatomic,strong)NSMutableArray *Dic;
+@property (nonatomic,strong)Map *currentMap;
 // public interface functions for subclasses
 -(UIButton *)createBaseButton:(UIImage*)image withMode:(int)tag offset:(int)offset;
 - (IBAction)previousMapSelected:(id)sender;
 -(void)createSideBar;
+-(void)setupTools;
+-(void)setupPreviousButton;
+-(void)createToolsDictionary;
+-(void)setModeWithInt:(NSInteger)newmodew;
+-(mapDescriptionViewController *)createMapWithGridInfo:(NSMutableDictionary *)gridInfo andFileName:(NSString*)filename;
 @end

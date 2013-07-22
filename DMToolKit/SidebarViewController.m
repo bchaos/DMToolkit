@@ -7,7 +7,7 @@
 //
 
 #import "SidebarViewController.h"
-#import "DuegonMasterSingleton.h"
+#import "dungeonMasterSingleton.h"
 #import "AssetDataMiner.h"
 static NSString * nameKey= @"name";
 static NSString * functionKey=@"function";
@@ -116,16 +116,16 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
    
 }
 -(void)encounterName:(NSString *)name{
-    [DuegonMasterSingleton sharedInstance].currentEncounter.name=name;
+    [dungeonMasterSingleton sharedInstance].currentEncounter.name=name;
 }
 -(void)npcName:(NSString *)name{
-    [DuegonMasterSingleton sharedInstance].currentCharacter.name=name;
+    [dungeonMasterSingleton sharedInstance].currentCharacter.name=name;
 }
 -(void)noteName:(NSString *)name{
     _currentNote.name=name;
 }
 -(void)campaignName:(NSString *)name{
-    [DuegonMasterSingleton sharedInstance].currentCampaign.name=name;
+    [dungeonMasterSingleton sharedInstance].currentCampaign.name=name;
 }
 
 -(void)editingDidStart:(int)editingIndex{
@@ -139,7 +139,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     
     SEL appSelector =NSSelectorFromString(writeToFunction);
     [self performSelector:appSelector withObject:name];
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
 }
 
 #pragma  mark -filtering functions
@@ -147,7 +147,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredPlayers:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-      NSArray * players= [[DuegonMasterSingleton sharedInstance]allPlayers:filter];
+      NSArray * players= [[dungeonMasterSingleton sharedInstance]allPlayers:filter];
     if (players != nil && players.count>0){
         [_SelectionFields addObjectsFromArray: players];
         return players.count;
@@ -158,7 +158,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredFeats:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * feats=[[DuegonMasterSingleton sharedInstance]AllFeats:filter];
+    NSArray * feats=[[dungeonMasterSingleton sharedInstance]AllFeats:filter];
     if (feats != nil && feats.count>0){
         [_SelectionFields addObjectsFromArray: feats];
         return feats.count;
@@ -169,7 +169,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredItems:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * items=[[DuegonMasterSingleton sharedInstance]AllItems:filter];
+    NSArray * items=[[dungeonMasterSingleton sharedInstance]AllItems:filter];
     if (items != nil && items.count>0){
         [_SelectionFields addObjectsFromArray: items];
         return items.count;
@@ -181,7 +181,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredNPCs:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * npcs=[[DuegonMasterSingleton sharedInstance]AllNPC:filter];
+    NSArray * npcs=[[dungeonMasterSingleton sharedInstance]AllNPC:filter];
     if (npcs != nil && npcs.count>0){
         [_SelectionFields addObjectsFromArray: npcs];
         return npcs.count;
@@ -191,7 +191,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredMonsters:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * monsters=[[DuegonMasterSingleton sharedInstance]AllMonsters:filter];
+    NSArray * monsters=[[dungeonMasterSingleton sharedInstance]AllMonsters:filter];
     if (monsters != nil && monsters.count>0){
         [_SelectionFields addObjectsFromArray: monsters];
         return monsters.count;
@@ -201,7 +201,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredEncounters:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * encounters=[[DuegonMasterSingleton sharedInstance]AllEncounter:filter];
+    NSArray * encounters=[[dungeonMasterSingleton sharedInstance]AllEncounter:filter];
     if (encounters != nil && encounters.count>0){
         [_SelectionFields addObjectsFromArray: encounters];
         return encounters.count;
@@ -211,7 +211,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredCampaigns:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * campaigns=[[DuegonMasterSingleton sharedInstance]AllCampaigns:filter];
+    NSArray * campaigns=[[dungeonMasterSingleton sharedInstance]AllCampaigns:filter];
     if (campaigns != nil && campaigns.count>0){
         [_SelectionFields addObjectsFromArray: campaigns];
         return campaigns.count;
@@ -222,7 +222,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredSkills:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * skills=[[DuegonMasterSingleton sharedInstance]AllSkills:filter];
+    NSArray * skills=[[dungeonMasterSingleton sharedInstance]AllSkills:filter];
     if (skills != nil && skills.count>0){
         [_SelectionFields addObjectsFromArray: skills];
         return skills.count;
@@ -232,7 +232,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredNotes:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * notes=[[DuegonMasterSingleton sharedInstance]AllNotes:filter];
+    NSArray * notes=[[dungeonMasterSingleton sharedInstance]AllNotes:filter];
     if (notes != nil && notes.count>0){
         [_SelectionFields addObjectsFromArray: notes];
         return notes.count;
@@ -242,7 +242,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredPowers:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * powers=[[DuegonMasterSingleton sharedInstance]AllPowers:filter];
+    NSArray * powers=[[dungeonMasterSingleton sharedInstance]AllPowers:filter];
     if (powers != nil && powers.count>0){
         [_SelectionFields addObjectsFromArray: powers];
         return powers.count;
@@ -252,7 +252,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredDomains:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * domains=[[DuegonMasterSingleton sharedInstance]AllDomains:filter];
+    NSArray * domains=[[dungeonMasterSingleton sharedInstance]AllDomains:filter];
     if (domains != nil && domains.count>0){
         [_SelectionFields addObjectsFromArray: domains];
         return domains.count;
@@ -262,7 +262,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 
 -(int)getFilteredClasses:(NSString*)filter{
     [_SelectionFields removeAllObjects];
-    NSArray * domains=[[DuegonMasterSingleton sharedInstance]AllCharacterClasses:filter];
+    NSArray * domains=[[dungeonMasterSingleton sharedInstance]AllCharacterClasses:filter];
     if (domains != nil && domains.count>0){
         [_SelectionFields addObjectsFromArray: domains];
         return domains.count;
@@ -281,7 +281,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     int allPlayersCount =[self getFilteredPlayers:nil];
     if (allPlayersCount >0){
         
-         [[DuegonMasterSingleton sharedInstance] updateCurrentPlayer: [_SelectionFields objectAtIndex:0]];
+         [[dungeonMasterSingleton sharedInstance] updateCurrentPlayer: [_SelectionFields objectAtIndex:0]];
     }
 }
 
@@ -373,13 +373,13 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 -(void)showReferenceTableView:(NSDictionary *)dic{
     [_SelectionFields removeAllObjects];
      self.sectionLabel.text= @"Compendium";
-    NSNumber * monsterCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllMonsters:nil]count]];
-    NSNumber * featCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllFeats:nil]count]];
-    NSNumber * skillCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllSkills:nil]count]];
-    NSNumber * powerCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllPowers:nil]count]];
-    NSNumber * domainCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllDomains:nil]count]];
-    NSNumber * classCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllCharacterClasses:nil]count]];
-    NSNumber * itemcount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllItems:nil]count]];
+    NSNumber * monsterCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllMonsters:nil]count]];
+    NSNumber * featCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllFeats:nil]count]];
+    NSNumber * skillCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllSkills:nil]count]];
+    NSNumber * powerCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllPowers:nil]count]];
+    NSNumber * domainCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllDomains:nil]count]];
+    NSNumber * classCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllCharacterClasses:nil]count]];
+    NSNumber * itemcount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllItems:nil]count]];
     _SelectionFields= [NSMutableArray arrayWithObjects: [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable:", functionKey,itemcount,@"count", nil] ,
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView:", functionKey, monsterCount,@"count", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Feats" ,nameKey, @"showFeatsTableView:", functionKey,featCount,@"count", nil],
@@ -513,14 +513,14 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
                 NSString* fileContent = [[NSString alloc] initWithData:data
                                                           encoding:NSUTF8StringEncoding];
                 
-                Notes *GoogleDoc = [[DuegonMasterSingleton sharedInstance]findNoteWithExternalID:[dic objectForKey:@"guid"]];
+                Notes *GoogleDoc = [[dungeonMasterSingleton sharedInstance]findNoteWithExternalID:[dic objectForKey:@"guid"]];
                 if(GoogleDoc==nil)
-                    GoogleDoc =[[DuegonMasterSingleton sharedInstance]createNotes];
+                    GoogleDoc =[[dungeonMasterSingleton sharedInstance]createNotes];
                 GoogleDoc.date= [NSDate date];
                 GoogleDoc.group = @"GoogleDoc";
                 GoogleDoc.externalid= [dic objectForKey:@"guid"];
                 GoogleDoc.text=fileContent;
-                [DuegonMasterSingleton sharedInstance].currentNote= GoogleDoc;
+                [dungeonMasterSingleton sharedInstance].currentNote= GoogleDoc;
                 [JE_ notifyName: @"toNoteTaker" object:nil];
 
             }
@@ -617,9 +617,9 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 
 -(void)OpenEvernoteNote:(NSDictionary*)dic{
-    Notes *Evernote = [[DuegonMasterSingleton sharedInstance]findNoteWithExternalID:[dic objectForKey:@"guid"]];
+    Notes *Evernote = [[dungeonMasterSingleton sharedInstance]findNoteWithExternalID:[dic objectForKey:@"guid"]];
     if(Evernote==nil)
-        Evernote =[[DuegonMasterSingleton sharedInstance]createNotes];
+        Evernote =[[dungeonMasterSingleton sharedInstance]createNotes];
     Evernote.date= [NSDate date];
     Evernote.group = @"Evernote";
     Evernote.externalid= [dic objectForKey:@"guid"];
@@ -629,11 +629,11 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
         [utltility convertENMLToHTML:note.content withResources:note.resources completionBlock:^(NSString *html, NSError *error) {
             if(error == nil) {
                 Evernote.text=html;
-                [DuegonMasterSingleton sharedInstance].currentNote= Evernote;
+                [dungeonMasterSingleton sharedInstance].currentNote= Evernote;
                 [JE_ notifyName: @"toNoteTaker" object:nil];
             }else{
                 [JE_ okWithTitle:@"can not display" message:@"we are unable to display this note"];
-                [[DuegonMasterSingleton sharedInstance]deleteItem:Evernote];
+                [[dungeonMasterSingleton sharedInstance]deleteItem:Evernote];
             }
   
         }];
@@ -661,12 +661,12 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 
 -(void)setStartingContnet{
-    NSNumber * campaignCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllCampaigns:nil]count]];
+    NSNumber * campaignCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllCampaigns:nil]count]];
     
-    NSNumber * playerCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]allPlayers:nil]count]];
-    NSNumber * NPCscount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllNPC:nil]count]];
-    NSNumber * encountersCount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllEncounter:nil]count]];
-    NSNumber * notecount=  [NSNumber numberWithInt:[[[DuegonMasterSingleton sharedInstance]AllNotes:nil]count]];
+    NSNumber * playerCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]allPlayers:nil]count]];
+    NSNumber * NPCscount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllNPC:nil]count]];
+    NSNumber * encountersCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllEncounter:nil]count]];
+    NSNumber * notecount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllNotes:nil]count]];
     self.sectionLabel.text= @"Main Menu";
     _SelectionFields = [NSMutableArray arrayWithObjects:
                          [NSDictionary dictionaryWithObjectsAndKeys:@"Campaigns" ,nameKey, @"showCampaignTableView:", functionKey,@"103-map-white" ,@"icon" , campaignCount , @"count",  nil] ,
@@ -690,21 +690,21 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     [JE_ notifyName:@"deselect" object:nil];
   
     if([actionFunction isEqualToString:@"toReferenceViewer"]){
-        [DuegonMasterSingleton sharedInstance].currentObject=[_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentObject=[_SelectionFields objectAtIndex:indexPath.row];
     }if ([self atNoteMenu]){
-        [DuegonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:indexPath.row];
     }else if([self atNPCMenu]){
-        [DuegonMasterSingleton sharedInstance].currentCharacter =  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentCharacter =  [_SelectionFields objectAtIndex:indexPath.row];
     }else if([self atCampaignMenu]){
-        [DuegonMasterSingleton sharedInstance].currentCampaign =  [_SelectionFields objectAtIndex:indexPath.row];
-        Map * map= [DuegonMasterSingleton sharedInstance].currentCampaign.map;
-        [DuegonMasterSingleton sharedInstance].currentMap=map;
+        [dungeonMasterSingleton sharedInstance].currentCampaign =  [_SelectionFields objectAtIndex:indexPath.row];
+        Map * map= [dungeonMasterSingleton sharedInstance].currentCampaign.map;
+        [dungeonMasterSingleton sharedInstance].currentMap=map;
     }else if ([self atPlayermenu]){
-        [DuegonMasterSingleton sharedInstance].currentCharacter =  [[[[_SelectionFields objectAtIndex:indexPath.row] valueForKey:@"characters"]allObjects] objectAtIndex:0];
+        [dungeonMasterSingleton sharedInstance].currentCharacter =  [[[[_SelectionFields objectAtIndex:indexPath.row] valueForKey:@"characters"]allObjects] objectAtIndex:0];
     }
     else if ([self atEncounterMenu]){
-        [DuegonMasterSingleton sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:indexPath.row];
-        [DuegonMasterSingleton sharedInstance].currentMap= [DuegonMasterSingleton sharedInstance].currentEncounter.map;
+        [dungeonMasterSingleton sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentMap= [dungeonMasterSingleton sharedInstance].currentEncounter.map;
 
     }
     if(actionFunction !=nil && ![self atMainMenu] && ! [self atReferenceMenu]){
@@ -729,15 +729,23 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     NSString * nameToShow=[currentSelectionDictionary objectForKey:nameKey];
     self.sectionLabel.text = nameToShow;
     [self performSelector:appSelector withObject:currentSelectionDictionary];
+    
     _backbutton.alpha=1.0;
-    _searchField.alpha=1.0;
+    if (filterFunction){
+        
+        _searchField.alpha=1.0;
+        _searchField.enabled=YES;
+    }else{
+        _searchField.alpha=0.0;
+        _searchField.enabled=NO;
+    }
     [_searchField resignFirstResponder];
     if(_SelectionFields.count==0){
         _PulldownToAddLabel.alpha=1.0;
         _PulldownToAddLabel.text= [NSString stringWithFormat:@"Pull down to add a %@", [nameToShow substringToIndex:nameToShow.length-1]];
     }
     if(refMenu &&_SelectionFields.count>0){
-        [DuegonMasterSingleton sharedInstance].currentfulltext=[_SelectionFields objectAtIndex:0] ;
+        [dungeonMasterSingleton sharedInstance].currentfulltext=[_SelectionFields objectAtIndex:0] ;
     }
    
     [self.selectionTable reloadData];
@@ -747,19 +755,19 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     [JE_ notifyName:@"deselect" object:nil];
     if([self atPlayermenu]){
         
-        [[DuegonMasterSingleton sharedInstance] updateCurrentPlayer: [_SelectionFields objectAtIndex:selectionIndex]];
+        [[dungeonMasterSingleton sharedInstance] updateCurrentPlayer: [_SelectionFields objectAtIndex:selectionIndex]];
         
     }
     else if ([self atNPCMenu]){
-        [DuegonMasterSingleton sharedInstance].currentCharacter= [_SelectionFields objectAtIndex:selectionIndex];
+        [dungeonMasterSingleton sharedInstance].currentCharacter= [_SelectionFields objectAtIndex:selectionIndex];
     }
     else if ([self atNoteMenu]){
-        [DuegonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:selectionIndex];
+        [dungeonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:selectionIndex];
     }else if ([self atCampaignMenu]){
-        [DuegonMasterSingleton sharedInstance].currentCampaign=[_SelectionFields objectAtIndex:selectionIndex];
-        [DuegonMasterSingleton sharedInstance].currentMap=[DuegonMasterSingleton sharedInstance].currentCampaign.map;
+        [dungeonMasterSingleton sharedInstance].currentCampaign=[_SelectionFields objectAtIndex:selectionIndex];
+        [dungeonMasterSingleton sharedInstance].currentMap=[dungeonMasterSingleton sharedInstance].currentCampaign.map;
     }else if ([self atEncounterMenu]){
-        [DuegonMasterSingleton  sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:selectionIndex];
+        [dungeonMasterSingleton  sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:selectionIndex];
 
     }
     else if([self atMainMenu]  || [self atReferenceMenu]){
@@ -794,16 +802,22 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 - (IBAction)goBack:(id)sender {
    
-        [_searchField resignFirstResponder];
-    
+    [_searchField resignFirstResponder];
+    filterFunction=nil;
+    _searchField.alpha=0.0;
+    _searchField.text=@"";
+    _searchField.enabled=NO;
     if(![self atCompendiumSubMenu]){
         [self textFieldDidEndEditing: _editableTextField];
         [self setStartingContnet];
         _backbutton.alpha=0.0;
         _searchField.alpha=0.0;
+        _searchField.text=@"";
+        _searchField.enabled=NO;
        _PulldownToAddLabel.alpha=0.0;
         actionFunction=nil;
         writeToFunction=nil;
+        
         //[JE_ notifyName:@"goBack" object:nil];
         [[self context]save:nil];
     }else{
@@ -812,81 +826,91 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
      [self.selectionTable reloadData];
     }
 - (IBAction)filterCurrentSection:(UITextField*)sender {
+    if (filterFunction){
     SEL appSelector =NSSelectorFromString(filterFunction);
     [self performSelector:appSelector withObject:sender.text];
     [self.selectionTable reloadData];
+    }
 }
 
 #pragma  mark adding and updating menus
 
 -(void)createNewObjectBasedOnCurrentmenu{
     if([self atPlayermenu]){
-        _currentPlayer = [[DuegonMasterSingleton sharedInstance]createPlayerNamed:@""];
+        _currentPlayer = [[dungeonMasterSingleton sharedInstance]createPlayerNamed:@""];
         [ _SelectionFields insertObject:_currentPlayer atIndex:0];
     }
     if([self atNoteMenu]){
-        _currentNote= [[DuegonMasterSingleton sharedInstance]createNotes];
+        _currentNote= [[dungeonMasterSingleton sharedInstance]createNotes];
         _currentNote.name=@"New Note";
         _currentNote.date=[NSDate date];
         _currentNote.text=@"Click here to begin editing your new note.";
-        [DuegonMasterSingleton sharedInstance].currentNote=_currentNote;
+        [dungeonMasterSingleton sharedInstance].currentNote=_currentNote;
        
         [ _SelectionFields insertObject:_currentNote atIndex:0];
     }if([self atNPCMenu]){
-        _currentCharacter= [[DuegonMasterSingleton sharedInstance]createNPC];
+        _currentCharacter= [[dungeonMasterSingleton sharedInstance]createNPC];
         [ _SelectionFields insertObject:_currentCharacter atIndex:0];
     }else if ([self atCampaignMenu]){
-        Campaign * newCampaing = [[DuegonMasterSingleton sharedInstance]createCampaign];
-        Map * map= [[DuegonMasterSingleton sharedInstance]createMap];
+        Campaign * newCampaing = [[dungeonMasterSingleton sharedInstance]createCampaign];
+        Map * map= [[dungeonMasterSingleton sharedInstance]createMap];
         newCampaing.map=map;
         map.campain=newCampaing;
         [_SelectionFields insertObject:newCampaing atIndex:0];
-        [DuegonMasterSingleton sharedInstance].currentCampaign=newCampaing;
-        [DuegonMasterSingleton sharedInstance].currentMap=map;
+        [dungeonMasterSingleton sharedInstance].currentCampaign=newCampaing;
+        [dungeonMasterSingleton sharedInstance].currentMap=map;
     }else if ([self atEncounterMenu]){
-        Encounter * newEncounter= [[DuegonMasterSingleton sharedInstance]createEncounter];
-        Map * map= [[DuegonMasterSingleton sharedInstance]createMap];
+        Encounter * newEncounter= [[dungeonMasterSingleton sharedInstance]createEncounter];
+        Map * map= [[dungeonMasterSingleton sharedInstance]createMap];
         newEncounter.map= map;
         map.encounter=newEncounter;
-        [DuegonMasterSingleton sharedInstance].currentMap=map;
-        [DuegonMasterSingleton sharedInstance].currentEncounter=newEncounter;
+        [dungeonMasterSingleton sharedInstance].currentMap=map;
+        [dungeonMasterSingleton sharedInstance].currentEncounter=newEncounter;
         
         [ _SelectionFields insertObject:newEncounter atIndex:0];
     }else if ( [self atItemsMenu]){
-        Items * newItem = [[DuegonMasterSingleton sharedInstance]createItems];
-         [DuegonMasterSingleton sharedInstance].currentItem=newItem;
+        Items * newItem = [[dungeonMasterSingleton sharedInstance]createItems];
+         [dungeonMasterSingleton sharedInstance].currentItem=newItem;
          [ _SelectionFields insertObject:newItem atIndex:0];
     }else if ( [self atFeatsMenu]){
-         Feats * newFeat = [[DuegonMasterSingleton sharedInstance]createFeat];
-        [DuegonMasterSingleton sharedInstance].currentFeat=newFeat;
+         Feats * newFeat = [[dungeonMasterSingleton sharedInstance]createFeat];
+        [dungeonMasterSingleton sharedInstance].currentFeat=newFeat;
         [ _SelectionFields insertObject:newFeat atIndex:0];
     }else if ( [self atSkillsMenu]){
-        Skills * newSkill = [[DuegonMasterSingleton sharedInstance]createSkill];
-        [DuegonMasterSingleton sharedInstance].currentSkill=newSkill;
+        Skills * newSkill = [[dungeonMasterSingleton sharedInstance]createSkill];
+        [dungeonMasterSingleton sharedInstance].currentSkill=newSkill;
         [ _SelectionFields insertObject:newSkill atIndex:0];
     }else if ( [self atPowersMenu]){
-        Powers * newPower = [[DuegonMasterSingleton sharedInstance]createPower];
-        [DuegonMasterSingleton sharedInstance].currentPower=newPower;
+        Powers * newPower = [[dungeonMasterSingleton sharedInstance]createPower];
+        [dungeonMasterSingleton sharedInstance].currentPower=newPower;
         [ _SelectionFields insertObject:newPower atIndex:0];
     }else if ( [self atClassesMenu]){
-        CharacterClass * newClass = [[DuegonMasterSingleton sharedInstance]createCharacterClass];
-        [DuegonMasterSingleton sharedInstance].currentCharacterClass=newClass;
+        CharacterClass * newClass = [[dungeonMasterSingleton sharedInstance]createCharacterClass];
+        [dungeonMasterSingleton sharedInstance].currentCharacterClass=newClass;
         [ _SelectionFields insertObject:newClass atIndex:0];
     }else if ( [self atDomainsMenu]){
-        Domain * newDomain = [[DuegonMasterSingleton sharedInstance]createDomain];
-        [DuegonMasterSingleton sharedInstance].currentDomain=newDomain;
+        Domain * newDomain = [[dungeonMasterSingleton sharedInstance]createDomain];
+        [dungeonMasterSingleton sharedInstance].currentDomain=newDomain;
         [ _SelectionFields insertObject:newDomain atIndex:0];
     }else if ( [self atMonstersMenu]){
-        NPC * newmonster = [[DuegonMasterSingleton sharedInstance]createMonster];
-        [DuegonMasterSingleton sharedInstance].currentMonster=newmonster;
+        NPC * newmonster = [[dungeonMasterSingleton sharedInstance]createMonster];
+        [dungeonMasterSingleton sharedInstance].currentMonster=newmonster;
         [ _SelectionFields insertObject:newmonster atIndex:0];
     }
     
-     [[DuegonMasterSingleton sharedInstance]save];
+     [[dungeonMasterSingleton sharedInstance]save];
     
 }
 
-
+-(IBAction)returnHit:(id)sender{
+    _searchField.returnKeyType=UIReturnKeyDone;
+    _searchField.delegate=self;
+  
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)aTextfield {
+    [aTextfield resignFirstResponder];
+    return YES;
+}
 - (IBAction)addNew:(UIPanGestureRecognizer *)sender {
     UITableViewCell * topCell;
     NSArray * visibleCells=[self.selectionTable visibleCells];
@@ -989,7 +1013,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
             NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/%@.png",string]];
             [[NSFileManager defaultManager]removeItemAtPath:pngPath error:nil];
         }
-        [[DuegonMasterSingleton sharedInstance]deleteItem:object];
+        [[dungeonMasterSingleton sharedInstance]deleteItem:object];
         [_SelectionFields removeObjectAtIndex:_selectedCellIndex];
         [_selectionTable reloadData];
 
@@ -1001,7 +1025,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     NSManagedObject  * textDic= [_SelectionFields objectAtIndex:_selectedCellIndex];
     [textDic setValue:textField.text forKey:nameKey];
     [_SelectionFields replaceObjectAtIndex:_selectedCellIndex withObject:textDic];
-    [[DuegonMasterSingleton sharedInstance]save];
+    [[dungeonMasterSingleton sharedInstance]save];
     [JE_ notifyName:@"updateHeader" object:nil];
     [_selectionTable reloadData];
 }
@@ -1029,10 +1053,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
+
 
 
 - (IBAction)showDemBones:(UIButton * )sender {

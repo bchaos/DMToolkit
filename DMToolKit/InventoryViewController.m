@@ -30,7 +30,7 @@
     [super viewDidLoad];
     [JE_ notifyObserver:self selector:@selector(keyboardShown) name:UIKeyboardWillShowNotification];
     [JE_ notifyObserver:self selector:@selector(keyboardHidden) name:UIKeyboardWillHideNotification];
-    _myCharacter = [DuegonMasterSingleton sharedInstance].currentCharacter;
+    _myCharacter = [dungeonMasterSingleton sharedInstance].currentCharacter;
     [self reloadData];
 	// Do any additional setup after loading the view.
 }
@@ -213,7 +213,7 @@
         Items*curItem=[_inventoryArray objectAtIndex:indexPath.row];
         [_myCharacter removeInventoryObject:curItem];
         [curItem removeCharacterObject:_myCharacter];
-        [[DuegonMasterSingleton sharedInstance]save];
+        [[dungeonMasterSingleton sharedInstance]save];
         [self reloadData];
         
     }
@@ -258,7 +258,7 @@
     [self updatePickerFilter];
 }
 -(void)updatePickerFilter{
-    _pickerArray= [[DuegonMasterSingleton sharedInstance]AllItems:_pickerSearch.text];
+    _pickerArray= [[dungeonMasterSingleton sharedInstance]AllItems:_pickerSearch.text];
     [_picker reloadAllComponents];
     
 }
@@ -319,7 +319,7 @@
         [((Items *)pickedItem) addCharacterObject:_myCharacter];
         [_myCharacter addInventoryObject:((Items *)pickedItem)];
         [_inventoryTable reloadData];
-       [[DuegonMasterSingleton sharedInstance]save];
+       [[dungeonMasterSingleton sharedInstance]save];
     _priorInventoryItemSelected =pickedItem;
 }
 
