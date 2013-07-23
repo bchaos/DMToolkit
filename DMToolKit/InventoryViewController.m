@@ -42,7 +42,11 @@
     
 }
 -(void)done{
-    [_popover dismissPopoverAnimated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        [_popover dismissPopoverAnimated:YES];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -61,7 +65,7 @@
     CGPoint translation= [sender translationInView:_inventoryTable];
     int leftOffset = _inventoryTable.frame.origin.x;
     int topOffset=_inventoryTable.frame.origin.y;
-    
+    int width= _inventoryTable.frame.size.width;
     if(visibleCells.count > 0) topCell = [visibleCells objectAtIndex:0];
     else {
         topCell= [[UITableViewCell alloc]init];
@@ -84,7 +88,7 @@
             break;
         case UIGestureRecognizerStateChanged:
             if ( translation.y /2> 0 && translation.y/2 < 50 && !_newObjectAdded){
-                [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, 292, translation.y/2)];
+                [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, width, translation.y/2)];
             }
             else if (translation.y/2 > 50 && !_newObjectAdded ){
                 
@@ -184,11 +188,15 @@
     webView.delegate=self;
     if ([[_inventoryArray objectAtIndex:indexPath.row] isKindOfClass:[NSString class]])return;
      webView.content=[[_inventoryArray objectAtIndex:indexPath.row]valueForKey:@"fulltext"];
-    _popover = [[UIPopoverController alloc]initWithContentViewController:webView];
-    _popover.delegate=self;
-    UIView * presentationView=[tableView cellForRowAtIndexPath:indexPath];
-    [_popover presentPopoverFromRect:CGRectMake(-140, -125, 300, 300) inView:presentationView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        
+        _popover = [[UIPopoverController alloc]initWithContentViewController:webView];
+        _popover.delegate=self;
+        UIView * presentationView=[tableView cellForRowAtIndexPath:indexPath];
+        [_popover presentPopoverFromRect:CGRectMake(-140, -125, 300, 300) inView:presentationView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+        [self presentViewController:webView animated:YES completion:nil];
+    }
 }
 -(void)clearUnusedItems{
     __block NSMutableArray * indexesToRemove= [[NSMutableArray alloc]init];
@@ -228,6 +236,7 @@
 }
 
 -(void)addPickerToView{
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     [self removePickers];
     _priorInventoryItemSelected=nil;
     _pickerView = [[UIView alloc]initWithFrame:CGRectMake(_inventoryTable.frame.origin.x, 464, 292, 280)];
@@ -256,7 +265,28 @@
     // Plug the keyboardDoneButtonView into the text field...
     
     [self updatePickerFilter];
+     }
+     else{
+         NSArray * initalList;
+         initalList= [[ dungeonMasterSingleton sharedInstance]AllItems:nil];
+         iphoneSelectionViewController * selection = [[iphoneSelectionViewController alloc]init];
+         [selection setList:initalList];
+         selection.delegate=self;
+         [self presentViewController:selection animated:YES completion:nil];
+     }
 }
+-(void)ItemSelected:(NSManagedObject *)object{
+    [self done];
+
+     [_inventoryArray setObject:object atIndexedSubscript:0];
+    [((Items *)object) addCharacterObject:_myCharacter];
+    [_myCharacter addInventoryObject:((Items *)object)];
+    [_inventoryTable reloadData];
+    [[dungeonMasterSingleton sharedInstance]save];
+     _priorInventoryItemSelected =object;
+
+}
+
 -(void)updatePickerFilter{
     _pickerArray= [[dungeonMasterSingleton sharedInstance]AllItems:_pickerSearch.text];
     [_picker reloadAllComponents];

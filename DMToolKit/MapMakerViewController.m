@@ -47,8 +47,8 @@ typedef enum {
 
 
 @interface MapMakerViewController (){
-    int mode;
-    BOOL canEdit;
+    
+    
     buttonWithFrameData * currentSelection;
     UIButton * currentlyEditing;
     BOOL buttonEdited;
@@ -76,8 +76,13 @@ typedef enum {
     _groupSelectionTable.layer.borderWidth=2.0;
     _toolkit.delegate=self;
     _loaded=NO;
-    mode=-1;
+    _mode=-1;
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     _mapDataString= @"BasicMapText";
+     }
+     else{
+         _mapDataString= @"BasicMapTextiphone";
+     }
     
 
 }
@@ -135,6 +140,7 @@ typedef enum {
 -(void)viewWillAppear:(BOOL)animated{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading";
+    [_spinner stopAnimating];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -146,9 +152,12 @@ typedef enum {
             [self createSideBar];
             [self setupPreviousButton];
             _loaded=YES;
-            canEdit=YES;
+            _canEdit=YES;
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self openMapDetails:self];
+    }
+    else{
+         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }
 }
 
@@ -224,7 +233,7 @@ typedef enum {
     UIButton * baseButton = [[UIButton alloc]initWithFrame:CGRectMake(3, offset, 50, 50)];
     baseButton.backgroundColor= [UIColor whiteColor];
     baseButton.layer.borderWidth=1.0;
-    [baseButton addTarget:self action:@selector(setMode:) forControlEvents:UIControlEventTouchUpInside];
+    [baseButton addTarget:self action:@selector(setMode2:) forControlEvents:UIControlEventTouchUpInside];
     baseButton.tag=tag;
     [baseButton setImage:image forState:UIControlStateNormal];
     return baseButton;
@@ -348,13 +357,13 @@ typedef enum {
         _groupSelectionTable.frame=rect;
 }
 
--(void)setMode:(buttonWithFrameData*)sender{
+-(void)setMode2:(buttonWithFrameData*)sender{
     [self setModeWithInt:sender.tag];
     [self addButtonGlow:sender];
 }
 -(void)setModeWithInt:(NSInteger)newmode{
     
-    mode=newmode;
+    _mode=newmode;
 }
 
 -(void)addSelectionContorller:(NSArray* )initalList inButton:(UIButton *)button{
@@ -406,14 +415,22 @@ typedef enum {
 
 -(void)ItemSelected:(NSManagedObject *)object{
     buttonEdited=YES;
-    [_popover dismissPopoverAnimated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        [_popover dismissPopoverAnimated:YES];
+    }
     [[_Dic objectAtIndex:currentlyEditing.tag] setObject:[object valueForKey:@"name"] forKey:keyToEdit];
      [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
 }
 -(void)reloadMap :(BOOL)foward{
-    [_spinner startAnimating];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading";
     [self cleargrid];
-    MapMakerViewController *newMap = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"mapMaker"];
+    MapMakerViewController *newMap;
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+    newMap= [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"mapMaker"];
+     }else{
+         newMap= [[UIStoryboard storyboardWithName:@"MainStoryboard@iphone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"mapMaker"];
+     }
     if(self.previousMap==nil){
         self.previousMap =[[NSMutableArray alloc]init]; 
     }
@@ -445,7 +462,7 @@ typedef enum {
         [[dungeonMasterSingleton sharedInstance]save];
         [[_Dic objectAtIndex:currentlyEditing.tag] setObject:newMap.gridInfomation forKey:keyToEdit];
         [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
-        _spinner.hidden=NO;
+        //_spinner.hidden=NO;
         [self reloadMap :YES];
     }
     else{
@@ -464,10 +481,14 @@ typedef enum {
         [dungeonMasterSingleton sharedInstance].currentNote=newNote;
         campaignNoteTakerViewController *taker= [[campaignNoteTakerViewController alloc]initWithNibName:@"campaignNoteTakerViewController"bundle:[NSBundle mainBundle]];
         taker.delegate=self;
+       if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){ 
         _popover= [[UIPopoverController alloc]initWithContentViewController:taker];
         _popover.delegate=self;
         [_popover setPopoverContentSize:CGSizeMake(500, 500)];
         [_popover presentPopoverFromRect:CGRectMake(0, 0, 25, 25) inView:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+       }else{
+            [self presentViewController:taker animated:YES completion:nil];
+       }
          [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
     }else{
         [self showNeedToClearAlert];
@@ -530,13 +551,19 @@ typedef enum {
     return YES;
 }
 
+-(void)setCurrentSelection:(buttonWithFrameData*)selection{
+    currentSelection=selection;
+}
+-(void)clearCurrentlyEditing{
+    [currentlyEditing setImage:nil forState:UIControlStateNormal];
+}
 -(void)btnTapped:(UIButton *)sender
 {
     currentlyEditing=sender;
     buttonEdited=NO;
-    if(canEdit){
+    if(_canEdit){
         _groupSelectionTable.hidden=YES;
-        switch (mode) {
+        switch (_mode) {
             case 0:
                 [sender setBackgroundImage:[currentSelection imageForState:UIControlStateNormal] forState:UIControlStateNormal];
                 [[_Dic objectAtIndex:currentlyEditing.tag] setObject:currentSelection.frameValue forKey:buttonKey];
@@ -588,7 +615,7 @@ typedef enum {
             default:
             break;
         }
-        _itemMode=mode;
+        _itemMode=_mode;
     }else{
         // here is show what is currently on a tile or open a zone
         NSMutableDictionary * currentIndex= [_Dic objectAtIndex:currentlyEditing.tag];
@@ -629,10 +656,16 @@ typedef enum {
 -(void)notePopup:(UIButton *)button{
     campaignNoteTakerViewController *taker= [[campaignNoteTakerViewController alloc]initWithNibName:@"campaignNoteTakerViewController"bundle:[NSBundle mainBundle]];
     taker.delegate=self;
-    _popover= [[UIPopoverController alloc]initWithContentViewController:taker];
+    
+ if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+     _popover= [[UIPopoverController alloc]initWithContentViewController:taker];
     _popover.delegate=self;
     [_popover setPopoverContentSize:CGSizeMake(500, 500)];
     [_popover presentPopoverFromRect:CGRectMake(0, 0, 25, 25) inView:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+ }
+ else{
+     [self presentViewController:taker animated:YES completion:nil];
+ }
 }
 
 -(void)presentModalMailComposeViewController:(MFMailComposeViewController *)mailComposeViewController forMailHandler:(PCMailHandler *)mailHandler{
@@ -702,11 +735,15 @@ typedef enum {
     }else{
         webView.content= [NSString stringWithFormat:@"%@ <p/> %@",[_currentMangagedObject valueForKey:@"name"], [_currentMangagedObject valueForKey:@"fulltext"] ] ;
     }
+if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     _popover = [[UIPopoverController alloc]initWithContentViewController:webView];
     _popover.delegate=self;
     [_popover setPopoverContentSize:CGSizeMake(500, 500)];
     [_popover presentPopoverFromRect:CGRectMake(0, 0, 25, 25) inView:button permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
+}
+else{
+    [self presentViewController:webView animated:YES completion:nil];
+}
 }
 
 #pragma mark - Table view data source
@@ -747,7 +784,7 @@ typedef enum {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary * selected_Dic= [[_toolsDic objectAtIndex:currentSelection.tag]objectAtIndex:indexPath.row];
     [currentSelection setImage:[selected_Dic objectForKey:@"image"] forState:UIControlStateNormal];
-    mode= [[selected_Dic objectForKey:@"mode"]integerValue];
+    _mode= [[selected_Dic objectForKey:@"mode"]integerValue];
     _groupSelectionTable.hidden=YES;
 
 }
@@ -795,9 +832,9 @@ typedef enum {
                      }];
 }
 - (IBAction)switchEditingModes:(UIButton *)sender {
-    canEdit=sender.selected;
-    sender.selected=!canEdit;
-    if(canEdit) [self showEditWindows];
+    _canEdit=sender.selected;
+    sender.selected=!_canEdit;
+    if(_canEdit) [self showEditWindows];
     else [self dismissEditWindows];
   
     

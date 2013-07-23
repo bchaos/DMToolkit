@@ -657,6 +657,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
    _selectedCellIndex= press.view.tag;
      if(![self atMainMenu] && ![self atReferenceMenu]){
          [self startEditing:_editableTextField];
+         
      }
 }
 
@@ -686,31 +687,37 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 }
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [JE_ notifyName:@"deselect" object:nil];
-  
+-(BOOL)openObjectAtIndex:(int)index{
     if([actionFunction isEqualToString:@"toReferenceViewer"]){
-        [dungeonMasterSingleton sharedInstance].currentObject=[_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentObject=[_SelectionFields objectAtIndex:index];
     }if ([self atNoteMenu]){
-        [dungeonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentNote=  [_SelectionFields objectAtIndex:index];
     }else if([self atNPCMenu]){
-        [dungeonMasterSingleton sharedInstance].currentCharacter =  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentCharacter =  [_SelectionFields objectAtIndex:index];
     }else if([self atCampaignMenu]){
-        [dungeonMasterSingleton sharedInstance].currentCampaign =  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentCampaign =  [_SelectionFields objectAtIndex:index];
         Map * map= [dungeonMasterSingleton sharedInstance].currentCampaign.map;
         [dungeonMasterSingleton sharedInstance].currentMap=map;
     }else if ([self atPlayermenu]){
-        [dungeonMasterSingleton sharedInstance].currentCharacter =  [[[[_SelectionFields objectAtIndex:indexPath.row] valueForKey:@"characters"]allObjects] objectAtIndex:0];
+        [dungeonMasterSingleton sharedInstance].currentCharacter =  [[[[_SelectionFields objectAtIndex:index] valueForKey:@"characters"]allObjects] objectAtIndex:0];
     }
     else if ([self atEncounterMenu]){
-        [dungeonMasterSingleton sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:indexPath.row];
+        [dungeonMasterSingleton sharedInstance].currentEncounter=  [_SelectionFields objectAtIndex:index];
         [dungeonMasterSingleton sharedInstance].currentMap= [dungeonMasterSingleton sharedInstance].currentEncounter.map;
-
+        
     }
     if(actionFunction !=nil && ![self atMainMenu] && ! [self atReferenceMenu]){
         [JE_ notifyName:actionFunction object:nil];
     }
 
+    return true;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [JE_ notifyName:@"deselect" object:nil];
+  
+    [self openObjectAtIndex:indexPath.row];
+   
     [((TextFieldCell *)[_selectionTable cellForRowAtIndexPath:indexPath]) select];
     if([self atMainMenu] || [self atReferenceMenu] || [self atExternalNoteSubMenu] || [self atEverNoteBook] || [self atEvernoteNoteMenu] | [self atDriveMenu]){
     _selectedCellIndex=indexPath.row;

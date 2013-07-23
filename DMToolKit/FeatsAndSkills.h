@@ -11,7 +11,8 @@
 #import "dungeonMasterSingleton.h"
 #import "webViewPopoverViewController.h"
 #import "FeatAndSkillsCell.h"
-@interface FeatsAndSkills : masterBaseViewController<UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, webPopoverDelegate>
+#import "iphoneSelectionViewController.h"
+@interface FeatsAndSkills : masterBaseViewController<UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, webPopoverDelegate,iphoneselectionViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet panableTable *skillsTable;
 @property (strong, nonatomic) IBOutlet panableTable *featsTable;
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *featPanner;

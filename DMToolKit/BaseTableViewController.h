@@ -12,7 +12,8 @@
 #import "dungeonMasterSingleton.h"
 #import "webViewPopoverViewController.h"
 #import "masterBaseViewController.h"
-@interface BaseTableViewController : masterBaseViewController<UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate,UIPopoverControllerDelegate>
+#import "iphoneSelectionViewController.h"
+@interface BaseTableViewController : masterBaseViewController<UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate,UIPopoverControllerDelegate, iphoneselectionViewControllerDelegate>
 - (IBAction)pulledDown:(id)sender;
 -(UITableViewCell*)configureHeaderCell:(UITableViewCell*)cell;
 -(UITableViewCell*)configureBodyCell:(UITableViewCell*)cell;

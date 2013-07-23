@@ -1,55 +1,48 @@
 //
-//  EncounterMakerViewController.m
+//  encountermakeiphoneViewController.m
 //  DMToolKit
 //
-//  Created by Bradford Farmer on 5/31/13.
+//  Created by Bradford Farmer on 7/23/13.
 //  Copyright (c) 2013 Bradford Farmer. All rights reserved.
 //
 
-#import "EncounterMakerViewController.h"
+#import "encountermakeiphoneViewController.h"
 
-@interface EncounterMakerViewController ()
+@interface encountermakeiphoneViewController ()
 
 @end
 
-@implementation EncounterMakerViewController
+@implementation encountermakeiphoneViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-      //  //self.trackedViewName = @"Encounter map maker viewed";
+        // Custom initialization
     }
     return self;
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    [self.tool setUpActionButtonsEncounter];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-    self.mapDataString= @"BasicEncounterText";
-    }else{
-         self.mapDataString= @"BasicEncounterTextiphone";
-    }
 	// Do any additional setup after loading the view.
-    
 }
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:YES];
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
 -(void)createSideBar{
     [self.sideMenu addSubview:[self createBaseButton:[UIImage imageNamed:@"111-user.png"]    withMode:8 offset:10]];
     
-     [self.sideMenu addSubview:[self createBaseButton:[UIImage imageNamed:@"132-ghost.png"]    withMode:9 offset:63]];
+    [self.sideMenu addSubview:[self createBaseButton:[UIImage imageNamed:@"132-ghost.png"]    withMode:9 offset:63]];
     
     [self.sideMenu addSubview:[self createBaseButton:[UIImage imageNamed:@"179-notepad.png"]   withMode:6 offset:116]];
     

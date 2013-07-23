@@ -59,7 +59,7 @@
     _secondStack.isHorizontal=YES;
     [self.view addSubview:_firstStack];
     [self.view addSubview:_secondStack];
-    [self setUpActionButtons];
+    
     [self setupTileScroll];
 
 }
@@ -73,11 +73,20 @@
 
 }
 
+-(void)setUpActionButtonsEncounter{
+    [self.firstStack removeAllButtons];
+    [self createBaseButton:[UIImage imageNamed:@"111-user.png"]   withMode:8 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"132-ghost.png"]   withMode:9 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"179-notepad.png"]   withMode:6 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"22-skull-n-bones.png"]   withMode:7 firstStack:YES];
+    
+}
+
 -(void)createBaseButton:(UIImage*)image withMode:(int)tag firstStack:(BOOL)stack{
     UIButton * baseButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
     baseButton.backgroundColor= [UIColor whiteColor];
     baseButton.layer.borderWidth=1.0;
-    [baseButton addTarget:self action:@selector(setMode:) forControlEvents:UIControlEventTouchUpInside];
+    [baseButton addTarget:_delegate action:@selector(setupCurrentAction:) forControlEvents:UIControlEventTouchUpInside];
     baseButton.tag=tag;
     [baseButton setImage:image forState:UIControlStateNormal];
     if(stack)
@@ -91,13 +100,14 @@
 -(void)setupTileScroll{
     [self.tileList eachWithIndex:^(NSArray * array, int i) {
          NSDictionary * Dic= [array objectAtIndex:0];
-        buttonWithFrameData *clickButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [clickButton setBackgroundImage:[Dic objectForKey:@"image"]
+        buttonWithFrameData *clickButton = [buttonWithFrameData buttonWithType:UIButtonTypeCustom];
+        [clickButton setImage:[Dic objectForKey:@"image"]
                                forState:UIControlStateNormal];
         
         [clickButton setFrame:CGRectMake(X+((WIDTH*1.3 + PADDING) * (i%NUMBEROFBUTTONSINAROW)), Y + (HEIGHT*1.3 + PADDING)*(i/NUMBEROFBUTTONSINAROW), WIDTH*1.3, HEIGHT*1.3)];
-        [clickButton addTarget:self action:@selector(btnTapped:) forControlEvents:UIControlEventTouchUpInside];
-        clickButton.tag=i;
+        [clickButton addTarget:_delegate action:@selector(setupCurrentTool:) forControlEvents:UIControlEventTouchUpInside];
+        clickButton.tag=0;
+        clickButton.frameValue=[Dic objectForKey:@"frame"];
         clickButton.layer.borderWidth=1.0f;
         clickButton.layer.borderColor= [[fontsAndColourConstants EthiconCoolGray8]CGColor];
         [self.tileSelectionScroll addSubview:clickButton];

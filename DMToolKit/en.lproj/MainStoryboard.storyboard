@@ -572,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hmm-Nd-hXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-656" y="720"/>
+            <point key="canvasLocation" x="-719" y="817"/>
         </scene>
         <!--Compendium View Controller-->
         <scene sceneID="J0G-2p-3Ho">
@@ -984,12 +984,12 @@
         <image name="12-eye-white.png" width="24" height="16"/>
         <image name="12-eye.png" width="24" height="16"/>
         <image name="130-dice.png" width="35" height="28"/>
-        <image name="178-city.png" width="23" height="27"/>
+        <image name="178-city.png" width="16" height="16"/>
         <image name="179-notepad.png" width="22" height="28"/>
         <image name="18-envelope.png" width="24" height="16"/>
         <image name="180-stickynote.png" width="22" height="22"/>
-        <image name="187-pencil.png" width="23" height="23"/>
-        <image name="188-paint-roller.png" width="24" height="24"/>
+        <image name="187-pencil.png" width="16" height="16"/>
+        <image name="188-paint-roller.png" width="16" height="16"/>
         <image name="44-shoebox.png" width="24" height="22"/>
         <image name="63-runner.png" width="18" height="25"/>
         <image name="backbutton.png" width="150" height="30"/>

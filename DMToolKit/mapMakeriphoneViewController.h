@@ -8,15 +8,16 @@
 
 #import "MapMakerViewController.h"
 #import "ToolSelectorViewController.h"
-@interface mapMakeriphoneViewController : MapMakerViewController<toolSelectorDelegate> 
+#import "iphoneSelectionViewController.h"
+@interface mapMakeriphoneViewController : MapMakerViewController<toolSelectorDelegate,iphoneselectionViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backbutton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *openMapEditingMenu;
-- (IBAction)mapmaking:(UIBarButtonItem*)sender;
+- (IBAction)mapmaking:(UIButton*)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *openPlaceAnObjectMenu;
 - (IBAction)placeAnObject:(UIBarButtonItem*)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapEditingMenu;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-
+@property (nonatomic, strong)  ToolSelectorViewController * tool;
 @property (nonatomic, assign)BOOL   hasbackbutton;
 - (IBAction)toggleEditMode:(id)sender;
 @end

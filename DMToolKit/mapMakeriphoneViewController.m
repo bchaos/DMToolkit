@@ -8,6 +8,7 @@
 
 #import "mapMakeriphoneViewController.h"
 #import <MBProgressHUD.h>
+
 #define IS_IPAD    (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
 #define WIDTH 32
 #define HEIGHT 32
@@ -25,7 +26,9 @@
 #define TilesGroupHeight 3
 #define TotalTiles 192
 @interface mapMakeriphoneViewController(){
-    ToolSelectorViewController * tool;
+  
+    IBOutlet UIBarButtonItem *viewbutton;
+    IBOutlet UIButton *mapmakingimage;
 }
 
 @end
@@ -53,10 +56,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     UIStoryboard * mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard@iphone" bundle:nil];
-    tool= [mainStoryBoard instantiateViewControllerWithIdentifier:@"tools"];
-    tool.delegate=self;
-    tool.tileList= self.toolsDic;
-    [tool setupButtons];
+    self.tool= [mainStoryBoard instantiateViewControllerWithIdentifier:@"tools"];
+    self.tool.delegate=self;
+    self.tool.tileList= self.toolsDic;
+    [self.tool setupButtons];
+    [self.tool setUpActionButtons];
+    [self setupPreviousButton];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -67,6 +72,8 @@
 -(void)clearTints{
     _openMapEditingMenu.tintColor=[UIColor clearColor];
     _openPlaceAnObjectMenu.tintColor=[UIColor clearColor];
+    viewbutton.tintColor=[UIColor clearColor];
+    
 }
 
 - (IBAction)placeAnObject:(UIBarButtonItem*)sender {
@@ -77,7 +84,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)toggleEditMode:(id)sender {
+- (IBAction)toggleEditMode:(UIBarButtonItem *)sender {
+    sender.tintColor=[UIColor blueColor];
+    self.canEdit=NO;
+    [mapmakingimage setImage:[UIImage imageNamed:@"33-cabinet.png"] forState:UIControlStateNormal];
 }
 
 -(void)setupTools{
@@ -90,9 +100,11 @@
 
 -(void)setupPreviousButton{
     if(self.previousMap.count >0){
-        self.PreviousMapButton.hidden=NO;
+        self.backbutton.image=[UIImage imageNamed:@"arrow"];
+          self.backbutton.enabled=YES;
     }else{
-         self.PreviousMapButton.hidden=YES;
+       self.backbutton.image=nil;
+        self.backbutton.enabled=NO;
     }
 }
 - (IBAction)email:(id)sender {
@@ -102,16 +114,22 @@
     [self.mail composeEmailForSession];
 }
 
-- (IBAction)mapmaking:(UIBarButtonItem * )sender {
+
+- (IBAction)mapmaking:(UIButton *)sender {
     [self clearTints];
-    sender.tintColor=[UIColor blueColor];
-    [self presentViewController:tool animated:YES completion:nil];
-    
-}
+    self.mapEditingMenu.tintColor= [UIColor blueColor];
+    [self presentViewController:self.tool animated:YES completion:nil];
+} 
+
 
 -(void)done{
     [self dismissViewControllerAnimated:YES completion:nil];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+}
+-(void)cancel{
+    [self done];
+    [self clearCurrentlyEditing];
     
 }
 
@@ -122,37 +140,66 @@
     [self presentViewController:map animated:YES completion:nil];
 }
 
+-(void)ItemSelected:(NSManagedObject *)object {
+    [super ItemSelected:object];
+    [self done];
+}
 -(void)createToolsDictionary{
     NSMutableArray * tempArray = [[NSMutableArray alloc]init];
-    __block int subGroup=0;
+    __block int startingIndex=0;
     __block int  group= 0;
+    __block int subGroup=0;
     [@TotalTiles timesWithIndex:^(int i) {
         CGRect  frame= CGRectMake(((WIDTH ) * (i%tilesInARow)),  (HEIGHT )*(i/tilesInARow), WIDTH, HEIGHT);
-        int arrayCount = tempArray.count-1;
-        int currentArrayindex=group+tilesInARow/2*subGroup;
-        if (currentArrayindex==-1){
-            currentArrayindex =0;
-        }
         
-            NSMutableArray * newGroup= [[NSMutableArray alloc]init];
+        int currentArrayindex=startingIndex +2*group+subGroup;
+        NSMutableArray * newGroup= [[NSMutableArray alloc]init];
        
-            [newGroup addObject:@{  @"image" : [self.map crop:frame],
+        [newGroup addObject:@{  @"image" : [self.map crop:frame],
              @"mode" : [NSNumber numberWithInt:0],
              @"frame" : NSStringFromCGRect(frame)}  ];
-            [tempArray insertObject:newGroup atIndex:group];
+        [tempArray insertObject:newGroup atIndex:currentArrayindex];
    
      
         if ((i+1)%2==0)
             group++;
+        
         if ( group >= tilesInARow/2){
             group=0;
+            startingIndex+=2;
+            
         }
-        if((i+1)%48 ==0){
-            subGroup++;
+        if ( (i+1)%32==0){
+            subGroup+=8;
+            
         }
-    }];
+        
+}];
     
     self.toolsDic = [[NSArray alloc]initWithArray:tempArray];
+}
+
+-(void)setupCurrentTool:(buttonWithFrameData*)currentTool{
+    [self done];
+    
+    [mapmakingimage setImage:[currentTool imageForState:UIControlStateNormal] forState:UIControlStateNormal];
+    [self setMode2:currentTool];
+    self.canEdit=true;
+    [self setCurrentSelection:currentTool];
+}
+
+-(void)setupCurrentAction:(buttonWithFrameData *)currentAction{
+    [self done];
+    self.openMapEditingMenu.image= [currentAction imageForState:UIControlStateNormal];
+    [self setMode2:currentAction];
+    self.canEdit=true;
+}
+
+-(void)addSelectionContorller:(NSArray* )initalList inButton:(UIButton *)button{
+    iphoneSelectionViewController * selection = [[iphoneSelectionViewController alloc]init];
+    [selection setList:initalList];
+    selection.delegate=self;
+    [self presentViewController:selection animated:YES completion:nil];
 }
 
 @end

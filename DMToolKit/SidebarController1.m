@@ -35,7 +35,8 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.editableTextField.delegate=self;
+    self.editableTextField.returnKeyType=UIReturnKeyDone;
     self.selectionTable.dataSource = self;
     self.selectionTable.delegate = self;
     
@@ -101,6 +102,17 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     return cell;
 }
 
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)aTextfield {
+    int index=self.selectedCellIndex;
+    
+    [self openObjectAtIndex: index];
+   
+    [aTextfield resignFirstResponder];
+    
+    return YES;
+}
 
 - (IBAction)addNew:(UIPanGestureRecognizer *)sender {
     UITableViewCell * topCell;

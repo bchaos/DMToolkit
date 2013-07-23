@@ -10,6 +10,7 @@
 @protocol selectionViewControllerDelegate
     
     -(void)ItemSelected:(NSManagedObject*)object;
+    -(void)done;
 @end
 
 @interface SelectionViewController : UITableViewController
@@ -19,5 +20,7 @@
 - (IBAction)update:(id)sender;
 -(void)setList:(NSArray *)list;
 @property (strong, nonatomic) IBOutlet UITableView *selectiontable;
+
+
     @property  (nonatomic, strong) NSArray *filteredList;
 @end

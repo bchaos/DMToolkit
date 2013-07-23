@@ -16,7 +16,9 @@ static NSString * functionKey=@"function";
 static NSString * rowKey= @"row";
 static NSString * textKey= @"text";
 static NSString * placeHolderKey=@"placeHolder";
-@implementation BaseTableViewController
+@implementation BaseTableViewController{
+    int pickedTag;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -220,12 +222,16 @@ static NSString * placeHolderKey=@"placeHolder";
     [self.table reloadData];
 }
 -(void)editingBegan:(UITextField*)text{
+      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
      [self resetPicker];
+    
     CGRect startingRect=[_table rectForSection:text.tag] ;
     startingRect.origin.y+= 400;
+
     if(!_resized)
     _table.contentSize= CGSizeMake(_table.frame.size.width, _table.contentSize.height+600);
     [_table scrollRectToVisible:startingRect animated:YES];
+      }
    
 
 }
@@ -251,13 +257,15 @@ static NSString * placeHolderKey=@"placeHolder";
 }
 
 -(void)addPickerToView:(int)tag{
+    pickedTag=tag;
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     [self.view endEditing:YES];
     _pickerView = [[UIView alloc]initWithFrame:CGRectMake(20, 520, 280, 179)];
  
     _pickerView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:_pickerView];
     _picker =[[UIPickerView alloc]initWithFrame:CGRectMake(0, 35, 280, 179)];
-    _picker.tag=tag;
+    
     _picker.delegate=self;
     _picker.dataSource=self;
     _picker.showsSelectionIndicator=YES;
@@ -269,22 +277,67 @@ static NSString * placeHolderKey=@"placeHolder";
     [_pickerSearch addTarget:self  action:@selector(updatePickerFilter) forControlEvents:UIControlEventEditingChanged];
     [_pickerView addSubview:_pickerSearch];
     [self updatePickerFilter];
-}
+  }
+  else{
+      NSString * value = [self valueToUpdate:0 inSection:pickedTag];
+      NSArray * initalList;
+      if([value isEqualToString:@"class"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]AllCharacterClasses:nil];
+      }else if ([value isEqualToString:@"playerRace"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]allPlayerRaces:nil];
+      }else if ([value isEqualToString:@"items"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]AllItems:nil];
+      }else if ([value isEqualToString:@"skills"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]AllSkills:nil];
+      }else if ([value isEqualToString:@"feats"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]AllFeats:nil];
+      }else if ([value isEqualToString:@"race"]){
+           initalList= [[ dungeonMasterSingleton sharedInstance]AllRace:nil];
+      }
 
+      
+      iphoneSelectionViewController * selection = [[iphoneSelectionViewController alloc]init];
+      [selection setList:initalList];
+      selection.delegate=self;
+      [self presentViewController:selection animated:YES completion:nil];
+
+      
+  }
+}
+-(void)ItemSelected:(NSManagedObject *)object{
+    [self done];
+    NSString * value = [self valueToUpdate:0 inSection:pickedTag];
+    if([value isEqualToString:@"class"]){
+        [self setClass: (CharacterClass*)object];
+    }else if ([value isEqualToString:@"race"]){
+        [self setRace:(Race *) object];
+    }else if ([value isEqualToString:@"items"]){
+        [self setItem: (Items *) object];
+    }else if ([value isEqualToString:@"skills"]){
+        [self setSkill:(Skills *) object];
+    }else if ([value isEqualToString:@"feats"]){
+        [self setFeat:(Feats *) object];
+    }else if ([value isEqualToString:@"playerRace"]){
+        [self setRace:(Race *) object];
+    }
+}
+-(void)done{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)showSelector:(UIButton*)button{
      [self resetPicker];
     CGRect startingRect=[_table rectForSection:button.tag] ;
     startingRect.origin.y+= 400;
     if(!_resized)
         _table.contentSize= CGSizeMake(_table.frame.size.width, _table.contentSize.height+600);
-    [_table scrollRectToVisible:startingRect animated:YES];
+    
     [self addPickerToView:button.tag];
 
 }
 #pragma mark picker filterData
 
 -(void)updatePickerFilter{
-    NSString * value = [self valueToUpdate:0 inSection:_picker.tag];
+    NSString * value = [self valueToUpdate:0 inSection:pickedTag];
     if([value isEqualToString:@"class"]){
         _pickerArray= [[ dungeonMasterSingleton sharedInstance]AllCharacterClasses:_pickerSearch.text];
     }else if ([value isEqualToString:@"playerRace"]){
@@ -347,7 +400,7 @@ static NSString * placeHolderKey=@"placeHolder";
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSString * value = [self valueToUpdate:0 inSection:_picker.tag];
+    NSString * value = [self valueToUpdate:0 inSection:pickedTag];
     if([value isEqualToString:@"class"]){
         [self setClass: [_pickerArray objectAtIndex:row]];
     }else if ([value isEqualToString:@"race"]){

@@ -57,7 +57,14 @@
     [JE_ notifyObserver:self selector:@selector(openCampaignViewer) name:@"toCampaign"];
     
      [JE_ notifyObserver:self selector:@selector(openNoteTaker) name:@"toNoteTaker"];
-         [JE_ notifyObserver:self selector:@selector(openComdendiumViewer) name:@"toReferenceViewer"];
+    
+    [JE_ notifyObserver:self selector:@selector(openComdendiumViewer) name:@"toReferenceViewer"];
+    
+    [JE_ notifyObserver:self selector:@selector(openEncounterViewer) name:@"toEncounterViewer"];
+    
+    [JE_ notifyObserver:self selector:@selector(openCharacterViewer) name:kShowCharacterCreator];
+    
+     [JE_ notifyObserver:self selector:@selector(showNPCCharacterCreator) name:kShowCharacterCreatorNPC];
    
 }
 
@@ -90,32 +97,46 @@
 
 
 -(void)openCampaignViewer{
-    [self closeSide];
-    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
-    UIViewController* campaignViewer= [mainStoryBoard instantiateViewControllerWithIdentifier:@"campaignViewer"];
-    campaignViewer = [self setUpbarItems:campaignViewer];
-    [(UINavigationController *)self.contentViewController  pushViewController:campaignViewer animated:YES];
+ 
+     [self openViewer:@"campaignViewer"];
 }
 
 -(void)openNoteTaker{
-    [self closeSide];
-    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
-    UIViewController* noteView= [mainStoryBoard instantiateViewControllerWithIdentifier:@"notetaking"];
-    noteView = [self setUpbarItems:noteView];
-    [(UINavigationController *)self.contentViewController  pushViewController:noteView animated:YES];
-    
+
+     [self openViewer:@"notetaking"];
+  
 }
 
 
 -(void)openComdendiumViewer{
-    [self closeSide];
-    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
-    UIViewController* compView= [mainStoryBoard instantiateViewControllerWithIdentifier:@"compendium"];
-    compView = [self setUpbarItems:compView];
-    [(UINavigationController *)self.contentViewController  pushViewController:compView animated:YES];
+     [self openViewer:@"compendium"];
+}
+
+-(void)openEncounterViewer{
+
+    [self openViewer:@"encounter"];
     
 }
 
+-(void)openCharacterViewer{
+    [dungeonMasterSingleton sharedInstance].toNPCPage=NO;
+    [self openViewer:@"character"];
+}
+
+-(void)openViewer:(NSString *)name{
+    [self closeSide];
+    [(UINavigationController *)self.contentViewController popToRootViewControllerAnimated:NO];
+    UIViewController* compView= [mainStoryBoard instantiateViewControllerWithIdentifier:name];
+    compView = [self setUpbarItems:compView];
+    [(UINavigationController *)self.contentViewController  pushViewController:compView animated:YES];
+
+}
+-(void)showNPCCharacterCreator{
+    [dungeonMasterSingleton sharedInstance].toNPCPage=YES;
+    [self openViewer:@"character"];
+    
+    
+}
 -(void)addCampainInfo{
 
     

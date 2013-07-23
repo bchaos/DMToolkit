@@ -47,6 +47,6 @@
 -(void)createNewObjectBasedOnCurrentmenu;
 - (void)startEditing:(UITextField *)textField;
 - (IBAction)showDemBones:(UIButton *)sender;
-
+-(BOOL)openObjectAtIndex:(int)index;
 -(IBAction)returnHit:(id)sender;
 @end

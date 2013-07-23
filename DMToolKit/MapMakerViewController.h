@@ -39,6 +39,11 @@
 @property (strong,  nonatomic) PCMailHandler *mail;
 @property (nonatomic,strong)NSMutableArray *Dic;
 @property (nonatomic,strong)Map *currentMap;
+@property (nonatomic, assign)int mode;
+@property (nonatomic, assign)BOOL canEdit;
+-(void)setMode2:(buttonWithFrameData*)sender;
+-(void)setCurrentSelection:(buttonWithFrameData*)selection;
+-(void)addSelectionContorller:(NSArray* )initalList inButton:(UIButton *)button;
 // public interface functions for subclasses
 -(UIButton *)createBaseButton:(UIImage*)image withMode:(int)tag offset:(int)offset;
 - (IBAction)previousMapSelected:(id)sender;
@@ -46,6 +51,7 @@
 -(void)setupTools;
 -(void)setupPreviousButton;
 -(void)createToolsDictionary;
+-(void)clearCurrentlyEditing;
 -(void)setModeWithInt:(NSInteger)newmodew;
 -(mapDescriptionViewController *)createMapWithGridInfo:(NSMutableDictionary *)gridInfo andFileName:(NSString*)filename;
 @end

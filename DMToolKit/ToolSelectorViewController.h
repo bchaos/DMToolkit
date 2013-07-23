@@ -17,6 +17,8 @@
 
 - (IBAction)done:(id)sender;
 -(void)setupButtons;
+-(void)setUpActionButtons;
+-(void)setUpActionButtonsEncounter;
 @property(nonatomic, strong)NSArray *tileList;
 @property(nonatomic, strong)NSArray* actionButtonList;
 @property (nonatomic, assign) id <toolSelectorDelegate> delegate;

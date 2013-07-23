@@ -1,18 +1,18 @@
 //
-//  SelectionViewController.m
+//  iphoneSelectionViewController.m
 //  DMToolKit
 //
-//  Created by Bradford Farmer on 5/16/13.
+//  Created by Bradford Farmer on 7/23/13.
 //  Copyright (c) 2013 Bradford Farmer. All rights reserved.
 //
 
-#import "SelectionViewController.h"
+#import "iphoneSelectionViewController.h"
 
-@interface SelectionViewController ()
+@interface iphoneSelectionViewController ()
 
 @end
 
-@implementation SelectionViewController
+@implementation iphoneSelectionViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,10 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -60,11 +60,11 @@
 }
 -(void)updateFilteredList{
     if(![_search.text isEqualToString:@""] && _search.text){
-    NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", _search.text];
+        NSPredicate *bPredicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", _search.text];
         _filteredList=[_listToShow filteredArrayUsingPredicate:bPredicate];}
     else{
-            _filteredList=_listToShow;
-        }
+        _filteredList=_listToShow;
+    }
     [_selectiontable reloadData];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,4 +99,5 @@
 - (IBAction)done:(id)sender {
     [_delegate done];
 }
+
 @end

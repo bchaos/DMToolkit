@@ -2955,6 +2955,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -2962,6 +2963,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};

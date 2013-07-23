@@ -58,19 +58,33 @@
     NSArray * visibleCells;
     UITableViewCell * topCell;
     int leftOffset = 0;
-    int topOffset=98;
+    int topOffset=20;
+      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+         topOffset=98;
+      }
     CGPoint translation;
     if (sender==_featPanner) {
         visibleCells=[_featsTable visibleCells];
-        
+          if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         leftOffset=341;
+          }else{
+              leftOffset=162;
+          }
         translation= [sender translationInView:_featsTable];
     }
     else {
         visibleCells=[_skillsTable visibleCells];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+
         leftOffset=20;
+        }else{
+              leftOffset=0;
+        }
         translation= [sender translationInView:_skillsTable];
     }
+    if (translation.y <0)
+        return;
+        
   
     if(visibleCells.count > 0) topCell = [visibleCells objectAtIndex:0];
     else {
@@ -81,18 +95,18 @@
         return;
     }
     if (_tempCell==nil){
-        _tempCell =[[FeatAndSkillsCell alloc]initWithFrame:CGRectMake(leftOffset, topOffset, 292, 0)];
+        _tempCell =[[FeatAndSkillsCell alloc]initWithFrame:CGRectMake(leftOffset, topOffset, _featsTable.frame.size.width, 0)];
         _tempCell.alpha=0.0;
         [self.view addSubview:_tempCell];
     }
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
             _newObjectAdded=NO;
-            [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, 292, translation.y/2)];
+            [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, _featsTable.frame.size.width, translation.y/2)];
             break;
         case UIGestureRecognizerStateChanged:
             if ( translation.y /2> 0 && translation.y/2 < 50 && !_newObjectAdded){
-                [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, 292, translation.y/2)];
+                [_tempCell upateCellWithFrame:CGRectMake(leftOffset, topOffset, _featsTable.frame.size.width, translation.y/2)];
             }
             else if (translation.y/2 > 50 && !_newObjectAdded ){
              
@@ -149,7 +163,7 @@
 }
 
 -(UITableViewCell *)configureCell :(UITableViewCell *)cell{
-    CGRect frame= CGRectMake(0, 0, 292,  50);
+    CGRect frame= CGRectMake(0, 0, _featsTable.frame.size.width,  50);
     cell.backgroundView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"FeatsAndSkills.png"]];
     cell.textLabel.frame= frame;
     cell.backgroundView.frame=frame;
@@ -208,7 +222,14 @@
 }
 
 -(void)done{
-    [_popover dismissPopoverAnimated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+    
+        [_popover dismissPopoverAnimated:YES];
+    }
+    else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -223,10 +244,16 @@
     }else{
         return;
     }
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        
     _popover = [[UIPopoverController alloc]initWithContentViewController:webView];
     _popover.delegate=self;
     UIView * presentationView=[tableView cellForRowAtIndexPath:indexPath];
     [_popover presentPopoverFromRect:CGRectMake(-140, -125, 300, 300) inView:presentationView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+         [self presentViewController:webView animated:YES completion:nil];
+    }
     
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -293,7 +320,7 @@
 -(void)addPickerToView:(int)leftOffset isSkill :(BOOL)isSkill{
     
     [self removePickers];
-    
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     _priorSelectedStat=nil;
     _pickerView = [[UIView alloc]initWithFrame:CGRectMake(leftOffset, 464, 292, 280)];
     _pickerView.backgroundColor=[UIColor whiteColor];
@@ -321,7 +348,39 @@
     // Plug the keyboardDoneButtonView into the text field...
    
     [self updatePickerFilter:isSkill];
-    
+     }
+     else{
+          NSArray * initalList;
+         if(isSkill){
+            initalList= [[ dungeonMasterSingleton sharedInstance]AllSkills:nil];
+         }else{
+            initalList= [[ dungeonMasterSingleton sharedInstance]AllFeats:nil];
+         }
+         iphoneSelectionViewController * selection = [[iphoneSelectionViewController alloc]init];
+         [selection setList:initalList];
+         selection.delegate=self;
+         [self presentViewController:selection animated:YES completion:nil];
+     }
+}
+-(void)ItemSelected:(NSManagedObject *)object{
+    [self done];
+    NSManagedObject * pickedStat = object;
+    if([pickedStat isKindOfClass:[Feats class]]){
+        
+        [_featsArray setObject:pickedStat atIndexedSubscript:0];
+        [((Feats *)pickedStat) addCharacterObject:_myCharacter];
+        [_myCharacter addFeatsObject:((Feats *)pickedStat)];
+        [_featsTable reloadData];
+        
+    }else{
+        [_skillsArray setObject:pickedStat atIndexedSubscript:0];
+                [((Skills *)pickedStat) addCharacterObject:_myCharacter];
+        [_myCharacter addSkillsObject:((Skills *)pickedStat)];
+        [_skillsTable reloadData];
+    }
+    [[dungeonMasterSingleton sharedInstance]save];
+ 
+
 }
 
 -(void)updatePickerFilter:(BOOL)isSkill{

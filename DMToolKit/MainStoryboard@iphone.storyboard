@@ -16,7 +16,129 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcw-fe-eNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-741" y="103"/>
+            <point key="canvasLocation" x="-1056" y="215"/>
+        </scene>
+        <!--Encountermakeiphone View Controller - map-->
+        <scene sceneID="yHi-MT-Zpd">
+            <objects>
+                <viewController id="6am-S9-ntA" customClass="encountermakeiphoneViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J8F-RK-zU3">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="ZPI-w1-1y3">
+                                <items>
+                                    <barButtonItem image="arrow.png" style="plain" id="1F6-p2-R4G">
+                                        <connections>
+                                            <action selector="previousMapSelected:" destination="Iie-0c-KUG" id="oQR-dW-AmJ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sr4-dL-pwn"/>
+                                    <barButtonItem image="12-eye-white.png" style="plain" id="e53-AS-LpY">
+                                        <connections>
+                                            <action selector="toggleEditMode:" destination="6am-S9-ntA" id="tgf-0d-Oiu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="7bV-1d-iGk"/>
+                                    <barButtonItem style="plain" id="Bat-DI-08x">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IzO-8D-jEQ">
+                                            <rect key="frame" x="203" y="5" width="38" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="33-cabinet-white.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="mapmaking:" destination="6am-S9-ntA" eventType="touchUpInside" id="SmE-uJ-alA"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="MLt-8E-L0A"/>
+                                    <barButtonItem image="42-info.png" style="plain" id="2q7-E9-rtW">
+                                        <connections>
+                                            <action selector="openMapDetails:" destination="6am-S9-ntA" id="AtM-ep-h5h"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="mnS-EX-Igo"/>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeC-Hg-dpe"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qeC-Hg-dpe" firstAttribute="top" secondItem="ZPI-w1-1y3" secondAttribute="bottom" type="default" id="KUE-KV-kfP"/>
+                            <constraint firstItem="ZPI-w1-1y3" firstAttribute="top" secondItem="J8F-RK-zU3" secondAttribute="top" type="default" id="MGh-yR-PNU"/>
+                            <constraint firstItem="ZPI-w1-1y3" firstAttribute="trailing" secondItem="J8F-RK-zU3" secondAttribute="trailing" type="default" id="QKb-lW-iXd"/>
+                            <constraint firstItem="qeC-Hg-dpe" firstAttribute="trailing" secondItem="J8F-RK-zU3" secondAttribute="trailing" type="default" id="bV6-35-eou"/>
+                            <constraint firstItem="ZPI-w1-1y3" firstAttribute="leading" secondItem="J8F-RK-zU3" secondAttribute="leading" type="default" id="cg9-co-0Es"/>
+                            <constraint firstItem="qeC-Hg-dpe" firstAttribute="bottom" secondItem="J8F-RK-zU3" secondAttribute="bottom" type="default" id="yxf-Dd-rGV"/>
+                            <constraint firstItem="qeC-Hg-dpe" firstAttribute="leading" secondItem="J8F-RK-zU3" secondAttribute="leading" type="default" id="zvy-5e-FjR"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="map" image="sword.png" id="eP1-gB-ZAM"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="backbutton" destination="1F6-p2-R4G" id="TVG-eF-hbm"/>
+                        <outlet property="scrollAbleMap" destination="qeC-Hg-dpe" id="KUD-Gq-vix"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAd-Tf-Hsu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-923" y="45"/>
+        </scene>
+        <!--Encounter View Controller - Overview-->
+        <scene sceneID="tpm-wD-fMh">
+            <objects>
+                <viewController id="nCC-iw-FOE" customClass="EncounterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gEW-4b-a4S">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVW-gY-OD6">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GVW-gY-OD6" firstAttribute="leading" secondItem="gEW-4b-a4S" secondAttribute="leading" type="default" id="B0U-Y3-OG8"/>
+                            <constraint firstItem="GVW-gY-OD6" firstAttribute="trailing" secondItem="gEW-4b-a4S" secondAttribute="trailing" type="default" id="WWJ-B9-jfy"/>
+                            <constraint firstItem="GVW-gY-OD6" firstAttribute="top" secondItem="gEW-4b-a4S" secondAttribute="top" type="default" id="e7e-0X-dfm"/>
+                            <constraint firstItem="GVW-gY-OD6" firstAttribute="bottom" secondItem="gEW-4b-a4S" secondAttribute="bottom" type="default" id="qtb-y5-JrV"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Overview" image="179-notepad-white.png" id="gxG-3p-3cx"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="campaignWebview" destination="GVW-gY-OD6" id="Hja-oC-qGc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zxN-sq-FV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-902" y="-621"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vif-iN-vgK">
+            <objects>
+                <tabBarController storyboardIdentifier="encounter" definesPresentationContext="YES" id="qJb-O7-0l7" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="no6-7p-Y9Y">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="nCC-iw-FOE" kind="relationship" relationship="viewControllers" id="uac-aI-RTS"/>
+                        <segue destination="6am-S9-ntA" kind="relationship" relationship="viewControllers" id="HdK-KK-IoY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8HR-U0-KCL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1436" y="-294"/>
         </scene>
         <!--Campaigniphone View Controller-->
         <scene sceneID="t9w-Ub-Wfn">
@@ -152,7 +274,7 @@
         <!--Map Makeriphone View Controller - map-->
         <scene sceneID="BYB-PK-4hG">
             <objects>
-                <viewController id="Iie-0c-KUG" customClass="mapMakeriphoneViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapMaker" id="Iie-0c-KUG" customClass="mapMakeriphoneViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ht7-d7-uGs">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -165,7 +287,7 @@
                                 <items>
                                     <barButtonItem image="arrow.png" style="plain" id="8zj-LU-9DY">
                                         <connections>
-                                            <action selector="back:" destination="Iie-0c-KUG" id="3Xy-vv-fLy"/>
+                                            <action selector="previousMapSelected:" destination="Iie-0c-KUG" id="2Ki-u4-FP4"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JTG-Oi-d85"/>
@@ -175,9 +297,24 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="14" style="plain" systemItem="fixedSpace" id="wGp-PW-n7W"/>
-                                    <barButtonItem image="33-cabinet-white.png" style="plain" id="0qq-W7-6Wy">
+                                    <barButtonItem style="plain" id="U3Z-6B-M06">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cwL-zQ-QWH">
+                                            <rect key="frame" x="169" y="5" width="38" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" image="33-cabinet-white.png">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="mapmaking:" destination="Iie-0c-KUG" eventType="touchUpInside" id="aLI-4A-dDX"/>
+                                            </connections>
+                                        </button>
                                         <connections>
-                                            <action selector="mapmaking:" destination="Iie-0c-KUG" id="161-Bj-7Cw"/>
+                                            <action selector="mapmaking:" destination="Iie-0c-KUG" id="YVj-FH-hcZ"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="ica-x5-9yn"/>
@@ -212,15 +349,17 @@
                     <tabBarItem key="tabBarItem" title="map" image="178-city.png" id="Cu6-NQ-fb1"/>
                     <connections>
                         <outlet property="backbutton" destination="8zj-LU-9DY" id="0ZL-HG-XuK"/>
-                        <outlet property="openMapEditingMenu" destination="0qq-W7-6Wy" id="dbH-n3-z1q"/>
+                        <outlet property="mapEditingMenu" destination="U3Z-6B-M06" id="Vbr-I6-I7n"/>
+                        <outlet property="mapmakingimage" destination="cwL-zQ-QWH" id="Jqd-tz-qx4"/>
                         <outlet property="scrollAbleMap" destination="7SA-zV-31O" id="cZE-Ba-rkE"/>
                         <outlet property="spinner" destination="GCs-og-jrk" id="krq-tP-6Ru"/>
                         <outlet property="toolbar" destination="Gy7-a2-tfl" id="Vxk-tx-xfw"/>
+                        <outlet property="viewbutton" destination="XqM-lw-9Ye" id="wKd-Ux-23b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3je-cl-8B7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="374"/>
+            <point key="canvasLocation" x="472" y="375"/>
         </scene>
         <!--Tool Selector View Controller-->
         <scene sceneID="xo6-oF-KNb">
@@ -258,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIA-Dc-kzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-953" y="-545"/>
+            <point key="canvasLocation" x="-972" y="-570"/>
         </scene>
         <!--Compendium View Controller-->
         <scene sceneID="Yti-kX-0Pg">
@@ -286,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wga-al-LCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-495" y="-464"/>
+            <point key="canvasLocation" x="-576" y="-445"/>
         </scene>
         <!--Note Taking View Controller-->
         <scene sceneID="Yjh-g4-MMj">
@@ -327,7 +466,233 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KwP-jm-o88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="-449"/>
+            <point key="canvasLocation" x="-576" y="-414"/>
+        </scene>
+        <!--Character Stat View Controller - Character Stats-->
+        <scene sceneID="r0t-ik-AZn">
+            <objects>
+                <viewController id="jtX-A5-R6Z" customClass="CharacterStatViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2uv-kt-j92">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="T9O-9e-boc" customClass="panableTable">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jtX-A5-R6Z" id="mhy-mt-khy"/>
+                                    <outlet property="delegate" destination="jtX-A5-R6Z" id="PQT-6h-uP2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T9O-9e-boc" firstAttribute="bottom" secondItem="2uv-kt-j92" secondAttribute="bottom" type="default" id="3x9-H7-85Z"/>
+                            <constraint firstItem="T9O-9e-boc" firstAttribute="top" secondItem="2uv-kt-j92" secondAttribute="top" type="default" id="B70-5Z-Sk1"/>
+                            <constraint firstItem="T9O-9e-boc" firstAttribute="leading" secondItem="2uv-kt-j92" secondAttribute="leading" type="default" id="cTl-gH-dhW"/>
+                            <constraint firstItem="T9O-9e-boc" firstAttribute="trailing" secondItem="2uv-kt-j92" secondAttribute="trailing" type="default" id="d6v-uQ-3ZV"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Character Stats" image="179-notepad-white.png" id="seq-vp-wqc"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="table" destination="T9O-9e-boc" id="6Df-UG-pXX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEq-YW-TXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="488" y="-317"/>
+        </scene>
+        <!--Character View Controller - character story-->
+        <scene sceneID="4cr-LF-tWm">
+            <objects>
+                <viewController id="PLa-UC-X19" customClass="CharacterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BJ8-UT-hwY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="YWy-gX-FpU" customClass="panableTable">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="dataSource" destination="PLa-UC-X19" id="awE-CI-clm"/>
+                                    <outlet property="delegate" destination="PLa-UC-X19" id="HOH-kI-tWD"/>
+                                    <outletCollection property="gestureRecognizers" destination="60m-YP-pup" appends="YES" id="MuZ-Qq-X4n"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YWy-gX-FpU" firstAttribute="leading" secondItem="BJ8-UT-hwY" secondAttribute="leading" type="default" id="0rf-mg-9Rh"/>
+                            <constraint firstItem="YWy-gX-FpU" firstAttribute="trailing" secondItem="BJ8-UT-hwY" secondAttribute="trailing" type="default" id="1ye-wM-X51"/>
+                            <constraint firstItem="YWy-gX-FpU" firstAttribute="top" secondItem="BJ8-UT-hwY" secondAttribute="top" type="default" id="3mq-WD-mMu"/>
+                            <constraint firstItem="YWy-gX-FpU" firstAttribute="bottom" secondItem="BJ8-UT-hwY" secondAttribute="bottom" type="default" id="DkV-Cw-KbL"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="character story" image="180-stickynote-white.png" id="CKM-PI-r4z"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="table" destination="YWy-gX-FpU" id="9ec-Ot-AK9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxI-j8-6iL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="60m-YP-pup">
+                    <connections>
+                        <action selector="pulledDown:" destination="PLa-UC-X19" id="bP4-Sn-JOn"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="488" y="-996"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="PiI-pT-jMl">
+            <objects>
+                <tabBarController storyboardIdentifier="character" definesPresentationContext="YES" id="d5x-P4-xiF" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Uk7-9e-iaV">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="PLa-UC-X19" kind="relationship" relationship="viewControllers" id="s96-oR-xca"/>
+                        <segue destination="jtX-A5-R6Z" kind="relationship" relationship="viewControllers" id="qAJ-7N-Wrh"/>
+                        <segue destination="moO-4x-hVS" kind="relationship" relationship="viewControllers" id="HJw-XR-AeA"/>
+                        <segue destination="vtK-mj-PoH" kind="relationship" relationship="viewControllers" id="k6n-Ss-evJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGe-S8-9fx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-425" y="-1046"/>
+        </scene>
+        <!--Inventory View Controller - Inventory-->
+        <scene sceneID="apT-um-M4g">
+            <objects>
+                <viewController id="moO-4x-hVS" customClass="InventoryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IRP-cX-kZu">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mvy-yl-hFe" customClass="panableTable">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="moO-4x-hVS" id="SWb-Ea-9Dz"/>
+                                    <outlet property="delegate" destination="moO-4x-hVS" id="WGH-Xb-GpY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="mvy-yl-hFe" firstAttribute="trailing" secondItem="IRP-cX-kZu" secondAttribute="trailing" type="default" id="Cuk-Jf-E7h"/>
+                            <constraint firstItem="mvy-yl-hFe" firstAttribute="bottom" secondItem="IRP-cX-kZu" secondAttribute="bottom" type="default" id="EQW-ZZ-Evt"/>
+                            <constraint firstItem="mvy-yl-hFe" firstAttribute="leading" secondItem="IRP-cX-kZu" secondAttribute="leading" type="default" id="xn0-hH-MhU"/>
+                            <constraint firstItem="mvy-yl-hFe" firstAttribute="top" secondItem="IRP-cX-kZu" secondAttribute="top" type="default" id="yW9-cN-0WH"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Fl3-U7-eGj" appends="YES" id="F29-gU-XpX"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Inventory" image="44-shoebox.png" id="nlR-V3-OVv"/>
+                    <navigationItem key="navigationItem" id="OsA-fe-toU"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="inventoryTable" destination="mvy-yl-hFe" id="cAM-rk-IFU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrC-cs-DHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Fl3-U7-eGj">
+                    <connections>
+                        <action selector="BagOfHoldingIsPanning:" destination="moO-4x-hVS" id="OJV-ep-wgq"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="68" y="-1187"/>
+        </scene>
+        <!--Feats And Skills - Skills and Feats-->
+        <scene sceneID="Sqi-4y-sgH">
+            <objects>
+                <viewController id="vtK-mj-PoH" customClass="FeatsAndSkills" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iz7-hG-7gs">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XLv-VB-2gc" customClass="panableTable">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vtK-mj-PoH" id="wE2-6S-AaM"/>
+                                    <outlet property="delegate" destination="vtK-mj-PoH" id="eI5-Ze-PKg"/>
+                                    <outletCollection property="gestureRecognizers" destination="iET-bi-CNV" appends="YES" id="Yh2-ic-9KE"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="C6s-ua-Jfl" customClass="panableTable">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vtK-mj-PoH" id="QeF-XX-6fc"/>
+                                    <outlet property="delegate" destination="vtK-mj-PoH" id="oov-rV-uo3"/>
+                                    <outletCollection property="gestureRecognizers" destination="Me9-9j-XAP" appends="YES" id="iGz-PL-oPJ"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Skills" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-T6-Xj6">
+                                <color key="backgroundColor" red="0.1176470667" green="0.15294118230000001" blue="0.180392161" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="DRh-e5-UAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Feats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tin-DH-AoE">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="158" id="pTj-fP-CwI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="C6s-ua-Jfl" firstAttribute="bottom" secondItem="iz7-hG-7gs" secondAttribute="bottom" type="default" id="758-hR-8No"/>
+                            <constraint firstItem="tin-DH-AoE" firstAttribute="leading" secondItem="C6s-ua-Jfl" secondAttribute="leading" type="default" id="DmN-nO-nB9"/>
+                            <constraint firstItem="XLv-VB-2gc" firstAttribute="top" secondItem="iz7-hG-7gs" secondAttribute="top" constant="20" symbolic="YES" type="default" id="P1G-4b-OYK"/>
+                            <constraint firstItem="iSx-T6-Xj6" firstAttribute="top" secondItem="iz7-hG-7gs" secondAttribute="top" type="default" id="Qw0-Xn-blq"/>
+                            <constraint firstItem="C6s-ua-Jfl" firstAttribute="top" secondItem="iz7-hG-7gs" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Vxz-24-n1g"/>
+                            <constraint firstItem="tin-DH-AoE" firstAttribute="trailing" secondItem="iz7-hG-7gs" secondAttribute="trailing" type="default" id="X03-RZ-kSY"/>
+                            <constraint firstItem="iSx-T6-Xj6" firstAttribute="leading" secondItem="iz7-hG-7gs" secondAttribute="leading" type="default" id="YFL-pK-Xf1"/>
+                            <constraint firstItem="C6s-ua-Jfl" firstAttribute="trailing" secondItem="iz7-hG-7gs" secondAttribute="trailing" type="default" id="gcv-Ps-NJs"/>
+                            <constraint firstItem="XLv-VB-2gc" firstAttribute="leading" secondItem="iz7-hG-7gs" secondAttribute="leading" type="default" id="kRu-ce-dbr"/>
+                            <constraint firstItem="iSx-T6-Xj6" firstAttribute="trailing" secondItem="XLv-VB-2gc" secondAttribute="trailing" type="default" id="ltY-RZ-xMP"/>
+                            <constraint firstItem="tin-DH-AoE" firstAttribute="top" secondItem="iz7-hG-7gs" secondAttribute="top" type="default" id="p14-Xu-7mw"/>
+                            <constraint firstItem="XLv-VB-2gc" firstAttribute="bottom" secondItem="iz7-hG-7gs" secondAttribute="bottom" type="default" id="pD8-LR-CzU"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Skills and Feats" image="63-runner.png" id="fld-FT-ZLd"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="featPanner" destination="Me9-9j-XAP" id="9oO-YW-UNT"/>
+                        <outlet property="featsTable" destination="C6s-ua-Jfl" id="C5R-xF-X3x"/>
+                        <outlet property="skillPanner" destination="iET-bi-CNV" id="IfE-n3-ZZe"/>
+                        <outlet property="skillsTable" destination="XLv-VB-2gc" id="ugu-B2-iAs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0qh-CM-8gj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="iET-bi-CNV">
+                    <connections>
+                        <action selector="didPan:" destination="vtK-mj-PoH" id="bUt-Cg-A3W"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Me9-9j-XAP">
+                    <connections>
+                        <action selector="didPan:" destination="vtK-mj-PoH" id="RS2-Jd-K3k"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="250" y="-970"/>
         </scene>
         <!--Campaigninfo View Controller - Campaign overview-->
         <scene sceneID="iv2-Wp-hVD">
@@ -356,7 +721,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XN0-xz-MdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="-283"/>
+            <point key="canvasLocation" x="174" y="575"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="LcQ-1w-7o8">
@@ -394,14 +759,26 @@
         <image name="103-map-white.png" width="26" height="21"/>
         <image name="12-eye-white.png" width="24" height="16"/>
         <image name="178-city.png" width="23" height="27"/>
+        <image name="179-notepad-white.png" width="22" height="28"/>
         <image name="179-notepad.png" width="22" height="28"/>
         <image name="18-envelope.png" width="24" height="16"/>
+        <image name="180-stickynote-white.png" width="22" height="22"/>
         <image name="251-sword-white.png" width="28" height="23"/>
         <image name="33-cabinet-white.png" width="20" height="26"/>
         <image name="42-info.png" width="28" height="28"/>
+        <image name="44-shoebox.png" width="24" height="22"/>
+        <image name="63-runner.png" width="18" height="25"/>
         <image name="arrow.png" width="16" height="16"/>
+        <image name="sword.png" width="28" height="23"/>
     </resources>
     <classes>
+        <class className="BaseTableViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BaseTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pulledDown:"/>
+                <relationship kind="outlet" name="table" candidateClass="panableTable"/>
+            </relationships>
+        </class>
         <class className="CampaignCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CampaignCell.h"/>
             <relationships>
@@ -423,14 +800,43 @@
                 <relationship kind="outlet" name="campaignsTable" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="CharacterStatViewController" superclassName="BaseTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CharacterStatViewController.h"/>
+        </class>
+        <class className="CharacterViewController" superclassName="BaseTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CharacterViewController.h"/>
+        </class>
         <class className="CompendiumViewController" superclassName="masterBaseViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CompendiumViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
+        <class className="EncounterViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EncounterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="campaignWebview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="FeatsAndSkills" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FeatsAndSkills.h"/>
+            <relationships>
+                <relationship kind="action" name="didPan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="featPanner" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="featsTable" candidateClass="panableTable"/>
+                <relationship kind="outlet" name="skillPanner" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="skillsTable" candidateClass="panableTable"/>
+            </relationships>
+        </class>
         <class className="GHRevealViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GHRevealViewController.h"/>
+        </class>
+        <class className="InventoryViewController" superclassName="masterBaseViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InventoryViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="BagOfHoldingIsPanning:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="inventoryTable" candidateClass="panableTable"/>
+            </relationships>
         </class>
         <class className="MainSideViewController" superclassName="GHRevealViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainSideViewController.h"/>
@@ -474,6 +880,9 @@
                 <relationship kind="outlet" name="signatureImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
+        <class className="TPKeyboardAvoidingTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingTableView.h"/>
+        </class>
         <class className="ToolSelectorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ToolSelectorViewController.h"/>
             <relationships>
@@ -482,17 +891,22 @@
                 <relationship kind="outlet" name="tileSelectionScroll" candidateClass="UIScrollView"/>
             </relationships>
         </class>
+        <class className="encountermakeiphoneViewController" superclassName="mapMakeriphoneViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/encountermakeiphoneViewController.h"/>
+        </class>
         <class className="mapMakeriphoneViewController" superclassName="MapMakerViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mapMakeriphoneViewController.h"/>
             <relationships>
-                <relationship kind="action" name="mapmaking:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="mapmaking:" candidateClass="UIButton"/>
                 <relationship kind="action" name="placeAnObject:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="toggleEditMode:"/>
                 <relationship kind="outlet" name="backbutton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="mapEditingMenu" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="mapmakingimage" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="openMapEditingMenu" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="openPlaceAnObjectMenu" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="viewbutton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="masterBaseViewController" superclassName="UIViewController">
@@ -501,6 +915,9 @@
                 <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tabbarImage" candidateClass="UIImageView"/>
             </relationships>
+        </class>
+        <class className="panableTable" superclassName="TPKeyboardAvoidingTableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/panableTable.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

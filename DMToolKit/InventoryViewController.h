@@ -10,7 +10,8 @@
 #import "panableTable.h"
 #import "FeatAndSkillsCell.h"
 #import "webViewPopoverViewController.h"
-@interface InventoryViewController : masterBaseViewController<UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, webPopoverDelegate>
+#import "iphoneSelectionViewController.h"
+@interface InventoryViewController : masterBaseViewController<UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, webPopoverDelegate,iphoneselectionViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet panableTable *inventoryTable;
 @property (nonatomic, strong)UIPopoverController * popover;
 @property (nonatomic, strong) NSMutableArray * inventoryArray;
