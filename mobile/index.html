@@ -2,37 +2,83 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<style>
+   html, body {
+        margin: auto; /* center in viewport */
+        width: 960px;
+        height:100%;
+    }
+
+    #nav {
+        width: 200px;
+    }
+
+    #main {
+        width: 760px;
+    }
+</style>
 <script src="yui3/build/yui/yui-min.js"></script>
+<script src="menuplugin.js"></script>
 <link rel="stylesheet" href="pure/build/pure-min.css">
 <link rel="stylesheet" href="pure.css">
     </head>
-    <body>
-<div class="pure-g-r content" id="layout">
-    <div class="pure-u" id="nav">
-        <a href="#" class="nav-menu-button">Menu</a>
-         
-        <a href="#" class="nav-menu-button right">Roll Dice</a>
-        <div class="nav-inner">
-            <button class="pure-button primary-button">Compose</button>
 
-            <div class="pure-menu pure-menu-open">
-                <ul>
-                    <li><a href="#">Inbox <span class="email-count">(2)</span></a></li>
-                    <li><a href="#">Important</a></li>
-                    <li><a href="#">Sent</a></li>
-                    <li><a href="#">Drafts</a></li>
-                    <li><a href="#">Trash</a></li>
-                    <li class="pure-menu-heading">Labels</li>
-                    <li><a href="#"><span class="email-label-personal"></span>Personal</a></li>
-                    <li><a href="#"><span class="email-label-work"></span>Work</a></li>
-                    <li><a href="#"><span class="email-label-travel"></span>Travel</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<body >
+   <div class="pure-g-r" id="layout">
+        <a href="#menu" id="menuLink" class="pure-menu-link top">
+    <img src="images/259-list-white.png" width="23"
+         alt="Menu toggle">
+</a>
+       
+<a href="#menu" id="menuLink" class="pure-menu-link bottom">
+    <img src="images/130-dice-white.png" width="23"
+         alt="Menu toggle">
+</a>
+       <div class="pure-u" id="menu">
+   
 
+   
 </div>
 
+       <div class="hero" id="pageContent">
+    <h1 class="pure-u-1">Campaigns</h1>
+    <h2 class="pure-u-3-4 l-centered">A set of small, responsive CSS modules that you can use in every web project.</h2>
 
+    <div class="hero-cta pure-u-3-4">
+    <pre class="snippet" data-language="html"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;http://yui.yahooapis.com/pure/0.2.1/pure-min.css&quot;&gt;</code></pre>
+
+    <p>
+        <a class="pure-button pure-button-cta" href="/customize/">Get Started</a>
+        <a class="pure-button pure-button-secondary" href="https://github.com/yui/pure/">View on GitHub</a>
+    </p>
+    </div>
+</div>
+       
+       </div>
 </body>
+
+
     <script src="app.js"></script>
+    
+    <script type="text/x-template" id="menu-template">
+         <div class="pure-menu pure-menu-open">
+        <a class="pure-menu-heading">Main Menu </a>
+        <ul>
+        {{#menu}}
+         <li class="menu-item-divided">
+                <div class="pure-g">
+                <a href="#/{{title}}">
+                <div class="pure-u-1-8"> <img src="{{image}}" width="26"/> </div>
+                <div class="pure-u-1-8">  </div>
+                <div class="pure-u-1-2"> {{title}} </div>
+                {{#if quantity}}
+                 <div class="pure-u-1-5 red-amount" id="{{title}}amount"> {{quantity}} </div>
+                 {{/if}}
+                    </a>
+                    </div>
+            </li>
+        {{/menu}}
+        </ul>
+         </div>
+    </script>

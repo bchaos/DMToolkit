@@ -1,10 +1,30 @@
-YUI().use 'node-base', 'node-event-delegate', (Y) ->
+YUI().use 'node-base', 'node-event-delegate', 'app-base', 'app-transitions','handelbars','menuplugin', (Y) ->
     Y.one('body').delegate('click', (e)->                               
             e.preventDefault();
         , 'a[href="#"]');
-    menuButton = Y.one '.nav-menu-button'
-    nav = Y.one('#nav');
-    menuButton.on 'click', (e) ->
-        nav.toggleClass 'active'
-      
-     
+    
+    pageApp = new Y.App {
+                    views: 
+                        home : {preserve: true},
+                        campaigns: {parent: 'home'},
+                        players: {parent: 'home'},
+                        npcs: {parent: 'home'},
+                        encounters: {parent: 'home'},
+                        notes: {parent: 'home'},
+                        external: {parent: 'home'},
+                        about: {parent: 'home'},
+                    transitions: 
+                        true
+                    container:
+                        '#pageContent'
+                    serverRouting:
+                        false
+    }
+    
+    pageApp.route '*', ->
+           
+        
+    
+    
+    Y.menuplugin.render();
+    pageApp.render().dispatch();
