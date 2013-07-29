@@ -2,9 +2,6 @@
 (function() {
   YUI().use('node-base', 'node-event-delegate', 'app-base', 'app-transitions', 'handelbars', 'menuplugin', function(Y) {
     var pageApp;
-    Y.one('body').delegate('click', function(e) {
-      return e.preventDefault();
-    }, 'a[href="#"]');
     pageApp = new Y.App({
       views: {
         home: {
@@ -37,6 +34,9 @@
       serverRouting: false
     });
     pageApp.route('*', function() {});
+    pageApp.route('#/Campaigns', function() {
+      return Y.one('hero').set('text', 'Example App - Home');
+    });
     Y.menuplugin.render();
     return pageApp.render().dispatch();
   });

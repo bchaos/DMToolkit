@@ -1,7 +1,5 @@
 YUI().use 'node-base', 'node-event-delegate', 'app-base', 'app-transitions','handelbars','menuplugin', (Y) ->
-    Y.one('body').delegate('click', (e)->                               
-            e.preventDefault();
-        , 'a[href="#"]');
+
     
     pageApp = new Y.App {
                     views: 
@@ -22,9 +20,10 @@ YUI().use 'node-base', 'node-event-delegate', 'app-base', 'app-transitions','han
     }
     
     pageApp.route '*', ->
-           
+       
         
-    
-    
+    pageApp.route '#/Campaigns', ->
+        Y.one('hero').set('text', 'Example App - Home');
+        
     Y.menuplugin.render();
     pageApp.render().dispatch();

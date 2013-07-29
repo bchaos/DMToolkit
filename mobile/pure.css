@@ -5,15 +5,6 @@ body {
 
 
 /* Add transition to containers so they can push in and out */
-#layout,
-#menu,
-.pure-menu-link {
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-}
 
 
 /* --------------------------
@@ -322,11 +313,11 @@ a.pure-button-primary {
     }
         #layout.active {
             position: relative;
-            left: 150px;
+            left: 250px;
         }
             #layout.active #menu {
-                left: 150px;
-                width: 150px;
+                left: 250px;
+                width: 250px;
             }
 
     #menu {
@@ -340,7 +331,7 @@ a.pure-button-primary {
     }
 
     #layout.active .pure-menu-link {
-        left: 150px;
+        left: 250px;
     }
 }
 
@@ -374,6 +365,7 @@ p {
 .hero {
     text-align: center;
     margin: 8em 0 3em;
+    overflow:hidden;
 }
     .hero h1 {
         font-size: 800%;
