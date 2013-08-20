@@ -199,6 +199,17 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     return 0;
 }
 
+-(int)getFilteredRaces:(NSString*)filter{
+    [_SelectionFields removeAllObjects];
+    NSArray * races=[[dungeonMasterSingleton sharedInstance]allPlayerRaces:filter];
+    if (races != nil && races.count>0){
+        [_SelectionFields addObjectsFromArray: races];
+        return races.count;
+    }
+    return 0;
+}
+
+
 -(int)getFilteredEncounters:(NSString*)filter{
     [_SelectionFields removeAllObjects];
     NSArray * encounters=[[dungeonMasterSingleton sharedInstance]AllEncounter:filter];
@@ -309,6 +320,14 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     filterFunction= @"getFilteredMonsters:";
 }
 
+-(void)showRaceTableView:(NSDictionary *)dic{
+    [_SelectionFields removeAllObjects];
+    [self getFilteredRaces:nil];
+    actionFunction=@"toReferenceViewer";
+    filterFunction= @"getFilteredRaces:";
+}
+
+
 
 -(void)showEncountersTableView:(NSDictionary *)dic{
     [_SelectionFields removeAllObjects];
@@ -380,8 +399,11 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     NSNumber * domainCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllDomains:nil]count]];
     NSNumber * classCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllCharacterClasses:nil]count]];
     NSNumber * itemcount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]AllItems:nil]count]];
+    
+    NSNumber * raceCount=  [NSNumber numberWithInt:[[[dungeonMasterSingleton sharedInstance]allPlayerRaces:nil]count]];
     _SelectionFields= [NSMutableArray arrayWithObjects: [NSDictionary dictionaryWithObjectsAndKeys:@"Items" ,nameKey, @"showItemsTable:", functionKey,itemcount,@"count", nil] ,
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Monsters" ,nameKey, @"showMonstersTableView:", functionKey, monsterCount,@"count", nil],
+                       [NSDictionary dictionaryWithObjectsAndKeys:@"Player Races" ,nameKey, @"showRaceTableView:", functionKey, raceCount,@"count", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Feats" ,nameKey, @"showFeatsTableView:", functionKey,featCount,@"count", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Skills" ,nameKey, @"showSkillsTableView:", functionKey, skillCount, @"count", nil],
                        [NSDictionary dictionaryWithObjectsAndKeys:@"Powers" ,nameKey, @"showPowersTableView:", functionKey,powerCount,@"count", nil],
@@ -903,6 +925,11 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
         NPC * newmonster = [[dungeonMasterSingleton sharedInstance]createMonster];
         [dungeonMasterSingleton sharedInstance].currentMonster=newmonster;
         [ _SelectionFields insertObject:newmonster atIndex:0];
+    }else if ( [self atRaceMenu]){
+        Race * newRace = [[dungeonMasterSingleton sharedInstance]createRace];
+        newRace.playerRace =@TRUE;
+        [dungeonMasterSingleton sharedInstance].currentRace=newRace;
+        [ _SelectionFields insertObject:newRace atIndex:0];
     }
     
      [[dungeonMasterSingleton sharedInstance]save];

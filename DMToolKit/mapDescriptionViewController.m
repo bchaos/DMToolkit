@@ -43,8 +43,9 @@
 -(void)reloadData{
     NSString *fullPath = [[NSBundle mainBundle] pathForResource:@"map" ofType:@"html"];
     NSString * string = [NSString stringWithContentsOfFile:fullPath encoding:NSStringEncodingConversionAllowLossy error:nil];
+    if (_gridInfo[@"mapName"])
     string= [string stringByReplacingOccurrencesOfString:@"{{MapName}}" withString: _gridInfo[@"mapName"]];
-    
+    if ( _gridInfo[@"mapDescription"])
     string= [string stringByReplacingOccurrencesOfString:@"{{MapDescription}}" withString:_gridInfo[@"mapDescription"]];
     if(_hasViewButton){
         _viewButton.enabled=YES;

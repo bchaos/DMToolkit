@@ -64,6 +64,11 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 	
 }
 
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
      static NSString *CellIdentifier = @"SidebarCell1";
     

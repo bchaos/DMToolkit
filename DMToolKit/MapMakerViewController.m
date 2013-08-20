@@ -141,6 +141,7 @@ typedef enum {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading";
     [_spinner stopAnimating];
+    hud=nil;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -425,6 +426,7 @@ typedef enum {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading";
     [self cleargrid];
+    _map=nil;
     MapMakerViewController *newMap;
      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
     newMap= [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"mapMaker"];

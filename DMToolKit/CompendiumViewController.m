@@ -43,7 +43,10 @@
     }else{
          string= [string stringByReplacingOccurrencesOfString:@"{{Name}}" withString:@"Unknown"];
     }
+    if (fullText)
     string= [string stringByReplacingOccurrencesOfString:@"{{NoteText}}" withString:fullText];
+    else
+        string= [string stringByReplacingOccurrencesOfString:@"{{NoteText}}" withString:@"Here is where your infomation goes"];
     _webView.delegate=self;
     NSLog(@"%@",[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]);
     [_webView loadHTMLString:string baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];

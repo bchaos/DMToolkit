@@ -26,6 +26,7 @@
 -(BOOL)atSkillsMenu;
 -(BOOL)atPowersMenu;
 -(BOOL)atDomainsMenu;
+-(BOOL)atRaceMenu;
 -(BOOL)atClassesMenu;
 -(BOOL)atEvernoteNoteMenu;
 -(BOOL)atDriveMenu;

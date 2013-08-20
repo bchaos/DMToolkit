@@ -20,7 +20,7 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLDrive.h"
 #import "PDFWidget.h"
-@interface SidebarViewController : SideBarBaseViewController<UITableViewDelegate , UITableViewDataSource,UIScrollViewDelegate,UITextFieldDelegate, UIAlertViewDelegate, textCellDelegate, UIPopoverControllerDelegate, webPopoverDelegate,PDFWidgetDelegate>
+@interface SidebarViewController : SideBarBaseViewController<UITableViewDelegate , UITableViewDataSource,UIScrollViewDelegate,UITextFieldDelegate, UIAlertViewDelegate, textCellDelegate, UIPopoverControllerDelegate, webPopoverDelegate,PDFWidgetDelegate,UIGestureRecognizerDelegate>
 
 - (IBAction)importpdf:(id)sender;
 @property ( nonatomic, strong)NSMutableArray * SelectionFields;

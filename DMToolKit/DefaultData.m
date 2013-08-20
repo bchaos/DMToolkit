@@ -22,6 +22,35 @@
  
   
 }
+-(void)AddNewRaces{
+    if([[NSUserDefaults standardUserDefaults]boolForKey:@"NewRacesadded"] == true){
+    Race * HalFELF=  [[dungeonMasterSingleton sharedInstance]createRace];
+    HalFELF.name=@"Half-elf";
+    HalFELF.playerRace = @true;
+    HalFELF.fulltext= @"Half-elves are not truly an elf subrace, but they are often mistaken for elves. Half-elves usually inherit a good blend of their parents’ physical characteristics. Prefered Class Any. When determining whether a multiclass half-elf takes an experience point penalty, her highest-level class does not count.";
+    Race * Hengeyokai=  [[dungeonMasterSingleton sharedInstance]createRace];
+    Hengeyokai.name=@"Hengeyokai";
+    Hengeyokai.playerRace = @true;
+    Hengeyokai.fulltext= @"Hengeyokai in their true animal form look almost exactly like the animal form they're based on, although they're usually a bit larger in size. In their human form they look almost identical to the race they're disguised as, although they might possess a few traits typical of their animal form (for example, narrow eyes, slightly pointed nose and whisker like markings on the face for a fox hengeyokai). Their hybrid form tends to be an anthropomorphic animal with traits resembling that of their human form (fur color resembles human hair color, same general build, etc).";
+    Race * Warforged=  [[dungeonMasterSingleton sharedInstance]createRace];
+    Warforged.name=@"Warforged";
+    Warforged.playerRace = @true;
+    Warforged.fulltext= @"A mechinized race of warriors built for spefic taks. They do not sleep nor eat, but enter a state of inactivity for 4 hours to gain the benefits of an extended rest. While in this state, they are fully aware. Prefered class Any";
+        
+    
+        
+    Race * Tibbit=  [[dungeonMasterSingleton sharedInstance]createRace];
+    Tibbit.name=@"Tibbit";
+    Tibbit.playerRace = @true;
+    Tibbit.fulltext= @"Tibbits (also known as catweres) are small, humanoid creatures that have the ability to turn into a common house cat. They arose from felines kept as familiars in ages past. The powerful magic that allows a familiar to gain intelligence and magic abilities slowly filtered from one generation of cats to the next. Whether tibbits evolved from a natural process, divine intervention, or a sudden surge in the magic running through their ancestry, none can say. Tibbits have never existed in large numbers, and their tendency to spread across the world leaves them with a fractured, incomplete racial history. Favored Class Rogue;";
+        
+        
+        [[dungeonMasterSingleton sharedInstance]save];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"NewRacesadded"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+
+}
 -(void)AddRaces{
     Race * DragonBorn=  [[dungeonMasterSingleton sharedInstance]createRace];
     DragonBorn.name=@"Dragonborn";
@@ -57,6 +86,8 @@
     HighELF.name=@"Elf";
     HighELF.playerRace = @true;
     HighELF.fulltext= @"They are wood elves, having lived in the woods and the wilds all their lives. They are naturally talented with bows and are nimble beings but are not as magical as their Eladrin brethren. Appropriate classes would be the Striker roles (Rogue, Ranger), the Leader role (Warlord, Shaman) or the Controller role (Druid).";
+
+
     
     Race * Halfling=  [[dungeonMasterSingleton sharedInstance]createRace];
     Halfling.name=@"Halfling";

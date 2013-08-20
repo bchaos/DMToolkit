@@ -138,6 +138,9 @@ static int textTag=1001;
 -(BOOL)atDomainsMenu{
     return [self atMenuNamed:@"Domains"];
 }
+-(BOOL)atRaceMenu{
+    return [self atMenuNamed:@"Player Races"];
+}
 
 -(BOOL)atClassesMenu{
     return [self atMenuNamed:@"Classes"];

@@ -30,4 +30,5 @@
 @property (nonatomic, strong)Powers * currentPowers;
 @property (nonatomic, strong)CharacterClass * currentCharacterClass;
 -(void)createDefaultData;
+-(void)AddNewRaces;
 @end

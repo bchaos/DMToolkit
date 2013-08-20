@@ -30,8 +30,8 @@
     }else{
         
     }
-    //DefaultData *data=[[DefaultData alloc]init];
-    //[data createDefaultData];
+    DefaultData *data=[[DefaultData alloc]init];
+    [data AddNewRaces ];
     
     
     return YES;
