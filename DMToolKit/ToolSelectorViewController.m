@@ -64,28 +64,27 @@
 
 }
 -(void)setUpActionButtons{
-     [self createBaseButton:[UIImage imageNamed:@"145-persondot.png"]   withMode:2 firstStack:YES];
-     [self createBaseButton:[UIImage imageNamed:@"sword.png"]   withMode:3 firstStack:YES];
-     [self createBaseButton:[UIImage imageNamed:@"53-house.png"]   withMode:4 firstStack:YES];
-     [self createBaseButton:[UIImage imageNamed:@"chest.png"]   withMode:5 firstStack:YES];
-     [self createBaseButton:[UIImage imageNamed:@"179-notepad.png"]   withMode:6 firstStack:YES];
-     [self createBaseButton:[UIImage imageNamed:@"22-skull-n-bones.png"]   withMode:7 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"145-persondot-white.png"]   withMode:2 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"251-sword-white.png"]   withMode:3 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"53-house-white.png"]   withMode:4 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"chest-white.png"]   withMode:5 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"179-notepad-white.png"]   withMode:6 firstStack:YES];
+     [self createBaseButton:[UIImage imageNamed:@"22-skull-n-bones-white.png"]   withMode:7 firstStack:YES];
 
 }
 
 -(void)setUpActionButtonsEncounter{
     [self.firstStack removeAllButtons];
-    [self createBaseButton:[UIImage imageNamed:@"111-user.png"]   withMode:8 firstStack:YES];
-    [self createBaseButton:[UIImage imageNamed:@"132-ghost.png"]   withMode:9 firstStack:YES];
-    [self createBaseButton:[UIImage imageNamed:@"179-notepad.png"]   withMode:6 firstStack:YES];
-    [self createBaseButton:[UIImage imageNamed:@"22-skull-n-bones.png"]   withMode:7 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"111-user-white.png"]   withMode:8 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"132-ghost-white.png"]   withMode:9 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"179-notepad-white.png"]   withMode:6 firstStack:YES];
+    [self createBaseButton:[UIImage imageNamed:@"22-skull-n-bones-white.png"]   withMode:7 firstStack:YES];
     
 }
 
 -(void)createBaseButton:(UIImage*)image withMode:(int)tag firstStack:(BOOL)stack{
     UIButton * baseButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
-    baseButton.backgroundColor= [UIColor whiteColor];
-    baseButton.layer.borderWidth=1.0;
+    baseButton.backgroundColor= [UIColor clearColor];
     [baseButton addTarget:_delegate action:@selector(setupCurrentAction:) forControlEvents:UIControlEventTouchUpInside];
     baseButton.tag=tag;
     [baseButton setImage:image forState:UIControlStateNormal];
@@ -113,6 +112,6 @@
         [self.tileSelectionScroll addSubview:clickButton];
 
     }];
-    self.tileSelectionScroll.contentSize=CGSizeMake(WIDTH*1.3*NUMBEROFBUTTONSINAROW+60, HEIGHT*1.3*(TOTALBUTTONS/NUMBEROFBUTTONSINAROW)+60);
+    self.tileSelectionScroll.contentSize=CGSizeMake(WIDTH*1.3*NUMBEROFBUTTONSINAROW+60, HEIGHT*1.3*(self.tileList.count/NUMBEROFBUTTONSINAROW)+60);
 }
 @end

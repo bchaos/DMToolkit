@@ -64,9 +64,6 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
 	
 }
 
-- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,7 +160,7 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
                                           delay: 0.0
                                         options: UIViewAnimationOptionAllowUserInteraction
                                      animations:^{
-                                         self.PulldownToAddLabel.alpha=0.0;
+                                         [self.PulldownToAddLabel removeFromSuperview];
                                      }
                                      completion:^(BOOL finished){
                                          
@@ -200,6 +197,9 @@ static NSString *const kClientSecret = @"88d5A5wJUtWa7zp9TTxQaYyh";
     }
 }
 
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 46;

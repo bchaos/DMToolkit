@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, strong)  ToolSelectorViewController * tool;
 @property (nonatomic, assign)BOOL   hasbackbutton;
+@property (nonatomic, assign)BOOL   setup;
 - (IBAction)toggleEditMode:(id)sender;
 @end

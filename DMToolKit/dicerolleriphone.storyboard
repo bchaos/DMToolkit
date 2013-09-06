@@ -98,8 +98,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gO-Hi-3Rh">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="7TD-Ii-XSo"/>
+                                    <constraint firstAttribute="height" constant="22" id="zpO-Zh-kXV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="298-circlex.png">
+                                <state key="normal" backgroundImage="298-circlex@2x.png">
                                     <color key="titleColor" red="0.97044630099999996" green="0.98340556479999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -216,16 +220,15 @@
                             <constraint firstItem="zxN-Sq-hJd" firstAttribute="baseline" secondItem="tc5-Ja-qoF" secondAttribute="baseline" type="default" id="EOS-1o-Xya"/>
                             <constraint firstItem="mmM-BW-kWM" firstAttribute="leading" secondItem="8z2-Js-PuH" secondAttribute="leading" type="default" id="HHd-sf-lWc"/>
                             <constraint firstItem="fmw-BQ-Cg3" firstAttribute="top" secondItem="8z2-Js-PuH" secondAttribute="top" constant="63" id="IXa-Oc-0HB"/>
-                            <constraint firstItem="9gO-Hi-3Rh" firstAttribute="bottom" secondItem="zxN-Sq-hJd" secondAttribute="bottom" type="default" id="IpX-cG-7U8"/>
                             <constraint firstItem="tc5-Ja-qoF" firstAttribute="bottom" secondItem="w9q-0x-MkJ" secondAttribute="bottom" type="default" id="Kn9-h8-l4T"/>
                             <constraint firstItem="w9q-0x-MkJ" firstAttribute="baseline" secondItem="KA2-sj-1TP" secondAttribute="baseline" type="default" id="LpE-iQ-BL6"/>
+                            <constraint firstItem="zxN-Sq-hJd" firstAttribute="bottom" secondItem="tc5-Ja-qoF" secondAttribute="bottom" type="default" id="Lr2-7j-ZbW"/>
                             <constraint firstItem="9gO-Hi-3Rh" firstAttribute="leading" secondItem="8z2-Js-PuH" secondAttribute="leading" constant="14" id="MEc-2C-7om"/>
                             <constraint firstItem="EGn-Cs-bLk" firstAttribute="leading" secondItem="4gW-HS-DtN" secondAttribute="leading" type="default" id="TXe-8E-btV"/>
                             <constraint firstAttribute="trailing" secondItem="gvr-v9-Kcz" secondAttribute="trailing" constant="83" id="Tea-0n-Ekc"/>
                             <constraint firstAttribute="trailing" secondItem="6v3-s9-Syz" secondAttribute="trailing" constant="87" id="V6P-bG-Uau"/>
                             <constraint firstItem="9gO-Hi-3Rh" firstAttribute="top" secondItem="zxN-Sq-hJd" secondAttribute="top" type="default" id="ZID-u6-7ke"/>
                             <constraint firstItem="KA2-sj-1TP" firstAttribute="bottom" secondItem="VH9-5t-z8d" secondAttribute="bottom" type="default" id="beY-ID-0Hw"/>
-                            <constraint firstItem="zxN-Sq-hJd" firstAttribute="top" secondItem="tc5-Ja-qoF" secondAttribute="top" type="default" id="c6N-Wm-QwR"/>
                             <constraint firstItem="gvr-v9-Kcz" firstAttribute="baseline" secondItem="KA2-sj-1TP" secondAttribute="baseline" type="default" id="cXy-Xt-7vq"/>
                             <constraint firstItem="mmM-BW-kWM" firstAttribute="top" secondItem="8z2-Js-PuH" secondAttribute="top" constant="43" id="f1t-12-lEh"/>
                             <constraint firstItem="6v3-s9-Syz" firstAttribute="baseline" secondItem="EGn-Cs-bLk" secondAttribute="baseline" type="default" id="fiF-s7-Eux"/>
@@ -267,8 +270,48 @@
         </scene>
     </scenes>
     <resources>
-        <image name="298-circlex.png" width="22" height="22"/>
+        <image name="298-circlex@2x.png" width="44" height="44"/>
     </resources>
+    <classes>
+        <class className="DiceRollerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiceRollerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearHistory:"/>
+                <relationship kind="action" name="diceNumberSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="didpan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="dxSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="loadDice:"/>
+                <relationship kind="action" name="modifierSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="mutiplierSelected:" candidateClass="UIButton"/>
+                <relationship kind="action" name="saveDice:"/>
+                <relationship kind="outlet" name="SelectionTable" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="clearhistory" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="diceNumber" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="diceloader" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dx" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="modifiers" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mutliplier" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="resultsTable" candidateClass="panableTable"/>
+                <relationship kind="outlet" name="selectedTotal" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="shakeToRollLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingTableView.h"/>
+        </class>
+        <class className="diceRolleriphoneViewController" superclassName="DiceRollerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/diceRolleriphoneViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="toplabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="panableTable" superclassName="TPKeyboardAvoidingTableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/panableTable.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

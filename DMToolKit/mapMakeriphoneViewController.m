@@ -48,7 +48,7 @@
 {
     [super viewDidLoad];
     if(!self.hasbackbutton) self.backbutton.image=nil;
- 
+
     
 	// Do any additional setup after loading the view.
 }
@@ -56,12 +56,15 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     UIStoryboard * mainStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard@iphone" bundle:nil];
+    if(!_setup){
     self.tool= [mainStoryBoard instantiateViewControllerWithIdentifier:@"tools"];
     self.tool.delegate=self;
     self.tool.tileList= self.toolsDic;
     [self.tool setupButtons];
     [self.tool setUpActionButtons];
     [self setupPreviousButton];
+        _setup=true;
+    }
 }
 - (void)didReceiveMemoryWarning
 {
@@ -85,9 +88,15 @@
 }
 
 - (IBAction)toggleEditMode:(UIBarButtonItem *)sender {
-    sender.tintColor=[UIColor blueColor];
-    self.canEdit=NO;
-    [mapmakingimage setImage:[UIImage imageNamed:@"33-cabinet.png"] forState:UIControlStateNormal];
+    if (self.canEdit){
+        sender.tintColor=[UIColor blueColor];
+        self.canEdit=NO;
+        [mapmakingimage setImage:[UIImage imageNamed:@"33-cabinet-white.png"] forState: UIControlStateNormal];
+    }else{
+       self.canEdit=YES;
+      sender.tintColor=[UIColor clearColor];
+      [mapmakingimage setImage:[UIImage imageNamed:@"33-cabinet-white.png"] forState: UIControlStateNormal];
+    }
 }
 
 -(void)setupTools{
@@ -190,7 +199,12 @@
 
 -(void)setupCurrentAction:(buttonWithFrameData *)currentAction{
     [self done];
-    self.openMapEditingMenu.image= [currentAction imageForState:UIControlStateNormal];
+    
+    [mapmakingimage setImage:[currentAction imageForState:UIControlStateNormal]forState: UIControlStateNormal];
+
+    
+    mapmakingimage.tintColor=[UIColor blueColor];
+    
     [self setMode2:currentAction];
     self.canEdit=true;
 }

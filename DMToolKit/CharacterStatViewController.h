@@ -8,6 +8,6 @@
 
 #import "BaseTableViewController.h"
 
-@interface CharacterStatViewController : BaseTableViewController
+@interface CharacterStatViewController : BaseTableViewController<UITextViewDelegate>
 @property (nonatomic, strong) Character * myCharacter;
 @end

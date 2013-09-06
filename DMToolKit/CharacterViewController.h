@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 @class Character;
-@interface CharacterViewController : BaseTableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface CharacterViewController : BaseTableViewController<UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (nonatomic, strong) Character * myCharacter;
 @property (nonatomic, assign)NSString * racesTOUse;
 

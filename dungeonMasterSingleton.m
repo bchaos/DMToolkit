@@ -471,5 +471,13 @@ static dungeonMasterSingleton * _sharedInstance =nil;
     }
 }
 
+-(tileMap *)getMapTiles{
+    if(_map==nil){
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"tilea2" ofType:@"png"];
+        _map=[[tileMap alloc]initWithContentsOfFile:path];
+        
+    }
+    return _map;
+}
 
 @end

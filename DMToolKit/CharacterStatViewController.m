@@ -109,6 +109,25 @@ static NSString * placeHolderKey=@"placeHolder";
         [self addPleaseAdd:@"player" ];
     }
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+   
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+ 
+}
+
+-(void) textViewKeyPressed: (NSNotification*) notification {
+    
+    if ([[[notification object] text] hasSuffix:@"\n"])
+    {
+        [[notification object] resignFirstResponder];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

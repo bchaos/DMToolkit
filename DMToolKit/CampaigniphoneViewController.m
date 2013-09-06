@@ -57,6 +57,7 @@ CampaignCell* cell = [tableView dequeueReusableCellWithIdentifier:@"campaignCell
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     [dungeonMasterSingleton sharedInstance].currentCampaign= [self.campaigns objectAtIndex:indexPath.row];
+    [dungeonMasterSingleton sharedInstance].currentMap= [dungeonMasterSingleton sharedInstance].currentCampaign.map;
     [JE_ notifyName:@"toCampaign" object:nil];
     
 }

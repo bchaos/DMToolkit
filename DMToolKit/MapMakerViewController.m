@@ -189,8 +189,7 @@ typedef enum {
    }];
 }
 -(void)setupGrid{
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"tilea2" ofType:@"png"];
-    _map=[[tileMap alloc]initWithContentsOfFile:path];
+    _map=[[dungeonMasterSingleton sharedInstance]getMapTiles];
     @autoreleasepool {
         
     
@@ -370,6 +369,7 @@ typedef enum {
 -(void)addSelectionContorller:(NSArray* )initalList inButton:(UIButton *)button{
     
      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+         _popover=nil;
     SelectionViewController * selection = [[SelectionViewController alloc]init];
     [selection setList:initalList];
     selection.delegate=self;
@@ -382,17 +382,27 @@ typedef enum {
 
 
 -(void)showMapPopOverControllerForMap:(mapDescriptionViewController *)map{
+   
      if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+         _popover=nil;
     _popover= [[UIPopoverController alloc]initWithContentViewController:map];
     _popover.delegate=self;
     [_popover setPopoverContentSize:CGSizeMake(500, 500)];
     [_popover presentPopoverFromRect:CGRectMake(300, 400, 25, 25) inView:self.view permittedArrowDirections:0 animated:YES];
+     }else{
+         map.delegate=self;
+         [self presentViewController:map animated:YES completion:nil];
+         
      }
 
 }
 -(void)go:(NSString *)fileName{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+
     [_popover dismissPopoverAnimated:NO];
-    
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     [dungeonMasterSingleton sharedInstance].currentMap = [[dungeonMasterSingleton sharedInstance]findMapNamed:fileName];
     [NSTimer scheduledTimerWithTimeInterval:.06 target:self selector:@selector(reloadMap:) userInfo:nil repeats:NO];
    
@@ -419,9 +429,44 @@ typedef enum {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         [_popover dismissPopoverAnimated:YES];
     }
-    [[_Dic objectAtIndex:currentlyEditing.tag] setObject:[object valueForKey:@"name"] forKey:keyToEdit];
-     [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
+    if ([object valueForKey:@"name"] ){
+        [[_Dic objectAtIndex:currentlyEditing.tag] setObject:[object valueForKey:@"name"] forKey:keyToEdit];
+        [_Dic writeToFile:_currentMap.gridInfomation atomically:YES];
+        [self addSelectedImage];
+    }
 }
+-(void)addSelectedImage{
+    switch (_mode) {
+        case 2:
+            
+            [currentlyEditing setImage:[UIImage imageNamed:@"145-persondot.png"] forState:UIControlStateNormal];
+
+            break;
+        case 3:
+         
+            [currentlyEditing setImage:[UIImage imageNamed:@"sword.png"] forState:UIControlStateNormal];
+            break;
+        case 5:
+            [currentlyEditing setImage:[UIImage imageNamed:@"chest.png"] forState:UIControlStateNormal];
+          
+            break;
+
+        case 8:
+            [currentlyEditing setImage:[UIImage imageNamed:@"111-user.png"] forState:UIControlStateNormal];
+
+            break;
+        case 9:
+            [currentlyEditing setImage:[UIImage imageNamed:@"132-ghost.png"] forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+
+    
+
+}
+
+
 -(void)reloadMap :(BOOL)foward{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading";
@@ -573,12 +618,11 @@ typedef enum {
             break;
             case 2:
                 [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllNPC:nil] inButton:sender];
-                [sender setImage:[UIImage imageNamed:@"145-persondot.png"] forState:UIControlStateNormal];
-                keyToEdit= NPCkey;
+                               keyToEdit= NPCkey;
             break;
             case 3:
                 [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllEncounter:nil] inButton:sender];
-                  [sender setImage:[UIImage imageNamed:@"sword.png"] forState:UIControlStateNormal];
+
                 keyToEdit= EncounterKey;
                 break;
             case 4:
@@ -588,8 +632,7 @@ typedef enum {
                 break;
             case 5:
                 [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllItems:nil] inButton:sender];
-                [sender setImage:[UIImage imageNamed:@"chest.png"] forState:UIControlStateNormal];
-                keyToEdit=ItemKey;
+                           keyToEdit=ItemKey;
                 break;
             case 6:
                 keyToEdit=NoteKey;
@@ -597,12 +640,10 @@ typedef enum {
                 break;
             case 8:
                 [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllPlayerCharacters:nil] inButton:sender];
-                [sender setImage:[UIImage imageNamed:@"111-user.png"] forState:UIControlStateNormal];
                 keyToEdit= playerKey;
                 break;
             case 9:
                 [self addSelectionContorller:[[dungeonMasterSingleton sharedInstance] AllNPC:nil]  inButton:sender];
-                [sender setImage:[UIImage imageNamed:@"132-ghost.png"] forState:UIControlStateNormal];
                 keyToEdit= monsterKey;
                 break;
             case 7:

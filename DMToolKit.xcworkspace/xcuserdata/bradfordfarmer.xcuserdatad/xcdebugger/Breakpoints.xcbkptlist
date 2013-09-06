@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "dungeonMasterSingleton.h"
-         timestampString = "398706133.708638"
+         timestampString = "399218697.193688"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
          landmarkName = "toNPCPage"
          landmarkType = "19">
       </FileBreakpoint>
@@ -20,26 +20,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "DMToolKit/SidebarController1.m"
-         timestampString = "398716693.35945"
+         filePath = "DMToolKit/CampaingButtonViewController.m"
+         timestampString = "399218193.074208"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
-         landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "DMToolKit/SidebarViewController.m"
-         timestampString = "398716727.392124"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "708"
-         endingLineNumber = "708"
-         landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
+         landmarkName = "-goToCampaing:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -91,6 +91,15 @@ static NSString * placeHolderKey=@"placeHolder";
     [super editingChanged:text];
     [_myCharacter setValue:text.text forKey: [self valueToUpdate:0 inSection:text.tag]];
 }
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
 
 -(void)setRace:(Race *)race{
     if(_myCharacter.race)

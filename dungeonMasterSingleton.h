@@ -30,6 +30,7 @@
 #import "EvernoteUserStore.h"
 #import <ENMLUtility.h>
 #import <Reachability.h>
+#import "tileMap.h"
 @interface dungeonMasterSingleton : NSObject{
     
     CharacterObject * character;
@@ -61,6 +62,7 @@
 @property (nonatomic, strong) Domain * currentDomain;
 @property (nonatomic,assign) BOOL  toNPCPage;
 @property ( nonatomic, assign) BOOL ablilityToDownload;
+@property  (nonatomic, strong) tileMap * map; 
 @property (nonatomic, strong) Reachability * reach;
 -(void)updateCurrentPlayer:(Player*)newPlayer;
 -(void)save;
@@ -131,6 +133,7 @@
 
 -(Notes *)findNoteWithExternalID :( NSString *)externalID;
 
+-(tileMap *)getMapTiles;
 
 -(void)saveEvernote:(Notes *)evernote;
 -(BOOL)canDownload;
